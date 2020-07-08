@@ -149,7 +149,7 @@ where you intend to write the file, so be careful.
 See the "Target script" section for details.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>tar_script</span>(code = <span class='kw'>NULL</span>, library_targets = <span class='fl'>TRUE</span>)</pre>
+    <pre class="usage"><span class='fu'>tar_script</span>(code = <span class='kw'>NULL</span>, library_targets = <span class='fl'>TRUE</span>, ask = <span class='kw'>NULL</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -165,6 +165,13 @@ target script is written instead.</p></td>
 line at the top of <code>_targets.R</code> automatically (recommended).
 If <code>TRUE</code>, you do not need to explicitly put <code><a href='https://wlandau.github.io/targets'>library(targets)</a></code>
 in <code>code</code>.</p></td>
+    </tr>
+    <tr>
+      <th>ask</th>
+      <td><p>Logical, whether to ask before writing if <code>_targets.R</code>
+already exists. If <code>NULL</code>, defaults to <code><a href='https://rdrr.io/r/base/options.html'>getOption("tar_script_ask")</a></code>.
+If <code>ask</code> and the <code>tar_script_ask</code> option are both <code>NULL</code>,
+defaults to <code><a href='https://rdrr.io/r/base/interactive.html'>interactive()</a></code>.</p></td>
     </tr>
     </table>
 
