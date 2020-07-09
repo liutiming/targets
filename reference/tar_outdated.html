@@ -144,6 +144,7 @@ that decide whether a target needs to rerun.</p>
     </div>
 
     <pre class="usage"><span class='fu'>tar_outdated</span>(
+  names = <span class='kw'>NULL</span>,
   branches = <span class='fl'>FALSE</span>,
   targets_only = <span class='fl'>TRUE</span>,
   reporter = <span class='fu'><a href='https://rdrr.io/r/base/ifelse.html'>ifelse</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/interactive.html'>interactive</a></span>(), <span class='st'>"forecast"</span>, <span class='st'>"silent"</span>),
@@ -154,6 +155,14 @@ that decide whether a target needs to rerun.</p>
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>names</th>
+      <td><p>Names of the targets. <code>tar_outdated()</code> will check
+these targets and all upstream ancestors in the dependency graph.
+Set <code>names</code> to <code>NULL</code> to check/build all the targets (default).
+Otherwise, you can supply symbols, a character vector,
+or <code>tidyselect</code> helpers like <code><a href='https://tidyselect.r-lib.org/reference/starts_with.html'>starts_with()</a></code>.</p></td>
+    </tr>
     <tr>
       <th>branches</th>
       <td><p>Logical, whether to include branch names.
