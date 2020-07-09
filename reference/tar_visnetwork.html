@@ -204,9 +204,13 @@ targets found so far.</p></li>
     <tr>
       <th>callr_function</th>
       <td><p>A function from <code>callr</code> to start a fresh clean R
-process to do the work. Set to <code>NULL</code> to do the work in the current R
-session, which is not reproducible and only recommended for
-debugging purposes.</p></td>
+process to do the work. Set to <code>NULL</code> to run in the current session
+instead of an external process (but restart your R session just before
+you do in order to clear debris out of the global environment).
+<code>callr_function</code> needs to be <code>NULL</code> for interactive debugging,
+e.g. <code>tar_options(debug = "your_target")</code>.
+However, <code>callr_function</code> should not be <code>NULL</code> for serious
+reproducible work.</p></td>
     </tr>
     <tr>
       <th>callr_arguments</th>

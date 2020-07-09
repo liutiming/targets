@@ -161,7 +161,8 @@ in order to be useful</p>
   template = <span class='kw'>NULL</span>,
   storage = <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"local"</span>, <span class='st'>"remote"</span>),
   retrieval = <span class='kw'>storage</span>,
-  cue = <span class='kw'>targets</span>::<span class='fu'><a href='https://rdrr.io/pkg/targets/man/tar_cue.html'>tar_cue</a></span>()
+  cue = <span class='kw'>targets</span>::<span class='fu'><a href='https://rdrr.io/pkg/targets/man/tar_cue.html'>tar_cue</a></span>(),
+  debug = <span class='fu'><a href='https://rdrr.io/r/base/character.html'>character</a></span>(<span class='fl'>0</span>)
 )</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
@@ -293,6 +294,19 @@ If <code>"remote"</code>, the remote worker loads the targets dependencies.</p><
       <th>cue</th>
       <td><p>An optional object from <code>tar_cue()</code> to customize the
 rules that decide whether the target is up to date.</p></td>
+    </tr>
+    <tr>
+      <th>debug</th>
+      <td><p>Character vector of names of targets to run in debug mode.
+To use effectively, you must set <code>callr_function = NULL</code> and
+restart your R session just before running.
+<code>tar_make()</code>, <code>tar_make_clustermq()</code>, or <code>tar_make_future()</code>.
+For any target mentioned in <code>debug</code>, <code>targets</code> will force the target to
+build locally (with <code>tar_cue(mode = "always")</code> and <code>deployment = "local"</code>
+in the settings) and pause in an interactive debugger to help you diagnose
+problems. This is like inserting a <code><a href='https://rdrr.io/r/base/browser.html'>browser()</a></code> statement at the
+beginning of the target's expression, but without invalidating any
+targets.</p></td>
     </tr>
     </table>
 
