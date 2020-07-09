@@ -157,7 +157,10 @@ that decide whether a target needs to rerun.</p>
     <tr>
       <th>branches</th>
       <td><p>Logical, whether to include branch names.
-Including branches could get cumbersome for large pipelines.</p></td>
+Including branches could get cumbersome for large pipelines.
+Individual branch names are still omitted when branch-specific information
+is not reliable: for example, when a pattern branches over
+an outdated target.</p></td>
     </tr>
     <tr>
       <th>targets_only</th>
@@ -189,9 +192,7 @@ debugging purposes.</p></td>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>Names of the outdated targets. Individual branch names
-are omitted when branch-specific information is not reliable:
-for example, when a pattern branches over an outdated target.</p>
+    <p>Names of the outdated targets.</p>
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
     <p>Requires that you define a pipeline
