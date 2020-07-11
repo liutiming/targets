@@ -215,7 +215,9 @@ reproducible work.</p></td>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>Nothing.</p>
+    <p><code>NULL</code> except if <code>callr_function = callr::r_bg()</code>, in which case
+a handle to the <code>callr</code> background process is returned. Either way,
+the value is invisibly returned.</p>
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
     <p>To use with a cluster, you will need to set the global options
