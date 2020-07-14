@@ -155,6 +155,7 @@ and it is not relevant to most end users.</p>
   error = <span class='kw'>targets</span>::<span class='fu'><a href='https://rdrr.io/pkg/targets/man/tar_option.html'>tar_option</a></span>(<span class='st'>"error"</span>, <span class='st'>"stop"</span>),
   memory = <span class='kw'>targets</span>::<span class='fu'><a href='https://rdrr.io/pkg/targets/man/tar_option.html'>tar_option</a></span>(<span class='st'>"memory"</span>, <span class='st'>"persistent"</span>),
   deployment = <span class='kw'>targets</span>::<span class='fu'><a href='https://rdrr.io/pkg/targets/man/tar_option.html'>tar_option</a></span>(<span class='st'>"deployment"</span>, <span class='st'>"remote"</span>),
+  priority = <span class='fl'>0</span>,
   template = <span class='kw'>targets</span>::<span class='fu'><a href='https://rdrr.io/pkg/targets/man/tar_option.html'>tar_option</a></span>(<span class='st'>"template"</span>, <span class='kw'>NULL</span>),
   resources = <span class='kw'>targets</span>::<span class='fu'><a href='https://rdrr.io/pkg/targets/man/tar_option.html'>tar_option</a></span>(<span class='st'>"resources"</span>, <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>()),
   storage = <span class='kw'>targets</span>::<span class='fu'><a href='https://rdrr.io/pkg/targets/man/tar_option.html'>tar_option</a></span>(<span class='st'>"storage"</span>, <span class='st'>"local"</span>),
@@ -281,6 +282,12 @@ whenever another target needs the value.</p></td>
 <code>tar_make_clustermq()</code> and <code>tar_make_future()</code>. If <code>"remote"</code>,
 the target builds on a remote parallel worker. If <code>"local"</code>,
 the target builds on the host machine / process managing the pipeline.</p></td>
+    </tr>
+    <tr>
+      <th>priority</th>
+      <td><p>Numeric of length 1 between 0 and 1. Controls which
+targets get deployed first when multiple competing targets are ready
+simultaneously. Targets with priorities closer to 1 get built earlier.</p></td>
     </tr>
     <tr>
       <th>template</th>
