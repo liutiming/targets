@@ -156,7 +156,7 @@ values in <code>_targets/objects/</code>.</p>
       <th>names</th>
       <td><p>Names of the targets to build or check. Set to <code>NULL</code> to
 check/build all the targets (default). Otherwise, you can supply
-symbols, a character vector, or <code>tidyselect</code> helpers like <code><a href='https://tidyselect.r-lib.org/reference/starts_with.html'>starts_with()</a></code>.</p></td>
+symbols, a character vector, or <code>tidyselect</code> helpers like <code><a href='https://rdrr.io/pkg/tidyselect/man/starts_with.html'>starts_with()</a></code>.</p></td>
     </tr>
     <tr>
       <th>reporter</th>
@@ -213,7 +213,7 @@ the value is invisibly returned.</p>
     <span class='fu'>tar_target</span>(<span class='kw'>z</span>, <span class='kw'>y1</span> <span class='op'>+</span> <span class='kw'>y2</span>)
   )
 })
-<span class='fu'>tar_make</span>(<span class='fu'><a href='https://tidyselect.r-lib.org/reference/starts_with.html'>starts_with</a></span>(<span class='st'>"y"</span>)) <span class='co'># Only builds y1 and y2.</span>
+<span class='fu'>tar_make</span>(<span class='fu'><a href='https://rdrr.io/pkg/tidyselect/man/starts_with.html'>starts_with</a></span>(<span class='st'>"y"</span>)) <span class='co'># Only builds y1 and y2.</span>
 })</div><div class='output co'>#&gt; <span style='color: #BB0000;'>● run target x
 #&gt; ● run target y1
 #&gt; ● run target y2

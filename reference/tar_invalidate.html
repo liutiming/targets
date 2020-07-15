@@ -150,7 +150,7 @@ The <code>_targets/</code> data store must be in the current working directory.<
       <th>names</th>
       <td><p>Names of the targets to remove from the metadata list.
 You can supply symbols, a character vector,
-or <code>tidyselect</code> helpers like <code><a href='https://tidyselect.r-lib.org/reference/starts_with.html'>starts_with()</a></code>.</p></td>
+or <code>tidyselect</code> helpers like <code><a href='https://rdrr.io/pkg/tidyselect/man/starts_with.html'>starts_with()</a></code>.</p></td>
     </tr>
     </table>
 
@@ -171,7 +171,7 @@ branches are left alone.</p>
   )
 )
 <span class='fu'>tar_make</span>()
-<span class='fu'>tar_invalidate</span>(<span class='fu'><a href='https://tidyselect.r-lib.org/reference/starts_with.html'>starts_with</a></span>(<span class='st'>"y"</span>)) <span class='co'># Only invalidates y1 and y2.</span>
+<span class='fu'>tar_invalidate</span>(<span class='fu'><a href='https://rdrr.io/pkg/tidyselect/man/starts_with.html'>starts_with</a></span>(<span class='st'>"y"</span>)) <span class='co'># Only invalidates y1 and y2.</span>
 <span class='fu'>tar_make</span>() <span class='co'># y1 and y2 rebuild but return same values, so z is up to date.</span>
 })
 }</div></pre>

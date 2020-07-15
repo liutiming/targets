@@ -249,7 +249,7 @@
 <a href="#dynamic-branching-with-dplyrgroup_by" class="anchor"></a>Dynamic branching with <code>dplyr::group_by()</code>
 </h2>
 <p><a href="https://books.ropensci.org/drake/dynamic.html">Dynamic branching</a> was an architecturally difficult fit in <a href="https://github.com/ropensci/drake"><code>drake</code></a>, and it can only support one single (<a href="https://r-lib.github.io/vctrs"><code>vctrs</code></a>-based) method of slicing and aggregation for processing sub-targets. This limitation has frustrated members of the community, as discussed <a href="https://github.com/ropensci/drake/issues/1087">here</a> and <a href="https://github.com/ropensci/drake/issues/1170">here</a>.</p>
-<p><code>targets</code>, on the other hand, is more flexible regarding slicing and aggregation. When it branches over an object, it can iterate over vectors, lists, and even data frames grouped with <code><a href="https://dplyr.tidyverse.org/reference/group_by.html">dplyr::group_by()</a></code>. To branch over chunks of a data frame, our data frame target needs to have a special <code>tar_group</code> column. We can create this column in our target’s return value with the <code><a href="../reference/tar_group.html">tar_group()</a></code> function.</p>
+<p><code>targets</code>, on the other hand, is more flexible regarding slicing and aggregation. When it branches over an object, it can iterate over vectors, lists, and even data frames grouped with <code><a href="https://rdrr.io/pkg/dplyr/man/group_by.html">dplyr::group_by()</a></code>. To branch over chunks of a data frame, our data frame target needs to have a special <code>tar_group</code> column. We can create this column in our target’s return value with the <code><a href="../reference/tar_group.html">tar_group()</a></code> function.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit">
 <span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="kw"><a href="https://dplyr.tidyverse.org">dplyr</a></span>)
 <span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="kw"><a href="https://wlandau.github.io/targets">targets</a></span>)
@@ -257,7 +257,7 @@
   x = <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq_len</a></span>(<span class="fl">6</span>),
   id = <span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span>(<span class="kw">letters</span>[<span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq_len</a></span>(<span class="fl">3</span>)], each = <span class="fl">2</span>)
 ) <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span>(<span class="kw">id</span>) <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://rdrr.io/pkg/dplyr/man/group_by.html">group_by</a></span>(<span class="kw">id</span>) <span class="op">%&gt;%</span>
   <span class="fu"><a href="../reference/tar_group.html">tar_group</a></span>()
 </pre></div>
 <pre><code>## # A tibble: 6 x 3
@@ -278,7 +278,7 @@
     x = <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq_len</a></span>(<span class="fl">6</span>),
     id = <span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span>(<span class="kw">letters</span>[<span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq_len</a></span>(<span class="fl">3</span>)], each = <span class="fl">2</span>)
   ) <span class="op">%&gt;%</span>
-    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span>(<span class="kw">id</span>) <span class="op">%&gt;%</span>
+    <span class="fu"><a href="https://rdrr.io/pkg/dplyr/man/group_by.html">group_by</a></span>(<span class="kw">id</span>) <span class="op">%&gt;%</span>
     <span class="fu"><a href="../reference/tar_group.html">tar_group</a></span>(),
   iteration = <span class="st">"group"</span>
 )

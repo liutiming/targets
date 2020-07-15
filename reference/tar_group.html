@@ -136,7 +136,7 @@ Requires iteration = &quot;group&quot; on the target. See the example." />
     </div>
 
     <div class="ref-description">
-    <p>Like <code><a href='https://dplyr.tidyverse.org/reference/group_by.html'>dplyr::group_by()</a></code>, but for patterns.
+    <p>Like <code><a href='https://rdrr.io/pkg/dplyr/man/group_by.html'>dplyr::group_by()</a></code>, but for patterns.
 <code>tar_group()</code> allows you to map or cross over subsets of data frames.
 Requires <code>iteration = "group"</code> on the target. See the example.</p>
     </div>
@@ -148,7 +148,7 @@ Requires <code>iteration = "group"</code> on the target. See the example.</p>
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>x</th>
-      <td><p>Grouped data frame from <code><a href='https://dplyr.tidyverse.org/reference/group_by.html'>dplyr::group_by()</a></code></p></td>
+      <td><p>Grouped data frame from <code><a href='https://rdrr.io/pkg/dplyr/man/group_by.html'>dplyr::group_by()</a></code></p></td>
     </tr>
     </table>
 
@@ -160,7 +160,7 @@ Requires <code>iteration = "group"</code> on the target. See the example.</p>
 
     <p>The goal of <code>tar_group()</code> is to post-process the return value
 of a data frame target to allow downstream targets to branch over
-subsets of rows. It takes the groups defined by <code><a href='https://dplyr.tidyverse.org/reference/group_by.html'>dplyr::group_by()</a></code>
+subsets of rows. It takes the groups defined by <code><a href='https://rdrr.io/pkg/dplyr/man/group_by.html'>dplyr::group_by()</a></code>
 and translates that information into a special <code>tar_group</code> is a column.
 <code>tar_group</code> is a vector of consecutive positive integers
 from 1 to the number of groups. Rows with the same value of <code>tar_group</code>
@@ -175,7 +175,7 @@ belong to the same group.</p>
   x = <span class='fu'><a href='https://rdrr.io/r/base/seq.html'>seq_len</a></span>(<span class='fl'>6</span>),
   id = <span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span>(<span class='kw'>letters</span>[<span class='fu'><a href='https://rdrr.io/r/base/seq.html'>seq_len</a></span>(<span class='fl'>3</span>)], each = <span class='fl'>2</span>)
 ) <span class='op'>%&gt;%</span>
-  <span class='kw'>dplyr</span>::<span class='fu'><a href='https://dplyr.tidyverse.org/reference/group_by.html'>group_by</a></span>(<span class='kw'>id</span>) <span class='op'>%&gt;%</span>
+  <span class='kw'>dplyr</span>::<span class='fu'><a href='https://rdrr.io/pkg/dplyr/man/group_by.html'>group_by</a></span>(<span class='kw'>id</span>) <span class='op'>%&gt;%</span>
   <span class='fu'>tar_group</span>()
 <span class='co'># We use tar_group() below to branch over</span>
 <span class='co'># subsets of a data frame defined with dplyr::group_by().</span>
@@ -189,7 +189,7 @@ belong to the same group.</p>
       x = <span class='fu'><a href='https://rdrr.io/r/base/seq.html'>seq_len</a></span>(<span class='fl'>6</span>),
       id = <span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span>(<span class='kw'>letters</span>[<span class='fu'><a href='https://rdrr.io/r/base/seq.html'>seq_len</a></span>(<span class='fl'>3</span>)], each = <span class='fl'>2</span>)
     ) <span class='op'>%&gt;%</span>
-      <span class='fu'><a href='https://dplyr.tidyverse.org/reference/group_by.html'>group_by</a></span>(<span class='kw'>id</span>) <span class='op'>%&gt;%</span>
+      <span class='fu'><a href='https://rdrr.io/pkg/dplyr/man/group_by.html'>group_by</a></span>(<span class='kw'>id</span>) <span class='op'>%&gt;%</span>
       <span class='fu'>tar_group</span>(),
     iteration = <span class='st'>"group"</span>
   ),
