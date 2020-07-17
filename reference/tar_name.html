@@ -145,7 +145,7 @@ Only works inside a <code>targets</code> pipeline.</p>
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='fu'>tar_target</span>(<span class='kw'>returns_name</span>, <span class='fu'>tar_name</span>())</div><div class='output co'>#&gt; &lt;stem target&gt; 
 #&gt;   name: returns_name 
-#&gt;   R expression:
+#&gt;   command:
 #&gt;     tar_name() 
 #&gt;   format: rds 
 #&gt;   iteration method: vector 
@@ -166,14 +166,14 @@ Only works inside a <code>targets</code> pipeline.</p>
 #&gt;     mode: thorough
 #&gt;     format: TRUE 
 #&gt;   packages:
-#&gt;     base
-#&gt;     datasets
+#&gt;     targets
+#&gt;     stats
 #&gt;     graphics
 #&gt;     grDevices
+#&gt;     utils
+#&gt;     datasets
 #&gt;     methods
-#&gt;     stats
-#&gt;     targets
-#&gt;     utils 
+#&gt;     base 
 #&gt;   library:
 #&gt;     NULL</div></pre>
   </div>

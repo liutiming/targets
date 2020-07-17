@@ -164,7 +164,7 @@ because those paths are not known in advance.</p>
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='fu'>tar_path</span>(<span class='kw'>your_target</span>)</div><div class='output co'>#&gt; [1] "_targets/objects/your_target"</div><div class='input'><span class='fu'>tar_target</span>(<span class='kw'>returns_path</span>, <span class='fu'>tar_path</span>())</div><div class='output co'>#&gt; &lt;stem target&gt; 
 #&gt;   name: returns_path 
-#&gt;   R expression:
+#&gt;   command:
 #&gt;     tar_path() 
 #&gt;   format: rds 
 #&gt;   iteration method: vector 
@@ -185,14 +185,14 @@ because those paths are not known in advance.</p>
 #&gt;     mode: thorough
 #&gt;     format: TRUE 
 #&gt;   packages:
-#&gt;     base
-#&gt;     datasets
+#&gt;     targets
+#&gt;     stats
 #&gt;     graphics
 #&gt;     grDevices
+#&gt;     utils
+#&gt;     datasets
 #&gt;     methods
-#&gt;     stats
-#&gt;     targets
-#&gt;     utils 
+#&gt;     base 
 #&gt;   library:
 #&gt;     NULL</div></pre>
   </div>

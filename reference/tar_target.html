@@ -146,7 +146,7 @@ for more details.</p>
 
     <pre class="usage"><span class='fu'>tar_target</span>(
   <span class='kw'>name</span>,
-  <span class='kw'>expr</span>,
+  <span class='kw'>command</span>,
   pattern = <span class='kw'>NULL</span>,
   tidy_eval = <span class='kw'>targets</span>::<span class='fu'><a href='https://rdrr.io/pkg/targets/man/tar_option.html'>tar_option</a></span>(<span class='st'>"tidy_eval"</span>, <span class='fl'>TRUE</span>),
   packages = <span class='kw'>targets</span>::<span class='fu'><a href='https://rdrr.io/pkg/targets/man/tar_option.html'>tar_option</a></span>(<span class='st'>"packages"</span>, (<span class='fu'><a href='https://rdrr.io/r/base/zpackages.html'>.packages</a></span>())),
@@ -172,7 +172,7 @@ for more details.</p>
       <td><p>Symbol, name of the target.</p></td>
     </tr>
     <tr>
-      <th>expr</th>
+      <th>command</th>
       <td><p>R code to run the target.</p></td>
     </tr>
     <tr>
@@ -330,7 +330,7 @@ just feed them to <code>tar_pipeline()</code> in your <code>_targets.R</code> fi
 <span class='kw'>data</span> <span class='op'>&lt;-</span> <span class='fu'>tar_target</span>(<span class='kw'>target_name</span>, <span class='fu'>get_data</span>(<span class='op'>!</span><span class='op'>!</span><span class='kw'>n_rows</span>))
 <span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='kw'>data</span>)</div><div class='output co'>#&gt; &lt;stem target&gt; 
 #&gt;   name: target_name 
-#&gt;   R expression:
+#&gt;   command:
 #&gt;     get_data(30L) 
 #&gt;   format: rds 
 #&gt;   iteration method: vector 
@@ -351,20 +351,20 @@ just feed them to <code>tar_pipeline()</code> in your <code>_targets.R</code> fi
 #&gt;     iteration: TRUE
 #&gt;     file: TRUE 
 #&gt;   packages:
-#&gt;     base
-#&gt;     datasets
+#&gt;     targets
+#&gt;     stats
 #&gt;     graphics
 #&gt;     grDevices
+#&gt;     utils
+#&gt;     datasets
 #&gt;     methods
-#&gt;     stats
-#&gt;     targets
-#&gt;     utils 
+#&gt;     base 
 #&gt;   library:
 #&gt;     NULL</div><div class='input'><span class='co'># Disable tidy evaluation:</span>
 <span class='kw'>data</span> <span class='op'>&lt;-</span> <span class='fu'>tar_target</span>(<span class='kw'>target_name</span>, <span class='fu'>get_data</span>(<span class='op'>!</span><span class='op'>!</span><span class='kw'>n_rows</span>), tidy_eval = <span class='fl'>FALSE</span>)
 <span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='kw'>data</span>)</div><div class='output co'>#&gt; &lt;stem target&gt; 
 #&gt;   name: target_name 
-#&gt;   R expression:
+#&gt;   command:
 #&gt;     get_data(!!n_rows) 
 #&gt;   format: rds 
 #&gt;   iteration method: vector 
@@ -385,14 +385,14 @@ just feed them to <code>tar_pipeline()</code> in your <code>_targets.R</code> fi
 #&gt;     iteration: TRUE
 #&gt;     file: TRUE 
 #&gt;   packages:
-#&gt;     base
-#&gt;     datasets
+#&gt;     targets
+#&gt;     stats
 #&gt;     graphics
 #&gt;     grDevices
+#&gt;     utils
+#&gt;     datasets
 #&gt;     methods
-#&gt;     stats
-#&gt;     targets
-#&gt;     utils 
+#&gt;     base 
 #&gt;   library:
 #&gt;     NULL</div></pre>
   </div>
