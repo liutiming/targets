@@ -134,7 +134,7 @@
     <p>Read the metadata of all recorded targets and global objects.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>tar_meta</span>(names = <span class='kw'>NULL</span>)</pre>
+    <pre class="usage"><span class='fu'>tar_meta</span>(names = <span class='kw'>NULL</span>, fields = <span class='kw'>NULL</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -146,11 +146,13 @@ only returns metadata on these targets.
 You can supply symbols, a character vector,
 or <code>tidyselect</code> helpers like <code><a href='https://tidyselect.r-lib.org/reference/starts_with.html'>starts_with()</a></code>.</p></td>
     </tr>
-    </table>
-
-    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
-
-    <p>A data frame with one row per target/object and these columns:</p><ul>
+    <tr>
+      <th>fields</th>
+      <td><p>Optional, names of columns/fields to select. If supplied,
+<code>tar_meta()</code> only returns the selected metadata columns.
+You can supply symbols, a character vector, or <code>tidyselect</code> helpers
+like <code><a href='https://tidyselect.r-lib.org/reference/starts_with.html'>starts_with()</a></code>. The <code>name</code> column is always included first
+no matter what you select. Choices:</p><ul>
 <li><p><code>name</code>: name of the target or global object.</p></li>
 <li><p><code>type</code>: type of the object: either <code>"function"</code> or <code>"object"</code>
 for imported global objects, and <code>"stem"</code>, <code>"branch"</code>,
@@ -167,8 +169,8 @@ for dynamic files (i.e. <code>tar_target(format = "file")</code>).</p></li>
 <li><p><code>format</code>: character, one of the admissible data storage formats.
 See the <code>format</code> argument in the <code>tar_target()</code> help file for details.</p></li>
 <li><p><code>iteration</code>: character, either <code>"list"</code> or <code>"vector"</code>
-to describe the iteration and aggregation mode of the target.
-See the <code>iteration</code> argument in the <code>tar_target()</code> help file for details.</p></li>
+to describe the iteration and aggregation mode of the target. See the
+<code>iteration</code> argument in the <code>tar_target()</code> help file for details.</p></li>
 <li><p><code>parent</code>: for branches, name of the parent pattern.</p></li>
 <li><p><code>children</code>: list column, names of the children of targets that
 have them. These include buds of stems and branches of patterns.</p></li>
@@ -176,8 +178,13 @@ have them. These include buds of stems and branches of patterns.</p></li>
 <li><p><code>warnings</code>: character string of warning messages
 from the last run of the target.</p></li>
 <li><p><code>error</code>: character string of the error message if the target errored.</p></li>
-</ul>
+</ul></td>
+    </tr>
+    </table>
 
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    <p>A data frame with one row per target/object and the selected fields.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'>if</span> (<span class='fl'>FALSE</span>) {
