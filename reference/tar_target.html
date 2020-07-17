@@ -333,7 +333,7 @@ just feed them to <code>tar_pipeline()</code> in your <code>_targets.R</code> fi
 <span class='kw'>data</span> <span class='op'>&lt;-</span> <span class='fu'>tar_target</span>(<span class='kw'>target_name</span>, <span class='fu'>get_data</span>(<span class='op'>!</span><span class='op'>!</span><span class='kw'>n_rows</span>))
 <span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='kw'>data</span>)</div><div class='output co'>#&gt; &lt;stem target&gt; 
 #&gt;   name: target_name 
-#&gt;   command:
+#&gt;   R expression:
 #&gt;     get_data(30L) 
 #&gt;   format: rds 
 #&gt;   iteration method: vector 
@@ -367,7 +367,7 @@ just feed them to <code>tar_pipeline()</code> in your <code>_targets.R</code> fi
 <span class='kw'>data</span> <span class='op'>&lt;-</span> <span class='fu'>tar_target</span>(<span class='kw'>target_name</span>, <span class='fu'>get_data</span>(<span class='op'>!</span><span class='op'>!</span><span class='kw'>n_rows</span>), tidy_eval = <span class='fl'>FALSE</span>)
 <span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='kw'>data</span>)</div><div class='output co'>#&gt; &lt;stem target&gt; 
 #&gt;   name: target_name 
-#&gt;   command:
+#&gt;   R expression:
 #&gt;     get_data(!!n_rows) 
 #&gt;   format: rds 
 #&gt;   iteration method: vector 

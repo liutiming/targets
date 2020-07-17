@@ -351,7 +351,7 @@ just feed them to <code>tar_pipeline()</code> in your <code>_targets.R</code> fi
   })
   <span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='kw'>target_list</span>[[<span class='fl'>1</span>]])</div><div class='output co'>#&gt; &lt;stem target&gt; 
 #&gt;   name: b 
-#&gt;   command:
+#&gt;   R expression:
 #&gt;     do_something(a) 
 #&gt;   format: rds 
 #&gt;   iteration method: vector 
@@ -383,7 +383,7 @@ just feed them to <code>tar_pipeline()</code> in your <code>_targets.R</code> fi
 #&gt;   library:
 #&gt;     NULL</div><div class='input'>  <span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='kw'>target_list</span>[[<span class='fl'>2</span>]])</div><div class='output co'>#&gt; &lt;stem target&gt; 
 #&gt;   name: c 
-#&gt;   command:
+#&gt;   R expression:
 #&gt;     do_something(b) 
 #&gt;   format: rds 
 #&gt;   iteration method: vector 
