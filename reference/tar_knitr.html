@@ -172,10 +172,10 @@ working directory and contains the data.</p>
 <code>_targets/</code> data store not only when <code>tar_knitr()</code> is evaluated,
 but also when the actual report is run. The easiest way to
 deal with this is just to keep all your R Markdown source files
-at the root directory of the project. If you need to use other
-directories, consider setting <code>knit_root_dir = getwd()</code>
-in <code><a href='https://rdrr.io/pkg/rmarkdown/man/render.html'>rmarkdown::render()</a></code> or
-<code>knitr::opts_knit$set(root.dir = your_project_root_directory)</code>
+at the root directory of the project. If you need to keep your report
+somewhere else, such as a subdirectory,
+consider setting <code>knit_root_dir = getwd()</code> in <code><a href='https://rdrr.io/pkg/rmarkdown/man/render.html'>rmarkdown::render()</a></code> or
+<code>knitr::opts_knit$set(root.dir = "your_project_root_directory")</code>
 in an early code chunk of the report itself.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
