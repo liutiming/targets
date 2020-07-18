@@ -140,7 +140,7 @@ value lives in a file in <code>_targets/objects/</code>. For dynamic files
 (i.e. <code>format = "file"</code>) the paths loaded in place of the values.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>tar_load</span>(<span class='kw'>names</span>, branches = <span class='kw'>NULL</span>, meta = <span class='fu'>tar_meta</span>(), envir = <span class='fu'><a href='https://rdrr.io/r/base/sys.parent.html'>parent.frame</a></span>())</pre>
+    <pre class="usage"><span class='fu'>tar_load</span>(<span class='kw'>names</span>, branches = <span class='kw'>NULL</span>, meta = <span class='fu'><a href='tar_meta.html'>tar_meta</a></span>(), envir = <span class='fu'><a href='https://rdrr.io/r/base/sys.parent.html'>parent.frame</a></span>())</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -158,11 +158,11 @@ for any targets that are patterns.</p></td>
     </tr>
     <tr>
       <th>meta</th>
-      <td><p>Data frame of metadata from <code>tar_meta()</code>.
-<code>tar_read()</code> with the default arguments can be inefficient for large
+      <td><p>Data frame of metadata from <code><a href='tar_meta.html'>tar_meta()</a></code>.
+<code><a href='tar_read.html'>tar_read()</a></code> with the default arguments can be inefficient for large
 pipelines because all the metadata is stored in a single file.
-However, if you call <code>tar_meta()</code> beforehand and supply it to the <code>meta</code>
-argument, then successive calls to <code>tar_read()</code> may run much faster.</p></td>
+However, if you call <code><a href='tar_meta.html'>tar_meta()</a></code> beforehand and supply it to the <code>meta</code>
+argument, then successive calls to <code><a href='tar_read.html'>tar_read()</a></code> may run much faster.</p></td>
     </tr>
     <tr>
       <th>envir</th>
@@ -176,15 +176,15 @@ argument, then successive calls to <code>tar_read()</code> may run much faster.<
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'>if</span> (<span class='fl'>FALSE</span>) {
-<span class='fu'>tar_dir</span>({
-<span class='fu'>tar_script</span>(
-  <span class='fu'>tar_pipeline</span>(
-    <span class='fu'>tar_target</span>(<span class='kw'>y1</span>, <span class='fl'>1</span> <span class='op'>+</span> <span class='fl'>1</span>),
-    <span class='fu'>tar_target</span>(<span class='kw'>y2</span>, <span class='fl'>1</span> <span class='op'>+</span> <span class='fl'>1</span>),
-    <span class='fu'>tar_target</span>(<span class='kw'>z</span>, <span class='kw'>y1</span> <span class='op'>+</span> <span class='kw'>y2</span>)
+<span class='fu'><a href='tar_dir.html'>tar_dir</a></span>({
+<span class='fu'><a href='tar_script.html'>tar_script</a></span>(
+  <span class='fu'><a href='tar_pipeline.html'>tar_pipeline</a></span>(
+    <span class='fu'><a href='tar_target.html'>tar_target</a></span>(<span class='kw'>y1</span>, <span class='fl'>1</span> <span class='op'>+</span> <span class='fl'>1</span>),
+    <span class='fu'><a href='tar_target.html'>tar_target</a></span>(<span class='kw'>y2</span>, <span class='fl'>1</span> <span class='op'>+</span> <span class='fl'>1</span>),
+    <span class='fu'><a href='tar_target.html'>tar_target</a></span>(<span class='kw'>z</span>, <span class='kw'>y1</span> <span class='op'>+</span> <span class='kw'>y2</span>)
   )
 )
-<span class='fu'>tar_make</span>()
+<span class='fu'><a href='tar_make.html'>tar_make</a></span>()
 <span class='fu'>tar_load</span>(<span class='fu'><a href='https://tidyselect.r-lib.org/reference/starts_with.html'>starts_with</a></span>(<span class='st'>"y"</span>))
 })
 }</div></pre>

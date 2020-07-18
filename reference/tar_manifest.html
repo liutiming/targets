@@ -132,7 +132,7 @@ tar_manifest() helps check that you constructed your pipeline correctly." />
     </div>
 
     <div class="ref-description">
-    <p>Along with <code>tar_visnetwork()</code> and <code>tar_glimpse()</code>,
+    <p>Along with <code><a href='tar_visnetwork.html'>tar_visnetwork()</a></code> and <code><a href='tar_glimpse.html'>tar_glimpse()</a></code>,
 <code>tar_manifest()</code> helps check that you constructed your pipeline correctly.</p>
     </div>
 
@@ -160,8 +160,8 @@ symbols, a character vector, or <code>tidyselect</code> helpers like <code><a hr
 Set to <code>NULL</code> to print all the fields.
 The name of the target is always included as the first column
 regardless of the selection.
-Possible fields are below. All of them can be set in <code>tar_target()</code>,
-<code>tar_target_raw()</code>, or <code>tar_options()</code>.</p><ul>
+Possible fields are below. All of them can be set in <code><a href='tar_target.html'>tar_target()</a></code>,
+<code><a href='tar_target_raw.html'>tar_target_raw()</a></code>, or <code><a href='tar_options.html'>tar_options()</a></code>.</p><ul>
 <li><p><code>name</code>: Name of the target.</p></li>
 <li><p><code>command</code>: the R command that runs when the target builds.</p></li>
 <li><p><code>type</code>: Type of the target, either <code>"stem"</code> (non-pattern) or <code>"map"</code>
@@ -177,13 +177,13 @@ branches over. Only applies to patterns.</p></li>
 <li><p><code>deployment</code>: Where/whether to deploy the target in high-performance
 computing scenarios.</p></li>
 <li><p><code>resources</code>: A list of target-specific resource requirements for
-<code>tar_make_future()</code>.</p></li>
-<li><p><code>cue_mode</code>: Cue mode from <code>tar_cue()</code>.</p></li>
-<li><p><code>cue_depend</code>: Depend cue from <code>tar_cue()</code>.</p></li>
-<li><p><code>cue_expr</code>: Command cue from <code>tar_cue()</code>.</p></li>
-<li><p><code>cue_file</code>: File cue from <code>tar_cue()</code>.</p></li>
-<li><p><code>cue_format</code>: Format cue from <code>tar_cue()</code>.</p></li>
-<li><p><code>cue_iteration</code>: Iteration cue from <code>tar_cue()</code>.</p></li>
+<code><a href='tar_make_future.html'>tar_make_future()</a></code>.</p></li>
+<li><p><code>cue_mode</code>: Cue mode from <code><a href='tar_cue.html'>tar_cue()</a></code>.</p></li>
+<li><p><code>cue_depend</code>: Depend cue from <code><a href='tar_cue.html'>tar_cue()</a></code>.</p></li>
+<li><p><code>cue_expr</code>: Command cue from <code><a href='tar_cue.html'>tar_cue()</a></code>.</p></li>
+<li><p><code>cue_file</code>: File cue from <code><a href='tar_cue.html'>tar_cue()</a></code>.</p></li>
+<li><p><code>cue_format</code>: Format cue from <code><a href='tar_cue.html'>tar_cue()</a></code>.</p></li>
+<li><p><code>cue_iteration</code>: Iteration cue from <code><a href='tar_cue.html'>tar_cue()</a></code>.</p></li>
 <li><p><code>packages</code>: List columns of packages loaded before building the target.</p></li>
 <li><p><code>library</code>: List column of library paths to load the packages.</p></li>
 </ul></td>
@@ -195,7 +195,7 @@ process to do the work. Set to <code>NULL</code> to run in the current session
 instead of an external process (but restart your R session just before
 you do in order to clear debris out of the global environment).
 <code>callr_function</code> needs to be <code>NULL</code> for interactive debugging,
-e.g. <code>tar_options(debug = "your_target")</code>.
+e.g. <code><a href='tar_options.html'>tar_options(debug = "your_target")</a></code>.
 However, <code>callr_function</code> should not be <code>NULL</code> for serious
 reproducible work.</p></td>
     </tr>
@@ -211,15 +211,15 @@ reproducible work.</p></td>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'>if</span> (<span class='fl'>FALSE</span>) {
-<span class='fu'>tar_dir</span>({
-<span class='fu'>tar_script</span>({
-  <span class='fu'>tar_options</span>()
-  <span class='fu'>tar_pipeline</span>(
-    <span class='fu'>tar_target</span>(<span class='kw'>y1</span>, <span class='fl'>1</span> <span class='op'>+</span> <span class='fl'>1</span>),
-    <span class='fu'>tar_target</span>(<span class='kw'>y2</span>, <span class='fl'>1</span> <span class='op'>+</span> <span class='fl'>1</span>),
-    <span class='fu'>tar_target</span>(<span class='kw'>z</span>, <span class='kw'>y1</span> <span class='op'>+</span> <span class='kw'>y2</span>),
-    <span class='fu'>tar_target</span>(<span class='kw'>m</span>, <span class='kw'>z</span>, pattern = <span class='fu'>map</span>(<span class='kw'>z</span>)),
-    <span class='fu'>tar_target</span>(<span class='kw'>c</span>, <span class='kw'>z</span>, pattern = <span class='fu'>cross</span>(<span class='kw'>z</span>))
+<span class='fu'><a href='tar_dir.html'>tar_dir</a></span>({
+<span class='fu'><a href='tar_script.html'>tar_script</a></span>({
+  <span class='fu'><a href='tar_options.html'>tar_options</a></span>()
+  <span class='fu'><a href='tar_pipeline.html'>tar_pipeline</a></span>(
+    <span class='fu'><a href='tar_target.html'>tar_target</a></span>(<span class='kw'>y1</span>, <span class='fl'>1</span> <span class='op'>+</span> <span class='fl'>1</span>),
+    <span class='fu'><a href='tar_target.html'>tar_target</a></span>(<span class='kw'>y2</span>, <span class='fl'>1</span> <span class='op'>+</span> <span class='fl'>1</span>),
+    <span class='fu'><a href='tar_target.html'>tar_target</a></span>(<span class='kw'>z</span>, <span class='kw'>y1</span> <span class='op'>+</span> <span class='kw'>y2</span>),
+    <span class='fu'><a href='tar_target.html'>tar_target</a></span>(<span class='kw'>m</span>, <span class='kw'>z</span>, pattern = <span class='fu'>map</span>(<span class='kw'>z</span>)),
+    <span class='fu'><a href='tar_target.html'>tar_target</a></span>(<span class='kw'>c</span>, <span class='kw'>z</span>, pattern = <span class='fu'>cross</span>(<span class='kw'>z</span>))
   )
 })
 <span class='fu'>tar_manifest</span>()

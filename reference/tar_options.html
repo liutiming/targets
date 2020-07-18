@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Set target options, including default arguments to <code>tar_target()</code>. — tar_options • targets</title>
+<title>Set target options, including default arguments to <code><a href='tar_target.html'>tar_target()</a></code>. — tar_options • targets</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -46,7 +46,7 @@
 
 
 
-<meta property="og:title" content="Set target options, including default arguments to <code>tar_target()</code>. — tar_options" />
+<meta property="og:title" content="Set target options, including default arguments to <code><a href='tar_target.html'>tar_target()</a></code>. — tar_options" />
 <meta property="og:description" content="Set target options, including default arguments to
 tar_target() such as packages, storage format,
 iteration type, and cue. Put a call to tar_options()
@@ -130,17 +130,17 @@ in order to be useful" />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Set target options, including default arguments to <code>tar_target()</code>.</h1>
+    <h1>Set target options, including default arguments to <code><a href='tar_target.html'>tar_target()</a></code>.</h1>
     <small class="dont-index">Source: <a href='https://github.com/wlandau/targets/blob/master/R/tar_options.R'><code>R/tar_options.R</code></a></small>
     <div class="hidden name"><code>tar_options.Rd</code></div>
     </div>
 
     <div class="ref-description">
     <p>Set target options, including default arguments to
-<code>tar_target()</code> such as packages, storage format,
+<code><a href='tar_target.html'>tar_target()</a></code> such as packages, storage format,
 iteration type, and cue. Put a call to <code>tar_options()</code>
 in your workflow's <code>_targets.R</code> script for the options to take effect.
-Needs to be called before any calls to <code>tar_target()</code>
+Needs to be called before any calls to <code><a href='tar_target.html'>tar_target()</a></code>
 in order to be useful</p>
     </div>
 
@@ -158,7 +158,7 @@ in order to be useful</p>
   template = <span class='kw'>NULL</span>,
   storage = <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"local"</span>, <span class='st'>"remote"</span>),
   retrieval = <span class='kw'>storage</span>,
-  cue = <span class='kw'>targets</span>::<span class='fu'><a href='https://rdrr.io/pkg/targets/man/tar_cue.html'>tar_cue</a></span>(),
+  cue = <span class='kw'>targets</span>::<span class='fu'><a href='tar_cue.html'>tar_cue</a></span>(),
   debug = <span class='fu'><a href='https://rdrr.io/r/base/character.html'>character</a></span>(<span class='fl'>0</span>)
 )</pre>
 
@@ -228,7 +228,7 @@ subsets of a data frame. The target's return value must be a data
 frame with a special <code>tar_group</code> column of consecutive integers
 from 1 through the number of groups. Each integer designates a group,
 and a branch is created for each collection of rows in a group.
-See the <code>tar_group()</code> function to see how you can
+See the <code><a href='tar_group.html'>tar_group()</a></code> function to see how you can
 create the special <code>tar_group</code> column with <code><a href='https://dplyr.tidyverse.org/reference/group_by.html'>dplyr::group_by()</a></code>.</p></li>
 </ul></td>
     </tr>
@@ -252,29 +252,29 @@ whenever another target needs the value.</p></td>
     <tr>
       <th>deployment</th>
       <td><p>Character of length 1, only relevant to
-<code>tar_make_clustermq()</code> and <code>tar_make_future()</code>. If <code>"remote"</code>,
+<code><a href='tar_make_clustermq.html'>tar_make_clustermq()</a></code> and <code><a href='tar_make_future.html'>tar_make_future()</a></code>. If <code>"remote"</code>,
 the target builds on a remote parallel worker. If <code>"local"</code>,
 the target builds on the host machine / process managing the pipeline.</p></td>
     </tr>
     <tr>
       <th>resources</th>
-      <td><p>Relevant to <code>tar_make_future()</code> only.
+      <td><p>Relevant to <code><a href='tar_make_future.html'>tar_make_future()</a></code> only.
 A named list of resources passed to <code><a href='https://rdrr.io/pkg/future/man/future.html'>future::future()</a></code> when
 defining a new worker.</p></td>
     </tr>
     <tr>
       <th>template</th>
-      <td><p>Relevant to <code>tar_make_clustermq()</code> only.
+      <td><p>Relevant to <code><a href='tar_make_clustermq.html'>tar_make_clustermq()</a></code> only.
 Named list of values to fill in the <code>clustermq</code> template file.
 Unsupported for now. May be supported in the future if
 <code>clustermq</code> ever supports heterogeneous workers with varying
 resource requirements. In the meantime, use the <code>template</code>
-argument of <code>tar_make_clustermq()</code>.</p></td>
+argument of <code><a href='tar_make_clustermq.html'>tar_make_clustermq()</a></code>.</p></td>
     </tr>
     <tr>
       <th>storage</th>
       <td><p>Character of length 1, only relevant to
-<code>tar_make_clustermq()</code> and <code>tar_make_future()</code>.
+<code><a href='tar_make_clustermq.html'>tar_make_clustermq()</a></code> and <code><a href='tar_make_future.html'>tar_make_future()</a></code>.
 If <code>"local"</code>, the target's return value is sent back to the
 host machine and saved locally. If <code>"remote"</code>, the remote worker
 saves the value.</p></td>
@@ -282,14 +282,14 @@ saves the value.</p></td>
     <tr>
       <th>retrieval</th>
       <td><p>Character of length 1, only relevant to
-<code>tar_make_clustermq()</code> and <code>tar_make_future()</code>.
+<code><a href='tar_make_clustermq.html'>tar_make_clustermq()</a></code> and <code><a href='tar_make_future.html'>tar_make_future()</a></code>.
 If <code>"local"</code>, the target's dependencies are loaded on the host machine
 and sent to the remote worker before the target builds.
 If <code>"remote"</code>, the remote worker loads the targets dependencies.</p></td>
     </tr>
     <tr>
       <th>cue</th>
-      <td><p>An optional object from <code>tar_cue()</code> to customize the
+      <td><p>An optional object from <code><a href='tar_cue.html'>tar_cue()</a></code> to customize the
 rules that decide whether the target is up to date.</p></td>
     </tr>
     <tr>
@@ -297,9 +297,9 @@ rules that decide whether the target is up to date.</p></td>
       <td><p>Character vector of names of targets to run in debug mode.
 To use effectively, you must set <code>callr_function = NULL</code> and
 restart your R session just before running.
-<code>tar_make()</code>, <code>tar_make_clustermq()</code>, or <code>tar_make_future()</code>.
+<code><a href='tar_make.html'>tar_make()</a></code>, <code><a href='tar_make_clustermq.html'>tar_make_clustermq()</a></code>, or <code><a href='tar_make_future.html'>tar_make_future()</a></code>.
 For any target mentioned in <code>debug</code>, <code>targets</code> will force the target to
-build locally (with <code>tar_cue(mode = "always")</code> and <code>deployment = "local"</code>
+build locally (with <code><a href='tar_cue.html'>tar_cue(mode = "always")</a></code> and <code>deployment = "local"</code>
 in the settings) and pause in an interactive debugger to help you diagnose
 problems. This is like inserting a <code><a href='https://rdrr.io/r/base/browser.html'>browser()</a></code> statement at the
 beginning of the target's expression, but without invalidating any
@@ -315,10 +315,10 @@ targets.</p></td>
     <pre class="examples"><div class='input'><span class='co'>if</span> (<span class='fl'>FALSE</span>) {
 <span class='co'># Set target options:</span>
 <span class='fu'>tar_options</span>(format = <span class='st'>"fst_tbl"</span>)
-<span class='fu'>tar_option</span>(<span class='st'>"format"</span>)
+<span class='fu'><a href='tar_option.html'>tar_option</a></span>(<span class='st'>"format"</span>)
 <span class='co'># Reset target options:</span>
 <span class='fu'>tar_options</span>()
-<span class='fu'>tar_option</span>(<span class='st'>"format"</span>)
+<span class='fu'><a href='tar_option.html'>tar_option</a></span>(<span class='st'>"format"</span>)
 }</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

@@ -167,13 +167,13 @@ of the dependencies changed.</p></td>
       <th>format</th>
       <td><p>Logical, whether to rerun the target if the user-specified
 storage format changed. The storage format is user-specified through
-<code>tar_target()</code> or <code>tar_options()</code>.</p></td>
+<code><a href='tar_target.html'>tar_target()</a></code> or <code><a href='tar_options.html'>tar_options()</a></code>.</p></td>
     </tr>
     <tr>
       <th>iteration</th>
       <td><p>Logical, whether to rerun the target if the user-specified
 iteration method changed. The iteration method is user-specified through
-<code>tar_target()</code> or <code>tar_options()</code>.</p></td>
+<code><a href='tar_target.html'>tar_target()</a></code> or <code><a href='tar_options.html'>tar_options()</a></code>.</p></td>
     </tr>
     <tr>
       <th>file</th>
@@ -229,7 +229,7 @@ targets with the <code>depend</code> cue turned on.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'># The following target will always run when the pipeline runs.</span>
-<span class='kw'>x</span> <span class='op'>&lt;-</span> <span class='fu'>tar_target</span>(<span class='kw'>x</span>, <span class='fu'>download_data</span>(), cue = <span class='fu'>tar_cue</span>(mode = <span class='st'>"always"</span>))</div></pre>
+<span class='kw'>x</span> <span class='op'>&lt;-</span> <span class='fu'><a href='tar_target.html'>tar_target</a></span>(<span class='kw'>x</span>, <span class='fu'>download_data</span>(), cue = <span class='fu'>tar_cue</span>(mode = <span class='st'>"always"</span>))</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

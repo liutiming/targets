@@ -159,17 +159,17 @@ branches are left alone.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'>if</span> (<span class='fl'>FALSE</span>) {
-<span class='fu'>tar_dir</span>({
-<span class='fu'>tar_script</span>(
-  <span class='fu'>tar_pipeline</span>(
-    <span class='fu'>tar_target</span>(<span class='kw'>y1</span>, <span class='fl'>1</span> <span class='op'>+</span> <span class='fl'>1</span>),
-    <span class='fu'>tar_target</span>(<span class='kw'>y2</span>, <span class='fl'>1</span> <span class='op'>+</span> <span class='fl'>1</span>),
-    <span class='fu'>tar_target</span>(<span class='kw'>z</span>, <span class='kw'>y1</span> <span class='op'>+</span> <span class='kw'>y2</span>)
+<span class='fu'><a href='tar_dir.html'>tar_dir</a></span>({
+<span class='fu'><a href='tar_script.html'>tar_script</a></span>(
+  <span class='fu'><a href='tar_pipeline.html'>tar_pipeline</a></span>(
+    <span class='fu'><a href='tar_target.html'>tar_target</a></span>(<span class='kw'>y1</span>, <span class='fl'>1</span> <span class='op'>+</span> <span class='fl'>1</span>),
+    <span class='fu'><a href='tar_target.html'>tar_target</a></span>(<span class='kw'>y2</span>, <span class='fl'>1</span> <span class='op'>+</span> <span class='fl'>1</span>),
+    <span class='fu'><a href='tar_target.html'>tar_target</a></span>(<span class='kw'>z</span>, <span class='kw'>y1</span> <span class='op'>+</span> <span class='kw'>y2</span>)
   )
 )
-<span class='fu'>tar_make</span>()
+<span class='fu'><a href='tar_make.html'>tar_make</a></span>()
 <span class='fu'>tar_invalidate</span>(<span class='fu'><a href='https://tidyselect.r-lib.org/reference/starts_with.html'>starts_with</a></span>(<span class='st'>"y"</span>)) <span class='co'># Only invalidates y1 and y2.</span>
-<span class='fu'>tar_make</span>() <span class='co'># y1 and y2 rebuild but return same values, so z is up to date.</span>
+<span class='fu'><a href='tar_make.html'>tar_make</a></span>() <span class='co'># y1 and y2 rebuild but return same values, so z is up to date.</span>
 })
 }</div></pre>
   </div>

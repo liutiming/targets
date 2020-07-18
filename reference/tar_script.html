@@ -182,7 +182,7 @@ indeterminate, defaults to <code><a href='https://rdrr.io/r/base/interactive.htm
 
 <p>Every <code>targets</code> project requires a target script in the project root.
 The target script must always be named <code>_targets.R</code>.
-Functions <code>tar_make()</code> and friends look for <code>_targets.R</code> in the
+Functions <code><a href='tar_make.html'>tar_make()</a></code> and friends look for <code>_targets.R</code> in the
 current working directory and use it to set up the pipeline.
 Every <code>_targets.R</code> file should run the following steps in the order below:
 1. Package: load the <code>targets</code> package. This step is automatically
@@ -193,26 +193,26 @@ so you do not need to explicitly include it in <code>code</code>.
 Usually, this section is a bunch of calls to <code><a href='https://rdrr.io/r/base/source.html'>source()</a></code> that run
 scripts defining user-defined functions. These functions support
 the R commands of the targets.
-2. Options: call <code>tar_options()</code> to set defaults for targets-specific
+2. Options: call <code><a href='tar_options.html'>tar_options()</a></code> to set defaults for targets-specific
 settings such as the names of required packages. Even if you have no
 specific options to set, it is still recommended to call
-<code>tar_options()</code> in order to register the proper environment.
-3. Targets: define one or more target objects using <code>tar_target()</code>.
-4. Pipeline: call <code>tar_pipeline()</code> to bring the targets from (3)
+<code><a href='tar_options.html'>tar_options()</a></code> in order to register the proper environment.
+3. Targets: define one or more target objects using <code><a href='tar_target.html'>tar_target()</a></code>.
+4. Pipeline: call <code><a href='tar_pipeline.html'>tar_pipeline()</a></code> to bring the targets from (3)
 together in a pipeline object. Every <code>_targets.R</code> script must return
 a pipeline object, which usually means ending with a call to
-<code>tar_pipeline()</code>. In practice, (3) and (4) can be combined together
+<code><a href='tar_pipeline.html'>tar_pipeline()</a></code>. In practice, (3) and (4) can be combined together
 in the same function call.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'>if</span> (<span class='fl'>FALSE</span>) {
-<span class='fu'>tar_dir</span>({
+<span class='fu'><a href='tar_dir.html'>tar_dir</a></span>({
 <span class='fu'>tar_script</span>() <span class='co'># Writes an example target script.</span>
 <span class='co'># Writes a user-defined target script:</span>
 <span class='fu'>tar_script</span>({
-  <span class='kw'>x</span> <span class='op'>&lt;-</span> <span class='fu'>tar_target</span>(<span class='kw'>x</span>, <span class='fl'>1</span> <span class='op'>+</span> <span class='fl'>1</span>)
-  <span class='fu'>tar_options</span>()
-  <span class='fu'>tar_pipeline</span>(<span class='kw'>x</span>)
+  <span class='kw'>x</span> <span class='op'>&lt;-</span> <span class='fu'><a href='tar_target.html'>tar_target</a></span>(<span class='kw'>x</span>, <span class='fl'>1</span> <span class='op'>+</span> <span class='fl'>1</span>)
+  <span class='fu'><a href='tar_options.html'>tar_options</a></span>()
+  <span class='fu'><a href='tar_pipeline.html'>tar_pipeline</a></span>(<span class='kw'>x</span>)
 })
 })
 }</div></pre>

@@ -135,7 +135,7 @@ callr_function = NULL in tar_make()." />
     <div class="ref-description">
     <p>Get the traceback of the last errored target.
 Useful for debugging purposes. Requires
-<code>callr_function = NULL</code> in <code>tar_make()</code>.</p>
+<code>callr_function = NULL</code> in <code><a href='tar_make.html'>tar_make()</a></code>.</p>
     </div>
 
     <pre class="usage"><span class='fu'>tar_traceback</span>()</pre>
@@ -144,8 +144,8 @@ Useful for debugging purposes. Requires
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'>if</span> (<span class='fl'>FALSE</span>) {
-<span class='fu'>tar_dir</span>({
-<span class='fu'>tar_script</span>(
+<span class='fu'><a href='tar_dir.html'>tar_dir</a></span>({
+<span class='fu'><a href='tar_script.html'>tar_script</a></span>(
    <span class='fu'>tar_pipelinetar_target</span>(<span class='kw'>x</span>, <span class='fu'><a href='https://rdrr.io/r/base/MathFun.html'>sqrt</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/MathFun.html'>sqrt</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/stop.html'>stop</a></span>(<span class='st'>"error message"</span>))))
 )
 <span class='co'># tar_make(callr_function = NULL)</span>

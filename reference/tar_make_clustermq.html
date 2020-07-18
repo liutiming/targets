@@ -139,7 +139,7 @@ so you must install clustermq yourself." />
     </div>
 
     <div class="ref-description">
-    <p>This function is like <code>tar_make()</code> except that targets
+    <p>This function is like <code><a href='tar_make.html'>tar_make()</a></code> except that targets
 run in parallel with persistent <code>clustermq</code> workers. It requires
 that you set global options like <code>clustermq.scheduler</code> and
 <code>clustermq.template</code> inside the <code>_targets.R</code> script.
@@ -200,7 +200,7 @@ process to do the work. Set to <code>NULL</code> to run in the current session
 instead of an external process (but restart your R session just before
 you do in order to clear debris out of the global environment).
 <code>callr_function</code> needs to be <code>NULL</code> for interactive debugging,
-e.g. <code>tar_options(debug = "your_target")</code>.
+e.g. <code><a href='tar_options.html'>tar_options(debug = "your_target")</a></code>.
 However, <code>callr_function</code> should not be <code>NULL</code> for serious
 reproducible work.</p></td>
     </tr>
@@ -225,11 +225,11 @@ and navigate to the appropriate link under "Setting up the scheduler".</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'>if</span> (<span class='fl'>FALSE</span>) {
-<span class='fu'>tar_dir</span>({
-<span class='fu'>tar_script</span>({
+<span class='fu'><a href='tar_dir.html'>tar_dir</a></span>({
+<span class='fu'><a href='tar_script.html'>tar_script</a></span>({
   <span class='fu'><a href='https://rdrr.io/r/base/options.html'>options</a></span>(clustermq.scheduler = <span class='st'>"multicore"</span>)
-  <span class='fu'>tar_options</span>()
-  <span class='fu'>tar_pipeline</span>(<span class='fu'>tar_target</span>(<span class='kw'>x</span>, <span class='fl'>1</span> <span class='op'>+</span> <span class='fl'>1</span>))
+  <span class='fu'><a href='tar_options.html'>tar_options</a></span>()
+  <span class='fu'><a href='tar_pipeline.html'>tar_pipeline</a></span>(<span class='fu'><a href='tar_target.html'>tar_target</a></span>(<span class='kw'>x</span>, <span class='fl'>1</span> <span class='op'>+</span> <span class='fl'>1</span>))
 })
 <span class='fu'>tar_make_clustermq</span>()
 })

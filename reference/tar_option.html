@@ -136,9 +136,9 @@ in order to take effect." />
 
     <div class="ref-description">
     <p>Get a target option. These options include default arguments to
-<code>tar_target()</code> such as packages, storage format,
+<code><a href='tar_target.html'>tar_target()</a></code> such as packages, storage format,
 iteration type, and cue.
-Needs to be called before any calls to <code>tar_target()</code>
+Needs to be called before any calls to <code><a href='tar_target.html'>tar_target()</a></code>
 in order to take effect.</p>
     </div>
 
@@ -150,7 +150,7 @@ in order to take effect.</p>
     <tr>
       <th>option</th>
       <td><p>Character of length 1, name of an option to get.
-Must be one of the argument names of <code>tar_options()</code>.</p></td>
+Must be one of the argument names of <code><a href='tar_options.html'>tar_options()</a></code>.</p></td>
     </tr>
     <tr>
       <th>default</th>
@@ -163,17 +163,17 @@ Must be one of the argument names of <code>tar_options()</code>.</p></td>
     <p>Value of a target option. Returns <code>NULL</code> if the option is not set.</p>
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p>This function goes well with <code>tar_target_raw()</code> when it comes
+    <p>This function goes well with <code><a href='tar_target_raw.html'>tar_target_raw()</a></code> when it comes
 to defining external interfaces on top of the <code>targets</code> package to create
 pipelines.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'>if</span> (<span class='fl'>FALSE</span>) {
 <span class='co'># Set target options:</span>
-<span class='fu'>tar_options</span>(format = <span class='st'>"fst_tbl"</span>)
+<span class='fu'><a href='tar_options.html'>tar_options</a></span>(format = <span class='st'>"fst_tbl"</span>)
 <span class='fu'>tar_option</span>(<span class='st'>"format"</span>)
 <span class='co'># Reset target options:</span>
-<span class='fu'>tar_options</span>()
+<span class='fu'><a href='tar_options.html'>tar_options</a></span>()
 <span class='fu'>tar_option</span>(<span class='st'>"format"</span>)
 }</div></pre>
   </div>

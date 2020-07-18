@@ -176,11 +176,11 @@ belong to the same group.</p>
   <span class='fu'>tar_group</span>()
 <span class='co'># We use tar_group() below to branch over</span>
 <span class='co'># subsets of a data frame defined with dplyr::group_by().</span>
-<span class='fu'>tar_dir</span>({
-<span class='fu'>tar_script</span>({
+<span class='fu'><a href='tar_dir.html'>tar_dir</a></span>({
+<span class='fu'><a href='tar_script.html'>tar_script</a></span>({
 <span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='kw'><a href='https://dplyr.tidyverse.org'>dplyr</a></span>)
-<span class='fu'>tar_pipeline</span>(
-  <span class='fu'>tar_target</span>(
+<span class='fu'><a href='tar_pipeline.html'>tar_pipeline</a></span>(
+  <span class='fu'><a href='tar_target.html'>tar_target</a></span>(
     <span class='kw'>data</span>,
     <span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span>(
       x = <span class='fu'><a href='https://rdrr.io/r/base/seq.html'>seq_len</a></span>(<span class='fl'>6</span>),
@@ -190,7 +190,7 @@ belong to the same group.</p>
       <span class='fu'>tar_group</span>(),
     iteration = <span class='st'>"group"</span>
   ),
-  <span class='fu'>tar_target</span>(
+  <span class='fu'><a href='tar_target.html'>tar_target</a></span>(
     <span class='kw'>sums</span>,
     <span class='fu'><a href='https://rdrr.io/r/base/sum.html'>sum</a></span>(<span class='kw'>data</span><span class='op'>$</span><span class='kw'>x</span>),
     pattern = <span class='fu'>map</span>(<span class='kw'>data</span>),
@@ -198,8 +198,8 @@ belong to the same group.</p>
   )
 )
 })
-<span class='fu'>tar_make</span>()
-<span class='fu'>tar_read</span>(<span class='kw'>sums</span>) <span class='co'># Should be c(3, 7, 11).</span>
+<span class='fu'><a href='tar_make.html'>tar_make</a></span>()
+<span class='fu'><a href='tar_read.html'>tar_read</a></span>(<span class='kw'>sums</span>) <span class='co'># Should be c(3, 7, 11).</span>
 })
 }</div></pre>
   </div>

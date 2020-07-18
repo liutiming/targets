@@ -163,14 +163,14 @@ for imported global objects, and <code>"stem"</code>, <code>"branch"</code>,
 <li><p><code>seed</code>: random number generator seed with which the target was built.</p></li>
 <li><p><code>path</code>: A list column of paths to target data. Usually, each element
 is a single path, but there could be multiple paths per target
-for dynamic files (i.e. <code>tar_target(format = "file")</code>).</p></li>
+for dynamic files (i.e. <code><a href='tar_target.html'>tar_target(format = "file")</a></code>).</p></li>
 <li><p><code>bytes</code>: total file size in bytes of all files in <code>path</code>.</p></li>
 <li><p><code>time</code>: maximum modification time stamp over all the files in <code>path</code>.</p></li>
 <li><p><code>format</code>: character, one of the admissible data storage formats.
-See the <code>format</code> argument in the <code>tar_target()</code> help file for details.</p></li>
+See the <code>format</code> argument in the <code><a href='tar_target.html'>tar_target()</a></code> help file for details.</p></li>
 <li><p><code>iteration</code>: character, either <code>"list"</code> or <code>"vector"</code>
 to describe the iteration and aggregation mode of the target. See the
-<code>iteration</code> argument in the <code>tar_target()</code> help file for details.</p></li>
+<code>iteration</code> argument in the <code><a href='tar_target.html'>tar_target()</a></code> help file for details.</p></li>
 <li><p><code>parent</code>: for branches, name of the parent pattern.</p></li>
 <li><p><code>children</code>: list column, names of the children of targets that
 have them. These include buds of stems and branches of patterns.</p></li>
@@ -188,14 +188,14 @@ from the last run of the target.</p></li>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'>if</span> (<span class='fl'>FALSE</span>) {
-<span class='fu'>tar_dir</span>({
-<span class='fu'>tar_script</span>(
-  <span class='fu'>tar_pipeline</span>(
-    <span class='fu'>tar_target</span>(<span class='kw'>x</span>, <span class='fu'><a href='https://rdrr.io/r/base/seq.html'>seq_len</a></span>(<span class='fl'>2</span>)),
-    <span class='fu'>tar_target</span>(<span class='kw'>y</span>, <span class='fl'>2</span> <span class='op'>*</span> <span class='kw'>x</span>, pattern = <span class='fu'>map</span>(<span class='kw'>x</span>))
+<span class='fu'><a href='tar_dir.html'>tar_dir</a></span>({
+<span class='fu'><a href='tar_script.html'>tar_script</a></span>(
+  <span class='fu'><a href='tar_pipeline.html'>tar_pipeline</a></span>(
+    <span class='fu'><a href='tar_target.html'>tar_target</a></span>(<span class='kw'>x</span>, <span class='fu'><a href='https://rdrr.io/r/base/seq.html'>seq_len</a></span>(<span class='fl'>2</span>)),
+    <span class='fu'><a href='tar_target.html'>tar_target</a></span>(<span class='kw'>y</span>, <span class='fl'>2</span> <span class='op'>*</span> <span class='kw'>x</span>, pattern = <span class='fu'>map</span>(<span class='kw'>x</span>))
   )
 )
-<span class='fu'>tar_make</span>()
+<span class='fu'><a href='tar_make.html'>tar_make</a></span>()
 <span class='fu'>tar_meta</span>()
 <span class='fu'>tar_meta</span>(<span class='fu'><a href='https://tidyselect.r-lib.org/reference/starts_with.html'>starts_with</a></span>(<span class='st'>"y_"</span>))
 })

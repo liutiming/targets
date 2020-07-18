@@ -159,7 +159,7 @@ return value of a <code>knitr</code> source dynamic file.</p>
     <p><code>tar_knitr()</code> tells <code>targets</code> to look for dependency targets
 in the active code chunks of the report. These dependencies
 must be mentioned as literal symbols in explicit calls to
-<code>tar_load()</code> and <code>tar_read()</code>. This mechanism not only rerenders
+<code><a href='tar_load.html'>tar_load()</a></code> and <code><a href='tar_read.html'>tar_read()</a></code>. This mechanism not only rerenders
 the report automatically when the dependencies change, but also
 allows you to run the report by itself (outside the pipeline)
 as long as a <code>_targets/</code> data store already exists in the current
@@ -167,7 +167,7 @@ working directory and contains the data.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'>if</span> (<span class='fl'>FALSE</span>) {
-<span class='fu'>tar_dir</span>({
+<span class='fu'><a href='tar_dir.html'>tar_dir</a></span>({
 <span class='co'># Here is a path to an example R Markdown report that depends on</span>
 <span class='co'># targets data, data2, and analysis.</span>
 <span class='kw'>path</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/system.file.html'>system.file</a></span>(<span class='st'>"example_knitr_report.Rmd"</span>, package = <span class='st'>"targets"</span>)
@@ -183,12 +183,12 @@ working directory and contains the data.</p>
 <span class='co'># (`!!tar_knitr("report.Rmd")` returns `"report.Rmd"`, and it requires</span>
 <span class='co'># `tidy_eval` to be `TRUE` in [tar_target()] (default).</span>
 <span class='fu'><a href='https://rdrr.io/r/base/files.html'>file.copy</a></span>(<span class='kw'>path</span>, <span class='st'>"report.Rmd"</span>)
-<span class='fu'>tar_script</span>({
-  <span class='fu'>tar_options</span>()
-  <span class='fu'>tar_pipeline</span>(
-    <span class='fu'>tar_target</span>(<span class='kw'>data</span>, <span class='fu'>create_data</span>()), <span class='co'># You define create_data().</span>
-    <span class='fu'>tar_target</span>(<span class='kw'>analysis</span>, <span class='fu'>analyze_data</span>(<span class='kw'>data</span>)), <span class='co'># You define analyze_data().</span>
-    <span class='fu'>tar_target</span>(
+<span class='fu'><a href='tar_script.html'>tar_script</a></span>({
+  <span class='fu'><a href='tar_options.html'>tar_options</a></span>()
+  <span class='fu'><a href='tar_pipeline.html'>tar_pipeline</a></span>(
+    <span class='fu'><a href='tar_target.html'>tar_target</a></span>(<span class='kw'>data</span>, <span class='fu'>create_data</span>()), <span class='co'># You define create_data().</span>
+    <span class='fu'><a href='tar_target.html'>tar_target</a></span>(<span class='kw'>analysis</span>, <span class='fu'>analyze_data</span>(<span class='kw'>data</span>)), <span class='co'># You define analyze_data().</span>
+    <span class='fu'><a href='tar_target.html'>tar_target</a></span>(
       <span class='kw'>report</span>, {
         <span class='kw'>rmarkdown</span>::<span class='fu'><a href='https://rdrr.io/pkg/rmarkdown/man/render.html'>render</a></span>(<span class='st'>"report.Rmd"</span>)
         <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='op'>!</span><span class='op'>!</span><span class='fu'>tar_knitr</span>(<span class='st'>"report.Rmd"</span>), <span class='st'>"report.html"</span>)
@@ -201,7 +201,7 @@ working directory and contains the data.</p>
 <span class='co'># notice how report depends on data and analysis</span>
 <span class='co'># because of the calls to tar_load() and tar_read() in the report</span>
 <span class='co'># and the use of !!tar_knitr() in the target.</span>
-<span class='fu'>tar_visnetwork</span>()
+<span class='fu'><a href='tar_visnetwork.html'>tar_visnetwork</a></span>()
 })
 }</div></pre>
   </div>

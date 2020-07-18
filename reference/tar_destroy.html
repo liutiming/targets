@@ -161,9 +161,9 @@ but keep progress and metadata. Dynamic files are not deleted this way.</p></li>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'>if</span> (<span class='fl'>FALSE</span>) {
-<span class='fu'>tar_dir</span>({
-<span class='fu'>tar_script</span>(<span class='fu'>tar_pipeline</span>(<span class='fu'>tar_target</span>(<span class='kw'>x</span>, <span class='fl'>1</span> <span class='op'>+</span> <span class='fl'>1</span>)))
-<span class='fu'>tar_make</span>() <span class='co'># Creates the _targets/ data store.</span>
+<span class='fu'><a href='tar_dir.html'>tar_dir</a></span>({
+<span class='fu'><a href='tar_script.html'>tar_script</a></span>(<span class='fu'><a href='tar_pipeline.html'>tar_pipeline</a></span>(<span class='fu'><a href='tar_target.html'>tar_target</a></span>(<span class='kw'>x</span>, <span class='fl'>1</span> <span class='op'>+</span> <span class='fl'>1</span>)))
+<span class='fu'><a href='tar_make.html'>tar_make</a></span>() <span class='co'># Creates the _targets/ data store.</span>
 <span class='fu'>tar_destroy</span>()
 <span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/files.html'>file.exists</a></span>(<span class='st'>"_targets"</span>)) <span class='co'># Should be FALSE.</span>
 })
