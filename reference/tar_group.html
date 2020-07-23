@@ -160,10 +160,13 @@ of a data frame target to allow downstream targets to branch over
 subsets of rows. It takes the groups defined by <code><a href='https://dplyr.tidyverse.org/reference/group_by.html'>dplyr::group_by()</a></code>
 and translates that information into a special <code>tar_group</code> is a column.
 <code>tar_group</code> is a vector of consecutive positive integers
-from 1 to the number of groups. Rows with the same value of <code>tar_group</code>
-belong to the same group. The order of the integers depends on
-the orderings of the levels within the <code><a href='https://dplyr.tidyverse.org/reference/group_by.html'>dplyr::group_by()</a></code> columns
-and not the order of the rows.</p>
+from 1 to the number of groups. Rows with the same integer in <code>tar_group</code>
+belong to the same group, and branches are arranged in increasing order
+with respect to these integers. The order of the integers depends on
+the orderings in the grouping variables and not the order
+of rows in the dataset. <code><a href='https://dplyr.tidyverse.org/reference/group_data.html'>dplyr::group_keys()</a></code> on the grouped data frame
+shows how the grouping variables correspond to the integers in the
+<code>tar_group</code> column.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'>if</span> (<span class='fl'>FALSE</span>) {
