@@ -205,7 +205,7 @@ process to do the work. Set to <code>NULL</code> to run in the current session
 instead of an external process (but restart your R session just before
 you do in order to clear debris out of the global environment).
 <code>callr_function</code> needs to be <code>NULL</code> for interactive debugging,
-e.g. <code><a href='tar_options.html'>tar_options(debug = "your_target")</a></code>.
+e.g. <code><a href='tar_option_set.html'>tar_option_set(debug = "your_target")</a></code>.
 However, <code>callr_function</code> should not be <code>NULL</code> for serious
 reproducible work.</p></td>
     </tr>
@@ -223,7 +223,7 @@ reproducible work.</p></td>
     <pre class="examples"><div class='input'><span class='co'>if</span> (<span class='fl'>FALSE</span>) {
 <span class='fu'><a href='tar_dir.html'>tar_dir</a></span>({
 <span class='fu'><a href='tar_script.html'>tar_script</a></span>({
-  <span class='fu'><a href='tar_options.html'>tar_options</a></span>()
+  <span class='fu'><a href='tar_option_set.html'>tar_option_set</a></span>()
   <span class='fu'><a href='tar_pipeline.html'>tar_pipeline</a></span>(
     <span class='fu'><a href='tar_target.html'>tar_target</a></span>(<span class='kw'>y1</span>, <span class='fl'>1</span> <span class='op'>+</span> <span class='fl'>1</span>),
     <span class='fu'><a href='tar_target.html'>tar_target</a></span>(<span class='kw'>y2</span>, <span class='fl'>1</span> <span class='op'>+</span> <span class='fl'>1</span>),

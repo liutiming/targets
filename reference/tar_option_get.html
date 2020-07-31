@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Remove targets that are no longer part of the pipeline. — tar_prune • targets</title>
+<title>Get a target option. — tar_option_get • targets</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -46,13 +46,12 @@
 
 
 
-<meta property="og:title" content="Remove targets that are no longer part of the pipeline. — tar_prune" />
-<meta property="og:description" content="Remove target values from _targets/objects/ and
-target metadata from _targets/meta/meta for targets that are no longer
-part of the pipeline. Global objects and dynamic files outside the
-data store are unaffected. Also removes _targets/scratch/,
-which is only needed while tar_make(), tar_make_clustermq(),
-or tar_make_future() is running." />
+<meta property="og:title" content="Get a target option. — tar_option_get" />
+<meta property="og:description" content="Get a target option. These options include default arguments to
+tar_target() such as packages, storage format,
+iteration type, and cue.
+Needs to be called before any calls to tar_target()
+in order to take effect." />
 <meta property="og:image" content="/logo.svg" />
 
 
@@ -130,65 +129,44 @@ or tar_make_future() is running." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Remove targets that are no longer part of the pipeline.</h1>
-    <small class="dont-index">Source: <a href='https://github.com/wlandau/targets/blob/master/R/tar_prune.R'><code>R/tar_prune.R</code></a></small>
-    <div class="hidden name"><code>tar_prune.Rd</code></div>
+    <h1>Get a target option.</h1>
+    <small class="dont-index">Source: <a href='https://github.com/wlandau/targets/blob/master/R/tar_option_get.R'><code>R/tar_option_get.R</code></a></small>
+    <div class="hidden name"><code>tar_option_get.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Remove target values from <code>_targets/objects/</code> and
-target metadata from <code>_targets/meta/meta</code> for targets that are no longer
-part of the pipeline. Global objects and dynamic files outside the
-data store are unaffected. Also removes <code>_targets/scratch/</code>,
-which is only needed while <code><a href='tar_make.html'>tar_make()</a></code>, <code><a href='tar_make_clustermq.html'>tar_make_clustermq()</a></code>,
-or <code><a href='tar_make_future.html'>tar_make_future()</a></code> is running.</p>
+    <p>Get a target option. These options include default arguments to
+<code><a href='tar_target.html'>tar_target()</a></code> such as packages, storage format,
+iteration type, and cue.
+Needs to be called before any calls to <code><a href='tar_target.html'>tar_target()</a></code>
+in order to take effect.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>tar_prune</span>(callr_function = <span class='kw'>callr</span>::<span class='kw'><a href='https://rdrr.io/pkg/callr/man/r.html'>r</a></span>, callr_arguments = <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>())</pre>
+    <pre class="usage"><span class='fu'>tar_option_get</span>(<span class='kw'>option</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>callr_function</th>
-      <td><p>A function from <code>callr</code> to start a fresh clean R
-process to do the work. Set to <code>NULL</code> to run in the current session
-instead of an external process (but restart your R session just before
-you do in order to clear debris out of the global environment).
-<code>callr_function</code> needs to be <code>NULL</code> for interactive debugging,
-e.g. <code><a href='tar_option_set.html'>tar_option_set(debug = "your_target")</a></code>.
-However, <code>callr_function</code> should not be <code>NULL</code> for serious
-reproducible work.</p></td>
-    </tr>
-    <tr>
-      <th>callr_arguments</th>
-      <td><p>A list of arguments to <code>callr_function</code>.</p></td>
+      <th>option</th>
+      <td><p>Character of length 1, name of an option to get.
+Must be one of the argument names of <code>tar_options()</code>.</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p><code>NULL</code> except if <code>callr_function = callr::r_bg()</code>, in which case
-a handle to the <code>callr</code> background process is returned. Either way,
-the value is invisibly returned.</p>
+    <p>Value of a target option.</p>
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+
+    <p>This function goes well with <code><a href='tar_target_raw.html'>tar_target_raw()</a></code> when it comes
+to defining external interfaces on top of the <code>targets</code> package to create
+pipelines.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'>if</span> (<span class='fl'>FALSE</span>) {
-<span class='fu'><a href='tar_dir.html'>tar_dir</a></span>({
-<span class='fu'><a href='tar_script.html'>tar_script</a></span>(
-  <span class='fu'><a href='tar_pipeline.html'>tar_pipeline</a></span>(
-    <span class='fu'><a href='tar_target.html'>tar_target</a></span>(<span class='kw'>y1</span>, <span class='fl'>1</span> <span class='op'>+</span> <span class='fl'>1</span>),
-    <span class='fu'><a href='tar_target.html'>tar_target</a></span>(<span class='kw'>y2</span>, <span class='fl'>1</span> <span class='op'>+</span> <span class='fl'>1</span>),
-    <span class='fu'><a href='tar_target.html'>tar_target</a></span>(<span class='kw'>z</span>, <span class='kw'>y1</span> <span class='op'>+</span> <span class='kw'>y2</span>)
-  )
-)
-<span class='fu'><a href='tar_make.html'>tar_make</a></span>()
-<span class='co'># Remove some targets from the pipeline.</span>
-<span class='fu'><a href='tar_script.html'>tar_script</a></span>(<span class='fu'><a href='tar_pipeline.html'>tar_pipeline</a></span>(<span class='fu'><a href='tar_target.html'>tar_target</a></span>(<span class='kw'>y1</span>, <span class='fl'>1</span> <span class='op'>+</span> <span class='fl'>1</span>)))
-<span class='co'># Keep only the remaining targets in the data store.</span>
-<span class='fu'>tar_prune</span>()
-})
-}</div></pre>
+    <pre class="examples"><div class='input'><span class='fu'>tar_option_get</span>(<span class='st'>"format"</span>) <span class='co'># default format before we set anything</span></div><div class='output co'>#&gt; [1] "rds"</div><div class='input'><span class='fu'><a href='tar_target.html'>tar_target</a></span>(<span class='kw'>x</span>, <span class='fl'>1</span>)<span class='op'>$</span><span class='kw'>settings</span><span class='op'>$</span><span class='kw'>format</span></div><div class='output co'>#&gt; [1] "rds"</div><div class='input'><span class='fu'><a href='tar_option_set.html'>tar_option_set</a></span>(format = <span class='st'>"fst_tbl"</span>) <span class='co'># new default format</span>
+<span class='fu'>tar_option_get</span>(<span class='st'>"format"</span>)</div><div class='output co'>#&gt; [1] "fst_tbl"</div><div class='input'><span class='fu'><a href='tar_target.html'>tar_target</a></span>(<span class='kw'>x</span>, <span class='fl'>1</span>)<span class='op'>$</span><span class='kw'>settings</span><span class='op'>$</span><span class='kw'>format</span></div><div class='output co'>#&gt; [1] "fst_tbl"</div><div class='input'><span class='fu'><a href='tar_option_reset.html'>tar_option_reset</a></span>() <span class='co'># reset the format</span>
+<span class='fu'><a href='tar_target.html'>tar_target</a></span>(<span class='kw'>x</span>, <span class='fl'>1</span>)<span class='op'>$</span><span class='kw'>settings</span><span class='op'>$</span><span class='kw'>format</span></div><div class='output co'>#&gt; [1] "rds"</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

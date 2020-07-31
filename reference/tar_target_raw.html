@@ -148,22 +148,22 @@ of targets programmatically (metaprogramming, static branching).</p>
   <span class='kw'>name</span>,
   <span class='kw'>command</span>,
   pattern = <span class='kw'>NULL</span>,
-  packages = <span class='kw'>targets</span>::<span class='fu'><a href='tar_option.html'>tar_option</a></span>(<span class='st'>"packages"</span>),
-  library = <span class='kw'>targets</span>::<span class='fu'><a href='tar_option.html'>tar_option</a></span>(<span class='st'>"library"</span>),
+  packages = <span class='kw'>targets</span>::<span class='fu'><a href='tar_option_get.html'>tar_option_get</a></span>(<span class='st'>"packages"</span>),
+  library = <span class='kw'>targets</span>::<span class='fu'><a href='tar_option_get.html'>tar_option_get</a></span>(<span class='st'>"library"</span>),
   deps = <span class='kw'>NULL</span>,
   string = <span class='kw'>NULL</span>,
-  envir = <span class='fu'><a href='tar_option.html'>tar_option</a></span>(<span class='st'>"envir"</span>),
-  format = <span class='kw'>targets</span>::<span class='fu'><a href='tar_option.html'>tar_option</a></span>(<span class='st'>"format"</span>),
-  iteration = <span class='kw'>targets</span>::<span class='fu'><a href='tar_option.html'>tar_option</a></span>(<span class='st'>"iteration"</span>),
-  error = <span class='kw'>targets</span>::<span class='fu'><a href='tar_option.html'>tar_option</a></span>(<span class='st'>"error"</span>),
-  memory = <span class='kw'>targets</span>::<span class='fu'><a href='tar_option.html'>tar_option</a></span>(<span class='st'>"memory"</span>),
-  deployment = <span class='kw'>targets</span>::<span class='fu'><a href='tar_option.html'>tar_option</a></span>(<span class='st'>"deployment"</span>),
+  envir = <span class='fu'><a href='tar_option_get.html'>tar_option_get</a></span>(<span class='st'>"envir"</span>),
+  format = <span class='kw'>targets</span>::<span class='fu'><a href='tar_option_get.html'>tar_option_get</a></span>(<span class='st'>"format"</span>),
+  iteration = <span class='kw'>targets</span>::<span class='fu'><a href='tar_option_get.html'>tar_option_get</a></span>(<span class='st'>"iteration"</span>),
+  error = <span class='kw'>targets</span>::<span class='fu'><a href='tar_option_get.html'>tar_option_get</a></span>(<span class='st'>"error"</span>),
+  memory = <span class='kw'>targets</span>::<span class='fu'><a href='tar_option_get.html'>tar_option_get</a></span>(<span class='st'>"memory"</span>),
+  deployment = <span class='kw'>targets</span>::<span class='fu'><a href='tar_option_get.html'>tar_option_get</a></span>(<span class='st'>"deployment"</span>),
   priority = <span class='fl'>0</span>,
-  template = <span class='kw'>targets</span>::<span class='fu'><a href='tar_option.html'>tar_option</a></span>(<span class='st'>"template"</span>),
-  resources = <span class='kw'>targets</span>::<span class='fu'><a href='tar_option.html'>tar_option</a></span>(<span class='st'>"resources"</span>),
-  storage = <span class='kw'>targets</span>::<span class='fu'><a href='tar_option.html'>tar_option</a></span>(<span class='st'>"storage"</span>),
-  retrieval = <span class='kw'>targets</span>::<span class='fu'><a href='tar_option.html'>tar_option</a></span>(<span class='st'>"retrieval"</span>),
-  cue = <span class='kw'>targets</span>::<span class='fu'><a href='tar_option.html'>tar_option</a></span>(<span class='st'>"cue"</span>)
+  template = <span class='kw'>targets</span>::<span class='fu'><a href='tar_option_get.html'>tar_option_get</a></span>(<span class='st'>"template"</span>),
+  resources = <span class='kw'>targets</span>::<span class='fu'><a href='tar_option_get.html'>tar_option_get</a></span>(<span class='st'>"resources"</span>),
+  storage = <span class='kw'>targets</span>::<span class='fu'><a href='tar_option_get.html'>tar_option_get</a></span>(<span class='st'>"storage"</span>),
+  retrieval = <span class='kw'>targets</span>::<span class='fu'><a href='tar_option_get.html'>tar_option_get</a></span>(<span class='st'>"retrieval"</span>),
+  cue = <span class='kw'>targets</span>::<span class='fu'><a href='tar_option_get.html'>tar_option_get</a></span>(<span class='st'>"cue"</span>)
 )</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
@@ -190,7 +190,7 @@ informally quoted code.
     <tr>
       <th>packages</th>
       <td><p>Character vector of packages to load right before
-the target builds. Use <code><a href='tar_options.html'>tar_options()</a></code> to set packages
+the target builds. Use <code><a href='tar_option_set.html'>tar_option_set()</a></code> to set packages
 globally for all subsequent targets you define.</p></td>
     </tr>
     <tr>
