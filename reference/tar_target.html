@@ -148,20 +148,20 @@ for more details.</p>
   <span class='kw'>name</span>,
   <span class='kw'>command</span>,
   pattern = <span class='kw'>NULL</span>,
-  tidy_eval = <span class='kw'>targets</span>::<span class='fu'><a href='tar_option.html'>tar_option</a></span>(<span class='st'>"tidy_eval"</span>, <span class='fl'>TRUE</span>),
-  packages = <span class='kw'>targets</span>::<span class='fu'><a href='tar_option.html'>tar_option</a></span>(<span class='st'>"packages"</span>, (<span class='fu'><a href='https://rdrr.io/r/base/zpackages.html'>.packages</a></span>())),
+  tidy_eval = <span class='kw'>targets</span>::<span class='fu'><a href='tar_option.html'>tar_option</a></span>(<span class='st'>"tidy_eval"</span>),
+  packages = <span class='kw'>targets</span>::<span class='fu'><a href='tar_option.html'>tar_option</a></span>(<span class='st'>"packages"</span>),
   library = <span class='kw'>targets</span>::<span class='fu'><a href='tar_option.html'>tar_option</a></span>(<span class='st'>"library"</span>),
-  format = <span class='kw'>targets</span>::<span class='fu'><a href='tar_option.html'>tar_option</a></span>(<span class='st'>"format"</span>, <span class='st'>"rds"</span>),
-  iteration = <span class='kw'>targets</span>::<span class='fu'><a href='tar_option.html'>tar_option</a></span>(<span class='st'>"iteration"</span>, <span class='st'>"vector"</span>),
-  error = <span class='kw'>targets</span>::<span class='fu'><a href='tar_option.html'>tar_option</a></span>(<span class='st'>"error"</span>, <span class='st'>"stop"</span>),
-  memory = <span class='kw'>targets</span>::<span class='fu'><a href='tar_option.html'>tar_option</a></span>(<span class='st'>"memory"</span>, <span class='st'>"persistent"</span>),
-  template = <span class='kw'>targets</span>::<span class='fu'><a href='tar_option.html'>tar_option</a></span>(<span class='st'>"template"</span>, <span class='kw'>NULL</span>),
-  deployment = <span class='kw'>targets</span>::<span class='fu'><a href='tar_option.html'>tar_option</a></span>(<span class='st'>"deployment"</span>, <span class='st'>"remote"</span>),
+  format = <span class='kw'>targets</span>::<span class='fu'><a href='tar_option.html'>tar_option</a></span>(<span class='st'>"format"</span>),
+  iteration = <span class='kw'>targets</span>::<span class='fu'><a href='tar_option.html'>tar_option</a></span>(<span class='st'>"iteration"</span>),
+  error = <span class='kw'>targets</span>::<span class='fu'><a href='tar_option.html'>tar_option</a></span>(<span class='st'>"error"</span>),
+  memory = <span class='kw'>targets</span>::<span class='fu'><a href='tar_option.html'>tar_option</a></span>(<span class='st'>"memory"</span>),
+  template = <span class='kw'>targets</span>::<span class='fu'><a href='tar_option.html'>tar_option</a></span>(<span class='st'>"template"</span>),
+  deployment = <span class='kw'>targets</span>::<span class='fu'><a href='tar_option.html'>tar_option</a></span>(<span class='st'>"deployment"</span>),
   priority = <span class='fl'>0</span>,
-  resources = <span class='kw'>targets</span>::<span class='fu'><a href='tar_option.html'>tar_option</a></span>(<span class='st'>"resources"</span>, <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>()),
-  storage = <span class='kw'>targets</span>::<span class='fu'><a href='tar_option.html'>tar_option</a></span>(<span class='st'>"storage"</span>, <span class='st'>"local"</span>),
-  retrieval = <span class='kw'>targets</span>::<span class='fu'><a href='tar_option.html'>tar_option</a></span>(<span class='st'>"retrieval"</span>, <span class='kw'>storage</span>),
-  cue = <span class='kw'>targets</span>::<span class='fu'><a href='tar_option.html'>tar_option</a></span>(<span class='st'>"cue"</span>, <span class='kw'>NULL</span>)
+  resources = <span class='kw'>targets</span>::<span class='fu'><a href='tar_option.html'>tar_option</a></span>(<span class='st'>"resources"</span>),
+  storage = <span class='kw'>targets</span>::<span class='fu'><a href='tar_option.html'>tar_option</a></span>(<span class='st'>"storage"</span>),
+  retrieval = <span class='kw'>targets</span>::<span class='fu'><a href='tar_option.html'>tar_option</a></span>(<span class='st'>"retrieval"</span>),
+  cue = <span class='kw'>targets</span>::<span class='fu'><a href='tar_option.html'>tar_option</a></span>(<span class='st'>"cue"</span>)
 )</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
@@ -327,11 +327,10 @@ just feed them to <code><a href='tar_pipeline.html'>tar_pipeline()</a></code> in
 <span class='co'># Tidy evaluation</span>
 <span class='fu'><a href='tar_options.html'>tar_options</a></span>()
 <span class='kw'>n_rows</span> <span class='op'>&lt;-</span> <span class='fl'>30L</span>
-<span class='kw'>data</span> <span class='op'>&lt;-</span> <span class='fu'>tar_target</span>(<span class='kw'>target_name</span>, <span class='fu'>get_data</span>(<span class='op'>!</span><span class='op'>!</span><span class='kw'>n_rows</span>))
-<span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='kw'>data</span>)</div><div class='output co'>#&gt; &lt;stem target&gt; 
+<span class='kw'>data</span> <span class='op'>&lt;-</span> <span class='fu'>tar_target</span>(<span class='kw'>target_name</span>, <span class='fu'>get_data</span>(<span class='op'>!</span><span class='op'>!</span><span class='kw'>n_rows</span>))</div><div class='output co'>#&gt; <span class='error'>Error in enexpr(expr): object 'n_rows' not found</span></div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='kw'>data</span>)</div><div class='output co'>#&gt; &lt;stem target&gt; 
 #&gt;   name: target_name 
 #&gt;   command:
-#&gt;     get_data(30L) 
+#&gt;     get_data() 
 #&gt;   format: rds 
 #&gt;   iteration method: vector 
 #&gt;   error mode: stop 
@@ -351,14 +350,7 @@ just feed them to <code><a href='tar_pipeline.html'>tar_pipeline()</a></code> in
 #&gt;     iteration: TRUE
 #&gt;     file: TRUE 
 #&gt;   packages:
-#&gt;     targets
-#&gt;     stats
-#&gt;     graphics
-#&gt;     grDevices
-#&gt;     utils
-#&gt;     datasets
-#&gt;     methods
-#&gt;     base 
+#&gt;     tidyverse 
 #&gt;   library:
 #&gt;     NULL</div><div class='input'><span class='co'># Disable tidy evaluation:</span>
 <span class='kw'>data</span> <span class='op'>&lt;-</span> <span class='fu'>tar_target</span>(<span class='kw'>target_name</span>, <span class='fu'>get_data</span>(<span class='op'>!</span><span class='op'>!</span><span class='kw'>n_rows</span>), tidy_eval = <span class='fl'>FALSE</span>)

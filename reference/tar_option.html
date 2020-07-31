@@ -142,7 +142,7 @@ Needs to be called before any calls to <code><a href='tar_target.html'>tar_targe
 in order to take effect.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>tar_option</span>(<span class='kw'>option</span>, default = <span class='kw'>NULL</span>)</pre>
+    <pre class="usage"><span class='fu'>tar_option</span>(<span class='kw'>option</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -152,15 +152,11 @@ in order to take effect.</p>
       <td><p>Character of length 1, name of an option to get.
 Must be one of the argument names of <code><a href='tar_options.html'>tar_options()</a></code>.</p></td>
     </tr>
-    <tr>
-      <th>default</th>
-      <td><p>Default value if the option is unset (<code>NULL</code>)</p></td>
-    </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>Value of a target option. Returns <code>NULL</code> if the option is not set.</p>
+    <p>Value of a target option.</p>
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
     <p>This function goes well with <code><a href='tar_target_raw.html'>tar_target_raw()</a></code> when it comes
@@ -168,14 +164,8 @@ to defining external interfaces on top of the <code>targets</code> package to cr
 pipelines.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'>if</span> (<span class='fl'>FALSE</span>) {
-<span class='co'># Set target options:</span>
-<span class='fu'><a href='tar_options.html'>tar_options</a></span>(format = <span class='st'>"fst_tbl"</span>)
-<span class='fu'>tar_option</span>(<span class='st'>"format"</span>)
-<span class='co'># Reset target options:</span>
-<span class='fu'><a href='tar_options.html'>tar_options</a></span>()
-<span class='fu'>tar_option</span>(<span class='st'>"format"</span>)
-}</div></pre>
+    <pre class="examples"><div class='input'><span class='fu'>tar_option</span>(<span class='st'>"format"</span>) <span class='co'># default format before we set anything</span></div><div class='output co'>#&gt; [1] "rds"</div><div class='input'><span class='fu'><a href='tar_target.html'>tar_target</a></span>(<span class='kw'>x</span>, <span class='fl'>1</span>)<span class='op'>$</span><span class='kw'>settings</span><span class='op'>$</span><span class='kw'>format</span></div><div class='output co'>#&gt; [1] "rds"</div><div class='input'><span class='fu'><a href='tar_options.html'>tar_options</a></span>(format = <span class='st'>"fst_tbl"</span>) <span class='co'># new default format</span>
+<span class='fu'>tar_option</span>(<span class='st'>"format"</span>)</div><div class='output co'>#&gt; [1] "fst_tbl"</div><div class='input'><span class='fu'><a href='tar_target.html'>tar_target</a></span>(<span class='kw'>x</span>, <span class='fl'>1</span>)<span class='op'>$</span><span class='kw'>settings</span><span class='op'>$</span><span class='kw'>format</span></div><div class='output co'>#&gt; [1] "fst_tbl"</div><div class='input'><span class='fu'><a href='tar_options.html'>tar_options</a></span>(format = <span class='st'>"rds"</span>) <span class='co'># reset the format</span></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
