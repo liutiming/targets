@@ -145,25 +145,25 @@ of targets programmatically (metaprogramming, static branching).</p>
     </div>
 
     <pre class="usage"><span class='fu'>tar_target_raw</span>(
-  <span class='no'>name</span>,
-  <span class='no'>command</span>,
-  <span class='kw'>pattern</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>packages</span> <span class='kw'>=</span> <span class='kw pkg'>targets</span><span class='kw ns'>::</span><span class='fu'><a href='tar_option_get.html'>tar_option_get</a></span>(<span class='st'>"packages"</span>),
-  <span class='kw'>library</span> <span class='kw'>=</span> <span class='kw pkg'>targets</span><span class='kw ns'>::</span><span class='fu'><a href='tar_option_get.html'>tar_option_get</a></span>(<span class='st'>"library"</span>),
-  <span class='kw'>deps</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>string</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>envir</span> <span class='kw'>=</span> <span class='fu'><a href='tar_option_get.html'>tar_option_get</a></span>(<span class='st'>"envir"</span>),
-  <span class='kw'>format</span> <span class='kw'>=</span> <span class='kw pkg'>targets</span><span class='kw ns'>::</span><span class='fu'><a href='tar_option_get.html'>tar_option_get</a></span>(<span class='st'>"format"</span>),
-  <span class='kw'>iteration</span> <span class='kw'>=</span> <span class='kw pkg'>targets</span><span class='kw ns'>::</span><span class='fu'><a href='tar_option_get.html'>tar_option_get</a></span>(<span class='st'>"iteration"</span>),
-  <span class='kw'>error</span> <span class='kw'>=</span> <span class='kw pkg'>targets</span><span class='kw ns'>::</span><span class='fu'><a href='tar_option_get.html'>tar_option_get</a></span>(<span class='st'>"error"</span>),
-  <span class='kw'>memory</span> <span class='kw'>=</span> <span class='kw pkg'>targets</span><span class='kw ns'>::</span><span class='fu'><a href='tar_option_get.html'>tar_option_get</a></span>(<span class='st'>"memory"</span>),
-  <span class='kw'>deployment</span> <span class='kw'>=</span> <span class='kw pkg'>targets</span><span class='kw ns'>::</span><span class='fu'><a href='tar_option_get.html'>tar_option_get</a></span>(<span class='st'>"deployment"</span>),
-  <span class='kw'>priority</span> <span class='kw'>=</span> <span class='fl'>0</span>,
-  <span class='kw'>template</span> <span class='kw'>=</span> <span class='kw pkg'>targets</span><span class='kw ns'>::</span><span class='fu'><a href='tar_option_get.html'>tar_option_get</a></span>(<span class='st'>"template"</span>),
-  <span class='kw'>resources</span> <span class='kw'>=</span> <span class='kw pkg'>targets</span><span class='kw ns'>::</span><span class='fu'><a href='tar_option_get.html'>tar_option_get</a></span>(<span class='st'>"resources"</span>),
-  <span class='kw'>storage</span> <span class='kw'>=</span> <span class='kw pkg'>targets</span><span class='kw ns'>::</span><span class='fu'><a href='tar_option_get.html'>tar_option_get</a></span>(<span class='st'>"storage"</span>),
-  <span class='kw'>retrieval</span> <span class='kw'>=</span> <span class='kw pkg'>targets</span><span class='kw ns'>::</span><span class='fu'><a href='tar_option_get.html'>tar_option_get</a></span>(<span class='st'>"retrieval"</span>),
-  <span class='kw'>cue</span> <span class='kw'>=</span> <span class='kw pkg'>targets</span><span class='kw ns'>::</span><span class='fu'><a href='tar_option_get.html'>tar_option_get</a></span>(<span class='st'>"cue"</span>)
+  <span class='kw'>name</span>,
+  <span class='kw'>command</span>,
+  pattern = <span class='kw'>NULL</span>,
+  packages = <span class='kw'>targets</span>::<span class='fu'><a href='tar_option_get.html'>tar_option_get</a></span>(<span class='st'>"packages"</span>),
+  library = <span class='kw'>targets</span>::<span class='fu'><a href='tar_option_get.html'>tar_option_get</a></span>(<span class='st'>"library"</span>),
+  deps = <span class='kw'>NULL</span>,
+  string = <span class='kw'>NULL</span>,
+  envir = <span class='fu'><a href='tar_option_get.html'>tar_option_get</a></span>(<span class='st'>"envir"</span>),
+  format = <span class='kw'>targets</span>::<span class='fu'><a href='tar_option_get.html'>tar_option_get</a></span>(<span class='st'>"format"</span>),
+  iteration = <span class='kw'>targets</span>::<span class='fu'><a href='tar_option_get.html'>tar_option_get</a></span>(<span class='st'>"iteration"</span>),
+  error = <span class='kw'>targets</span>::<span class='fu'><a href='tar_option_get.html'>tar_option_get</a></span>(<span class='st'>"error"</span>),
+  memory = <span class='kw'>targets</span>::<span class='fu'><a href='tar_option_get.html'>tar_option_get</a></span>(<span class='st'>"memory"</span>),
+  deployment = <span class='kw'>targets</span>::<span class='fu'><a href='tar_option_get.html'>tar_option_get</a></span>(<span class='st'>"deployment"</span>),
+  priority = <span class='fl'>0</span>,
+  template = <span class='kw'>targets</span>::<span class='fu'><a href='tar_option_get.html'>tar_option_get</a></span>(<span class='st'>"template"</span>),
+  resources = <span class='kw'>targets</span>::<span class='fu'><a href='tar_option_get.html'>tar_option_get</a></span>(<span class='st'>"resources"</span>),
+  storage = <span class='kw'>targets</span>::<span class='fu'><a href='tar_option_get.html'>tar_option_get</a></span>(<span class='st'>"storage"</span>),
+  retrieval = <span class='kw'>targets</span>::<span class='fu'><a href='tar_option_get.html'>tar_option_get</a></span>(<span class='st'>"retrieval"</span>),
+  cue = <span class='kw'>targets</span>::<span class='fu'><a href='tar_option_get.html'>tar_option_get</a></span>(<span class='st'>"cue"</span>)
 )</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
@@ -229,7 +229,7 @@ Possible formats:</p><ul>
 the target needs to manually identify or save some data
 and return a character vector of paths
 to the data. Those paths must point to files or directories,
-and they must not contain characters <code>|</code> or <code>*</code>.
+and they must not contain characters <code><a href='https://rdrr.io/r/base/Logic.html'>|</a></code> or <code><a href='https://rdrr.io/r/base/Arithmetic.html'>*</a></code>.
 Then, <code>targets</code> automatically checks those files and cues the
 appropriate build decisions if those files are out of date.</p></li>
 <li><p><code>"rds"</code>: Default, uses <code><a href='https://rdrr.io/r/base/readRDS.html'>saveRDS()</a></code> and <code><a href='https://rdrr.io/r/base/readRDS.html'>readRDS()</a></code>. Should work for
@@ -337,16 +337,16 @@ just feed them to <code><a href='tar_pipeline.html'>tar_pipeline()</a></code> in
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'>  <span class='co'># The following are equivalent.</span>
-  <span class='no'>y</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='tar_target.html'>tar_target</a></span>(<span class='no'>y</span>, <span class='fu'><a href='https://rdrr.io/r/base/MathFun.html'>sqrt</a></span>(<span class='no'>x</span>), <span class='kw'>pattern</span> <span class='kw'>=</span> <span class='fu'>map</span>(<span class='no'>x</span>))
-  <span class='no'>y</span> <span class='kw'>&lt;-</span> <span class='fu'>tar_target_raw</span>(<span class='st'>"y"</span>, <span class='fu'><a href='https://rdrr.io/r/base/expression.html'>expression</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/MathFun.html'>sqrt</a></span>(<span class='no'>x</span>)), <span class='fu'><a href='https://rdrr.io/r/base/expression.html'>expression</a></span>(<span class='fu'>map</span>(<span class='no'>x</span>)))
+  <span class='kw'>y</span> <span class='op'>&lt;-</span> <span class='fu'><a href='tar_target.html'>tar_target</a></span>(<span class='kw'>y</span>, <span class='fu'><a href='https://rdrr.io/r/base/MathFun.html'>sqrt</a></span>(<span class='kw'>x</span>), pattern = <span class='fu'>map</span>(<span class='kw'>x</span>))
+  <span class='kw'>y</span> <span class='op'>&lt;-</span> <span class='fu'>tar_target_raw</span>(<span class='st'>"y"</span>, <span class='fu'><a href='https://rdrr.io/r/base/expression.html'>expression</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/MathFun.html'>sqrt</a></span>(<span class='kw'>x</span>)), <span class='fu'><a href='https://rdrr.io/r/base/expression.html'>expression</a></span>(<span class='fu'>map</span>(<span class='kw'>x</span>)))
   <span class='co'># Programmatically create a chain of interdependent targets</span>
-  <span class='no'>target_list</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/lapply.html'>lapply</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/seq.html'>seq_len</a></span>(<span class='fl'>4</span>), <span class='kw'>function</span>(<span class='no'>i</span>) {
+  <span class='kw'>target_list</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/lapply.html'>lapply</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/seq.html'>seq_len</a></span>(<span class='fl'>4</span>), <span class='fu'>function</span>(<span class='kw'>i</span>) {
     <span class='fu'>tar_target_raw</span>(
-      <span class='no'>letters</span>[<span class='no'>i</span> + <span class='fl'>1</span>],
-      <span class='fu'><a href='https://rdrr.io/r/base/substitute.html'>substitute</a></span>(<span class='fu'>do_something</span>(<span class='no'>x</span>), <span class='kw'>env</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='kw pkg'>rlang</span><span class='kw ns'>::</span><span class='fu'><a href='https://rlang.r-lib.org/reference/sym.html'>sym</a></span>(<span class='no'>letters</span>[<span class='no'>i</span>])))
+      <span class='kw'>letters</span>[<span class='kw'>i</span> <span class='op'>+</span> <span class='fl'>1</span>],
+      <span class='fu'><a href='https://rdrr.io/r/base/substitute.html'>substitute</a></span>(<span class='fu'>do_something</span>(<span class='kw'>x</span>), env = <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(x = <span class='kw'>rlang</span>::<span class='fu'><a href='https://rlang.r-lib.org/reference/sym.html'>sym</a></span>(<span class='kw'>letters</span>[<span class='kw'>i</span>])))
     )
   })
-  <span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='no'>target_list</span><span class='kw'>[[</span><span class='fl'>1</span>]])</div><div class='output co'>#&gt; &lt;stem target&gt; 
+  <span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='kw'>target_list</span>[[<span class='fl'>1</span>]])</div><div class='output co'>#&gt; &lt;stem target&gt; 
 #&gt;   name: b 
 #&gt;   command:
 #&gt;     do_something(a) 
@@ -378,7 +378,7 @@ just feed them to <code><a href='tar_pipeline.html'>tar_pipeline()</a></code> in
 #&gt;     methods
 #&gt;     base 
 #&gt;   library:
-#&gt;     NULL</div><div class='input'>  <span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='no'>target_list</span><span class='kw'>[[</span><span class='fl'>2</span>]])</div><div class='output co'>#&gt; &lt;stem target&gt; 
+#&gt;     NULL</div><div class='input'>  <span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='kw'>target_list</span>[[<span class='fl'>2</span>]])</div><div class='output co'>#&gt; &lt;stem target&gt; 
 #&gt;   name: c 
 #&gt;   command:
 #&gt;     do_something(b) 
@@ -426,7 +426,7 @@ just feed them to <code><a href='tar_pipeline.html'>tar_pipeline()</a></code> in
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.9000.</p>
 </div>
 
       </footer>

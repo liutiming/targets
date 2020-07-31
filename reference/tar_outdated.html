@@ -141,12 +141,12 @@ that decide whether a target needs to rerun.</p>
     </div>
 
     <pre class="usage"><span class='fu'>tar_outdated</span>(
-  <span class='kw'>names</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>branches</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
-  <span class='kw'>targets_only</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
-  <span class='kw'>reporter</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/ifelse.html'>ifelse</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/interactive.html'>interactive</a></span>(), <span class='st'>"forecast"</span>, <span class='st'>"silent"</span>),
-  <span class='kw'>callr_function</span> <span class='kw'>=</span> <span class='kw pkg'>callr</span><span class='kw ns'>::</span><span class='no'><a href='https://rdrr.io/pkg/callr/man/r.html'>r</a></span>,
-  <span class='kw'>callr_arguments</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='kw'>spinner</span> <span class='kw'>=</span> <span class='no'>reporter</span> <span class='kw'>==</span> <span class='st'>"silent"</span>)
+  names = <span class='kw'>NULL</span>,
+  branches = <span class='fl'>FALSE</span>,
+  targets_only = <span class='fl'>TRUE</span>,
+  reporter = <span class='fu'><a href='https://rdrr.io/r/base/ifelse.html'>ifelse</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/interactive.html'>interactive</a></span>(), <span class='st'>"forecast"</span>, <span class='st'>"silent"</span>),
+  callr_function = <span class='kw'>callr</span>::<span class='kw'><a href='https://rdrr.io/pkg/callr/man/r.html'>r</a></span>,
+  callr_arguments = <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(spinner = <span class='kw'>reporter</span> <span class='op'>==</span> <span class='st'>"silent"</span>)
 )</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
@@ -210,15 +210,15 @@ with a <code>_targets.R</code> script in your working directory.
 (See <code><a href='tar_script.html'>tar_script()</a></code> for details.)</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='kw'>if</span> (<span class='fl'>FALSE</span>) {
+    <pre class="examples"><div class='input'><span class='co'>if</span> (<span class='fl'>FALSE</span>) {
 <span class='fu'><a href='tar_dir.html'>tar_dir</a></span>({
-<span class='fu'><a href='tar_script.html'>tar_script</a></span>(<span class='fu'><a href='tar_pipeline.html'>tar_pipeline</a></span>(<span class='fu'><a href='tar_target.html'>tar_target</a></span>(<span class='no'>x</span>, <span class='fl'>1</span> + <span class='fl'>1</span>)))
+<span class='fu'><a href='tar_script.html'>tar_script</a></span>(<span class='fu'><a href='tar_pipeline.html'>tar_pipeline</a></span>(<span class='fu'><a href='tar_target.html'>tar_target</a></span>(<span class='kw'>x</span>, <span class='fl'>1</span> <span class='op'>+</span> <span class='fl'>1</span>)))
 <span class='fu'>tar_outdated</span>()
 <span class='fu'><a href='tar_script.html'>tar_script</a></span>(
   <span class='fu'><a href='tar_pipeline.html'>tar_pipeline</a></span>(
-    <span class='fu'><a href='tar_target.html'>tar_target</a></span>(<span class='no'>y1</span>, <span class='fl'>1</span> + <span class='fl'>1</span>),
-    <span class='fu'><a href='tar_target.html'>tar_target</a></span>(<span class='no'>y2</span>, <span class='fl'>1</span> + <span class='fl'>1</span>),
-    <span class='fu'><a href='tar_target.html'>tar_target</a></span>(<span class='no'>z</span>, <span class='no'>y1</span> + <span class='no'>y2</span>)
+    <span class='fu'><a href='tar_target.html'>tar_target</a></span>(<span class='kw'>y1</span>, <span class='fl'>1</span> <span class='op'>+</span> <span class='fl'>1</span>),
+    <span class='fu'><a href='tar_target.html'>tar_target</a></span>(<span class='kw'>y2</span>, <span class='fl'>1</span> <span class='op'>+</span> <span class='fl'>1</span>),
+    <span class='fu'><a href='tar_target.html'>tar_target</a></span>(<span class='kw'>z</span>, <span class='kw'>y1</span> <span class='op'>+</span> <span class='kw'>y2</span>)
   )
 )
 <span class='fu'>tar_outdated</span>()
@@ -239,7 +239,7 @@ with a <code>_targets.R</code> script in your working directory.
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.9000.</p>
 </div>
 
       </footer>

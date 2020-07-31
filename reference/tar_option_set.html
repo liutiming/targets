@@ -143,21 +143,21 @@ To use <code>tar_option_set()</code> effectively, put it in your workflow's
     </div>
 
     <pre class="usage"><span class='fu'>tar_option_set</span>(
-  <span class='kw'>tidy_eval</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>packages</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>library</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>envir</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>format</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>iteration</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>error</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>memory</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>deployment</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>resources</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>template</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>storage</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>retrieval</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>cue</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>debug</span> <span class='kw'>=</span> <span class='kw'>NULL</span>
+  tidy_eval = <span class='kw'>NULL</span>,
+  packages = <span class='kw'>NULL</span>,
+  library = <span class='kw'>NULL</span>,
+  envir = <span class='kw'>NULL</span>,
+  format = <span class='kw'>NULL</span>,
+  iteration = <span class='kw'>NULL</span>,
+  error = <span class='kw'>NULL</span>,
+  memory = <span class='kw'>NULL</span>,
+  deployment = <span class='kw'>NULL</span>,
+  resources = <span class='kw'>NULL</span>,
+  template = <span class='kw'>NULL</span>,
+  storage = <span class='kw'>NULL</span>,
+  retrieval = <span class='kw'>NULL</span>,
+  cue = <span class='kw'>NULL</span>,
+  debug = <span class='kw'>NULL</span>
 )</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
@@ -197,7 +197,7 @@ Possible formats:</p><ul>
 the target needs to manually identify or save some data
 and return a character vector of paths
 to the data. Those paths must point to files or directories,
-and they must not contain characters <code>|</code> or <code>*</code>.
+and they must not contain characters <code><a href='https://rdrr.io/r/base/Logic.html'>|</a></code> or <code><a href='https://rdrr.io/r/base/Arithmetic.html'>*</a></code>.
 Then, <code>targets</code> automatically checks those files and cues the
 appropriate build decisions if those files are out of date.</p></li>
 <li><p><code>"rds"</code>: Default, uses <code><a href='https://rdrr.io/r/base/readRDS.html'>saveRDS()</a></code> and <code><a href='https://rdrr.io/r/base/readRDS.html'>readRDS()</a></code>. Should work for
@@ -310,9 +310,9 @@ targets.</p></td>
     <p>Nothing.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'><a href='tar_option_get.html'>tar_option_get</a></span>(<span class='st'>"format"</span>) <span class='co'># default format before we set anything</span></div><div class='output co'>#&gt; [1] "rds"</div><div class='input'><span class='fu'><a href='tar_target.html'>tar_target</a></span>(<span class='no'>x</span>, <span class='fl'>1</span>)$<span class='no'>settings</span>$<span class='no'>format</span></div><div class='output co'>#&gt; [1] "rds"</div><div class='input'><span class='fu'>tar_option_set</span>(<span class='kw'>format</span> <span class='kw'>=</span> <span class='st'>"fst_tbl"</span>) <span class='co'># new default format</span>
-<span class='fu'><a href='tar_option_get.html'>tar_option_get</a></span>(<span class='st'>"format"</span>)</div><div class='output co'>#&gt; [1] "fst_tbl"</div><div class='input'><span class='fu'><a href='tar_target.html'>tar_target</a></span>(<span class='no'>x</span>, <span class='fl'>1</span>)$<span class='no'>settings</span>$<span class='no'>format</span></div><div class='output co'>#&gt; [1] "fst_tbl"</div><div class='input'><span class='fu'><a href='tar_option_reset.html'>tar_option_reset</a></span>() <span class='co'># reset the format</span>
-<span class='fu'><a href='tar_target.html'>tar_target</a></span>(<span class='no'>x</span>, <span class='fl'>1</span>)$<span class='no'>settings</span>$<span class='no'>format</span></div><div class='output co'>#&gt; [1] "rds"</div></pre>
+    <pre class="examples"><div class='input'><span class='fu'><a href='tar_option_get.html'>tar_option_get</a></span>(<span class='st'>"format"</span>) <span class='co'># default format before we set anything</span></div><div class='output co'>#&gt; [1] "rds"</div><div class='input'><span class='fu'><a href='tar_target.html'>tar_target</a></span>(<span class='kw'>x</span>, <span class='fl'>1</span>)<span class='op'>$</span><span class='kw'>settings</span><span class='op'>$</span><span class='kw'>format</span></div><div class='output co'>#&gt; [1] "rds"</div><div class='input'><span class='fu'>tar_option_set</span>(format = <span class='st'>"fst_tbl"</span>) <span class='co'># new default format</span>
+<span class='fu'><a href='tar_option_get.html'>tar_option_get</a></span>(<span class='st'>"format"</span>)</div><div class='output co'>#&gt; [1] "fst_tbl"</div><div class='input'><span class='fu'><a href='tar_target.html'>tar_target</a></span>(<span class='kw'>x</span>, <span class='fl'>1</span>)<span class='op'>$</span><span class='kw'>settings</span><span class='op'>$</span><span class='kw'>format</span></div><div class='output co'>#&gt; [1] "fst_tbl"</div><div class='input'><span class='fu'><a href='tar_option_reset.html'>tar_option_reset</a></span>() <span class='co'># reset the format</span>
+<span class='fu'><a href='tar_target.html'>tar_target</a></span>(<span class='kw'>x</span>, <span class='fl'>1</span>)<span class='op'>$</span><span class='kw'>settings</span><span class='op'>$</span><span class='kw'>format</span></div><div class='output co'>#&gt; [1] "rds"</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -328,7 +328,7 @@ targets.</p></td>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.9000.</p>
 </div>
 
       </footer>

@@ -138,7 +138,7 @@ It is a collection of targets, or skippable steps,
 in an automated reproducible workflow.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>tar_pipeline</span>(<span class='no'>...</span>)</pre>
+    <pre class="usage"><span class='fu'>tar_pipeline</span>(<span class='kw'>...</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -156,17 +156,17 @@ end with a call <code>tar_pipeline()</code>.
 Otherwise, users do not work pipeline objects directly.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>file</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='tar_target.html'>tar_target</a></span>(<span class='no'>data_file</span>, <span class='st'>"data.csv"</span>, <span class='kw'>format</span> <span class='kw'>=</span> <span class='st'>"file"</span>)
-<span class='no'>object</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='tar_target.html'>tar_target</a></span>(<span class='no'>data_object</span>, <span class='fu'><a href='https://rdrr.io/r/utils/read.table.html'>read.csv</a></span>(<span class='no'>data_file</span>))
-<span class='no'>analysis</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='tar_target.html'>tar_target</a></span>(<span class='no'>analysis</span>, <span class='fu'>analyze</span>(<span class='no'>data_object</span>))
-<span class='no'>pipeline</span> <span class='kw'>&lt;-</span> <span class='fu'>tar_pipeline</span>(<span class='no'>file</span>, <span class='no'>object</span>, <span class='no'>analysis</span>)
-<span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='no'>pipeline</span>)</div><div class='output co'>#&gt; &lt;pipeline with 3 targets&gt;</div><div class='input'><span class='co'># Equivalent:</span>
-<span class='no'>target_list</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(
-  <span class='fu'><a href='tar_target.html'>tar_target</a></span>(<span class='no'>data_file</span>, <span class='st'>"data.csv"</span>, <span class='kw'>format</span> <span class='kw'>=</span> <span class='st'>"file"</span>),
-  <span class='fu'><a href='tar_target.html'>tar_target</a></span>(<span class='no'>data_object</span>, <span class='fu'><a href='https://rdrr.io/r/utils/read.table.html'>read.csv</a></span>(<span class='no'>data_file</span>)),
-  <span class='fu'><a href='tar_target.html'>tar_target</a></span>(<span class='no'>analysis</span>, <span class='fu'>analyze</span>(<span class='no'>data_object</span>))
+    <pre class="examples"><div class='input'><span class='kw'>file</span> <span class='op'>&lt;-</span> <span class='fu'><a href='tar_target.html'>tar_target</a></span>(<span class='kw'>data_file</span>, <span class='st'>"data.csv"</span>, format = <span class='st'>"file"</span>)
+<span class='kw'>object</span> <span class='op'>&lt;-</span> <span class='fu'><a href='tar_target.html'>tar_target</a></span>(<span class='kw'>data_object</span>, <span class='fu'><a href='https://rdrr.io/r/utils/read.table.html'>read.csv</a></span>(<span class='kw'>data_file</span>))
+<span class='kw'>analysis</span> <span class='op'>&lt;-</span> <span class='fu'><a href='tar_target.html'>tar_target</a></span>(<span class='kw'>analysis</span>, <span class='fu'>analyze</span>(<span class='kw'>data_object</span>))
+<span class='kw'>pipeline</span> <span class='op'>&lt;-</span> <span class='fu'>tar_pipeline</span>(<span class='kw'>file</span>, <span class='kw'>object</span>, <span class='kw'>analysis</span>)
+<span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='kw'>pipeline</span>)</div><div class='output co'>#&gt; &lt;pipeline with 3 targets&gt;</div><div class='input'><span class='co'># Equivalent:</span>
+<span class='kw'>target_list</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(
+  <span class='fu'><a href='tar_target.html'>tar_target</a></span>(<span class='kw'>data_file</span>, <span class='st'>"data.csv"</span>, format = <span class='st'>"file"</span>),
+  <span class='fu'><a href='tar_target.html'>tar_target</a></span>(<span class='kw'>data_object</span>, <span class='fu'><a href='https://rdrr.io/r/utils/read.table.html'>read.csv</a></span>(<span class='kw'>data_file</span>)),
+  <span class='fu'><a href='tar_target.html'>tar_target</a></span>(<span class='kw'>analysis</span>, <span class='fu'>analyze</span>(<span class='kw'>data_object</span>))
 )
-<span class='no'>pipeline</span> <span class='kw'>&lt;-</span> <span class='fu'>tar_pipeline</span>(<span class='no'>target_list</span>)</div></pre>
+<span class='kw'>pipeline</span> <span class='op'>&lt;-</span> <span class='fu'>tar_pipeline</span>(<span class='kw'>target_list</span>)</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -182,7 +182,7 @@ Otherwise, users do not work pipeline objects directly.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.9000.</p>
 </div>
 
       </footer>

@@ -138,7 +138,7 @@ the paths are returned." />
 the paths are returned.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>tar_read</span>(<span class='no'>name</span>, <span class='kw'>branches</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>meta</span> <span class='kw'>=</span> <span class='fu'><a href='tar_meta.html'>tar_meta</a></span>())</pre>
+    <pre class="usage"><span class='fu'>tar_read</span>(<span class='kw'>name</span>, branches = <span class='kw'>NULL</span>, meta = <span class='fu'><a href='tar_meta.html'>tar_meta</a></span>())</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -169,11 +169,11 @@ argument, then successive calls to <code>tar_read()</code> may run much faster.<
 if <code>format = "file"</code> was set.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='kw'>if</span> (<span class='fl'>FALSE</span>) {
+    <pre class="examples"><div class='input'><span class='co'>if</span> (<span class='fl'>FALSE</span>) {
 <span class='fu'><a href='tar_dir.html'>tar_dir</a></span>({
-<span class='fu'><a href='tar_script.html'>tar_script</a></span>(<span class='fu'><a href='tar_pipeline.html'>tar_pipeline</a></span>(<span class='fu'><a href='tar_target.html'>tar_target</a></span>(<span class='no'>x</span>, <span class='fl'>1</span> + <span class='fl'>1</span>)))
+<span class='fu'><a href='tar_script.html'>tar_script</a></span>(<span class='fu'><a href='tar_pipeline.html'>tar_pipeline</a></span>(<span class='fu'><a href='tar_target.html'>tar_target</a></span>(<span class='kw'>x</span>, <span class='fl'>1</span> <span class='op'>+</span> <span class='fl'>1</span>)))
 <span class='fu'><a href='tar_make.html'>tar_make</a></span>()
-<span class='fu'>tar_read</span>(<span class='no'>x</span>)
+<span class='fu'>tar_read</span>(<span class='kw'>x</span>)
 })
 }</div></pre>
   </div>
@@ -191,7 +191,7 @@ if <code>format = "file"</code> was set.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.9000.</p>
 </div>
 
       </footer>
