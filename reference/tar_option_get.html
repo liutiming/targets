@@ -142,7 +142,7 @@ Needs to be called before any calls to <code><a href='tar_target.html'>tar_targe
 in order to take effect.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>tar_option_get</span>(<span class='kw'>option</span>)</pre>
+    <pre class="usage"><span class='fu'>tar_option_get</span>(<span class='no'>option</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -164,9 +164,9 @@ to defining external interfaces on top of the <code>targets</code> package to cr
 pipelines.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>tar_option_get</span>(<span class='st'>"format"</span>) <span class='co'># default format before we set anything</span></div><div class='output co'>#&gt; [1] "rds"</div><div class='input'><span class='fu'><a href='tar_target.html'>tar_target</a></span>(<span class='kw'>x</span>, <span class='fl'>1</span>)<span class='op'>$</span><span class='kw'>settings</span><span class='op'>$</span><span class='kw'>format</span></div><div class='output co'>#&gt; [1] "rds"</div><div class='input'><span class='fu'><a href='tar_option_set.html'>tar_option_set</a></span>(format = <span class='st'>"fst_tbl"</span>) <span class='co'># new default format</span>
-<span class='fu'>tar_option_get</span>(<span class='st'>"format"</span>)</div><div class='output co'>#&gt; [1] "fst_tbl"</div><div class='input'><span class='fu'><a href='tar_target.html'>tar_target</a></span>(<span class='kw'>x</span>, <span class='fl'>1</span>)<span class='op'>$</span><span class='kw'>settings</span><span class='op'>$</span><span class='kw'>format</span></div><div class='output co'>#&gt; [1] "fst_tbl"</div><div class='input'><span class='fu'><a href='tar_option_reset.html'>tar_option_reset</a></span>() <span class='co'># reset the format</span>
-<span class='fu'><a href='tar_target.html'>tar_target</a></span>(<span class='kw'>x</span>, <span class='fl'>1</span>)<span class='op'>$</span><span class='kw'>settings</span><span class='op'>$</span><span class='kw'>format</span></div><div class='output co'>#&gt; [1] "rds"</div></pre>
+    <pre class="examples"><div class='input'><span class='fu'>tar_option_get</span>(<span class='st'>"format"</span>) <span class='co'># default format before we set anything</span></div><div class='output co'>#&gt; [1] "rds"</div><div class='input'><span class='fu'><a href='tar_target.html'>tar_target</a></span>(<span class='no'>x</span>, <span class='fl'>1</span>)$<span class='no'>settings</span>$<span class='no'>format</span></div><div class='output co'>#&gt; [1] "rds"</div><div class='input'><span class='fu'><a href='tar_option_set.html'>tar_option_set</a></span>(<span class='kw'>format</span> <span class='kw'>=</span> <span class='st'>"fst_tbl"</span>) <span class='co'># new default format</span>
+<span class='fu'>tar_option_get</span>(<span class='st'>"format"</span>)</div><div class='output co'>#&gt; [1] "fst_tbl"</div><div class='input'><span class='fu'><a href='tar_target.html'>tar_target</a></span>(<span class='no'>x</span>, <span class='fl'>1</span>)$<span class='no'>settings</span>$<span class='no'>format</span></div><div class='output co'>#&gt; [1] "fst_tbl"</div><div class='input'><span class='fu'><a href='tar_option_reset.html'>tar_option_reset</a></span>() <span class='co'># reset the format</span>
+<span class='fu'><a href='tar_target.html'>tar_target</a></span>(<span class='no'>x</span>, <span class='fl'>1</span>)$<span class='no'>settings</span>$<span class='no'>format</span></div><div class='output co'>#&gt; [1] "rds"</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -182,7 +182,7 @@ pipelines.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.9000.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
 </div>
 
       </footer>

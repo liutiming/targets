@@ -80,7 +80,7 @@
 
       
 
-      </header><script src="need_files/accessible-code-block-0.0.1/empty-anchor.js"></script><div class="row">
+      </header><script src="need_files/header-attrs-2.3/header-attrs.js"></script><script src="need_files/accessible-code-block-0.0.1/empty-anchor.js"></script><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Statement of need</h1>
@@ -247,16 +247,14 @@
 </h2>
 <p><a href="https://books.ropensci.org/drake/dynamic.html">Dynamic branching</a> was an architecturally difficult fit in <a href="https://github.com/ropensci/drake"><code>drake</code></a>, and it can only support one single (<a href="https://r-lib.github.io/vctrs"><code>vctrs</code></a>-based) method of slicing and aggregation for processing sub-targets. This limitation has frustrated members of the community, as discussed <a href="https://github.com/ropensci/drake/issues/1087">here</a> and <a href="https://github.com/ropensci/drake/issues/1170">here</a>.</p>
 <p><code>targets</code>, on the other hand, is more flexible regarding slicing and aggregation. When it branches over an object, it can iterate over vectors, lists, and even data frames grouped with <code><a href="https://dplyr.tidyverse.org/reference/group_by.html">dplyr::group_by()</a></code>. To branch over chunks of a data frame, our data frame target needs to have a special <code>tar_group</code> column. We can create this column in our target’s return value with the <code><a href="../reference/tar_group.html">tar_group()</a></code> function.</p>
-<div class="sourceCode" id="cb3"><pre class="downlit">
-<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="kw"><a href="https://dplyr.tidyverse.org">dplyr</a></span>)
-<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="kw"><a href="https://wlandau.github.io/targets">targets</a></span>)
+<div class="sourceCode" id="cb3"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">dplyr</span>)
+<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">targets</span>)
 <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span>(
-  x = <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq_len</a></span>(<span class="fl">6</span>),
-  id = <span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span>(<span class="kw">letters</span>[<span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq_len</a></span>(<span class="fl">3</span>)], each = <span class="fl">2</span>)
-) <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span>(<span class="kw">id</span>) <span class="op">%&gt;%</span>
-  <span class="fu"><a href="../reference/tar_group.html">tar_group</a></span>()
-</pre></div>
+  <span class="kw">x</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq_len</a></span>(<span class="fl">6</span>),
+  <span class="kw">id</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span>(<span class="no">letters</span>[<span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq_len</a></span>(<span class="fl">3</span>)], <span class="kw">each</span> <span class="kw">=</span> <span class="fl">2</span>)
+) <span class="kw">%&gt;%</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span>(<span class="no">id</span>) <span class="kw">%&gt;%</span>
+  <span class="fu"><a href="../reference/tar_group.html">tar_group</a></span>()</pre></body></html></div>
 <pre><code>## # A tibble: 6 x 3
 ## # Groups:   id [3]
 ##       x id    tar_group
@@ -268,26 +266,22 @@
 ## 5     5 c             3
 ## 6     6 c             3</code></pre>
 <p>Our actual target has the command above and <code>iteration = "group"</code>.</p>
-<div class="sourceCode" id="cb5"><pre class="downlit">
-<span class="fu"><a href="../reference/tar_target.html">tar_target</a></span>(
-  <span class="kw">data</span>,
+<div class="sourceCode" id="cb5"><html><body><pre class="r"><span class="fu"><a href="../reference/tar_target.html">tar_target</a></span>(
+  <span class="no">data</span>,
   <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span>(
-    x = <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq_len</a></span>(<span class="fl">6</span>),
-    id = <span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span>(<span class="kw">letters</span>[<span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq_len</a></span>(<span class="fl">3</span>)], each = <span class="fl">2</span>)
-  ) <span class="op">%&gt;%</span>
-    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span>(<span class="kw">id</span>) <span class="op">%&gt;%</span>
+    <span class="kw">x</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq_len</a></span>(<span class="fl">6</span>),
+    <span class="kw">id</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span>(<span class="no">letters</span>[<span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq_len</a></span>(<span class="fl">3</span>)], <span class="kw">each</span> <span class="kw">=</span> <span class="fl">2</span>)
+  ) <span class="kw">%&gt;%</span>
+    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span>(<span class="no">id</span>) <span class="kw">%&gt;%</span>
     <span class="fu"><a href="../reference/tar_group.html">tar_group</a></span>(),
-  iteration = <span class="st">"group"</span>
-)
-</pre></div>
+  <span class="kw">iteration</span> <span class="kw">=</span> <span class="st">"group"</span>
+)</pre></body></html></div>
 <p>Now, any target that maps over <code>data</code> is going to define one branch for each group in the data frame. The following target creates three branches when run in a pipeline: one returning 3, one returning 7, and one returning 11.</p>
-<div class="sourceCode" id="cb6"><pre class="downlit">
-<span class="fu"><a href="../reference/tar_target.html">tar_target</a></span>(
-  <span class="kw">sums</span>,
-  <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span>(<span class="kw">data</span><span class="op">$</span><span class="kw">x</span>),
-  pattern = <span class="fu">map</span>(<span class="kw">data</span>)
-)
-</pre></div>
+<div class="sourceCode" id="cb6"><html><body><pre class="r"><span class="fu"><a href="../reference/tar_target.html">tar_target</a></span>(
+  <span class="no">sums</span>,
+  <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span>(<span class="no">data</span>$<span class="no">x</span>),
+  <span class="kw">pattern</span> <span class="kw">=</span> <span class="fu">map</span>(<span class="no">data</span>)
+)</pre></body></html></div>
 </div>
 <div id="improved-parallel-efficiency" class="section level2">
 <h2 class="hasAnchor">
@@ -321,7 +315,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.9000.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
 </div>
 
       </footer>

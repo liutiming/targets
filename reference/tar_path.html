@@ -136,7 +136,7 @@ target currently running in a pipeline or a target of your choice." />
 target currently running in a pipeline or a target of your choice.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>tar_path</span>(name = <span class='kw'>NULL</span>)</pre>
+    <pre class="usage"><span class='fu'>tar_path</span>(<span class='kw'>name</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -162,7 +162,7 @@ currently running. This function does not apply to dynamic files
 because those paths are not known in advance.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>tar_path</span>(<span class='kw'>your_target</span>)</div><div class='output co'>#&gt; [1] "_targets/objects/your_target"</div><div class='input'><span class='fu'><a href='tar_target.html'>tar_target</a></span>(<span class='kw'>returns_path</span>, <span class='fu'>tar_path</span>())</div><div class='output co'>#&gt; &lt;stem target&gt; 
+    <pre class="examples"><div class='input'><span class='fu'>tar_path</span>(<span class='no'>your_target</span>)</div><div class='output co'>#&gt; [1] "_targets/objects/your_target"</div><div class='input'><span class='fu'><a href='tar_target.html'>tar_target</a></span>(<span class='no'>returns_path</span>, <span class='fu'>tar_path</span>())</div><div class='output co'>#&gt; &lt;stem target&gt; 
 #&gt;   name: returns_path 
 #&gt;   command:
 #&gt;     tar_path() 
@@ -210,7 +210,7 @@ because those paths are not known in advance.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.9000.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
 </div>
 
       </footer>

@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Destroy a section or all of the _targets/ data store in the
+<title>Destroy a section or all of the <code>_targets/</code> data store in the
 current working directory — tar_destroy • targets</title>
 
 <!-- favicons -->
@@ -47,7 +47,7 @@ current working directory — tar_destroy • targets</title>
 
 
 
-<meta property="og:title" content="Destroy a section or all of the _targets/ data store in the
+<meta property="og:title" content="Destroy a section or all of the <code>_targets/</code> data store in the
 current working directory — tar_destroy" />
 <meta property="og:description" content="Destroy _targets/ data store in the current working
 directory. Optionally, just destroy part of the data store." />
@@ -139,7 +139,7 @@ current working directory</h1>
 directory. Optionally, just destroy part of the data store.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>tar_destroy</span>(what = <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"all"</span>, <span class='st'>"meta"</span>, <span class='st'>"progress"</span>, <span class='st'>"objects"</span>))</pre>
+    <pre class="usage"><span class='fu'>tar_destroy</span>(<span class='kw'>what</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"all"</span>, <span class='st'>"meta"</span>, <span class='st'>"progress"</span>, <span class='st'>"objects"</span>))</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -160,9 +160,9 @@ but keep progress and metadata. Dynamic files are not deleted this way.</p></li>
 
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'>if</span> (<span class='fl'>FALSE</span>) {
+    <pre class="examples"><div class='input'><span class='kw'>if</span> (<span class='fl'>FALSE</span>) {
 <span class='fu'><a href='tar_dir.html'>tar_dir</a></span>({
-<span class='fu'><a href='tar_script.html'>tar_script</a></span>(<span class='fu'><a href='tar_pipeline.html'>tar_pipeline</a></span>(<span class='fu'><a href='tar_target.html'>tar_target</a></span>(<span class='kw'>x</span>, <span class='fl'>1</span> <span class='op'>+</span> <span class='fl'>1</span>)))
+<span class='fu'><a href='tar_script.html'>tar_script</a></span>(<span class='fu'><a href='tar_pipeline.html'>tar_pipeline</a></span>(<span class='fu'><a href='tar_target.html'>tar_target</a></span>(<span class='no'>x</span>, <span class='fl'>1</span> + <span class='fl'>1</span>)))
 <span class='fu'><a href='tar_make.html'>tar_make</a></span>() <span class='co'># Creates the _targets/ data store.</span>
 <span class='fu'>tar_destroy</span>()
 <span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/files.html'>file.exists</a></span>(<span class='st'>"_targets"</span>)) <span class='co'># Should be FALSE.</span>
@@ -183,7 +183,7 @@ but keep progress and metadata. Dynamic files are not deleted this way.</p></li>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.9000.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
 </div>
 
       </footer>
