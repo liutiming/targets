@@ -154,6 +154,15 @@ of dependency relationships.</p>
 (<code>FALSE</code>) or to also include imported global functions and objects.</p></td>
     </tr>
     <tr>
+      <th>reporter</th>
+      <td><p>Character of length 1, name of the reporter to user.
+Controls how messages are printed as targets are checked. Choices:</p><ul>
+<li><p><code>"silent"</code>: print nothing.</p></li>
+<li><p><code>"forecast"</code>: print running totals of the checked and outdated
+targets found so far.</p></li>
+</ul></td>
+    </tr>
+    <tr>
       <th>callr_function</th>
       <td><p>A function from <code>callr</code> to start a fresh clean R
 process to do the work. Set to <code>NULL</code> to run in the current session
