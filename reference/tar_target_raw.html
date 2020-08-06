@@ -152,7 +152,6 @@ of targets programmatically (metaprogramming, static branching).</p>
   library = <span class='kw'>targets</span>::<span class='fu'><a href='tar_option_get.html'>tar_option_get</a></span>(<span class='st'>"library"</span>),
   deps = <span class='kw'>NULL</span>,
   string = <span class='kw'>NULL</span>,
-  envir = <span class='fu'><a href='tar_option_get.html'>tar_option_get</a></span>(<span class='st'>"envir"</span>),
   format = <span class='kw'>targets</span>::<span class='fu'><a href='tar_option_get.html'>tar_option_get</a></span>(<span class='st'>"format"</span>),
   iteration = <span class='kw'>targets</span>::<span class='fu'><a href='tar_option_get.html'>tar_option_get</a></span>(<span class='st'>"iteration"</span>),
   error = <span class='kw'>targets</span>::<span class='fu'><a href='tar_option_get.html'>tar_option_get</a></span>(<span class='st'>"error"</span>),
@@ -212,11 +211,6 @@ since last run, which helps <code>targets</code> decide whether the
 target is up to date. External interfaces can take control of
 <code>string</code> to ignore changes in certain parts of the command.
 If <code>NULL</code>, the strings is just deparsed from <code>command</code> (default).</p></td>
-    </tr>
-    <tr>
-      <th>envir</th>
-      <td><p>Environment containing functions and global objects
-used in the R commands to run targets.</p></td>
     </tr>
     <tr>
       <th>format</th>
