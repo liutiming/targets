@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>RStudio addin to print tail(tar_progress()). — rstudio_addin_tar_progress • targets</title>
+<title>RStudio addin to call tar_load() on the symbol at the cursor. — rstudio_addin_tar_load • targets</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -46,7 +46,7 @@
 
 
 
-<meta property="og:title" content="RStudio addin to print tail(tar_progress()). — rstudio_addin_tar_progress" />
+<meta property="og:title" content="RStudio addin to call tar_load() on the symbol at the cursor. — rstudio_addin_tar_load" />
 <meta property="og:description" content="For internal use only. Not a user-side function." />
 <meta property="og:image" content="/logo.svg" />
 
@@ -125,17 +125,26 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>RStudio addin to print <code>tail(tar_progress())</code>.</h1>
-    <small class="dont-index">Source: <a href='https://github.com/wlandau/targets/blob/master/R/rstudio_addin_tar_progress.R'><code>R/rstudio_addin_tar_progress.R</code></a></small>
-    <div class="hidden name"><code>rstudio_addin_tar_progress.Rd</code></div>
+    <h1>RStudio addin to call <code><a href='tar_load.html'>tar_load()</a></code> on the symbol at the cursor.</h1>
+    <small class="dont-index">Source: <a href='https://github.com/wlandau/targets/blob/master/R/rstudio_addin_tar_load.R'><code>R/rstudio_addin_tar_load.R</code></a></small>
+    <div class="hidden name"><code>rstudio_addin_tar_load.Rd</code></div>
     </div>
 
     <div class="ref-description">
     <p>For internal use only. Not a user-side function.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>rstudio_addin_tar_progress</span>()</pre>
+    <pre class="usage"><span class='fu'>rstudio_addin_tar_load</span>(context = <span class='kw'>NULL</span>)</pre>
 
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>context</th>
+      <td><p>RStudio API context from
+<code><a href='https://rdrr.io/pkg/rstudioapi/man/rstudio-editors.html'>rstudioapi::getActiveDocumentContext()</a></code>.</p></td>
+    </tr>
+    </table>
 
 
   </div>
