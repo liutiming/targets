@@ -153,6 +153,7 @@ so you must install <code>clustermq</code> yourself.</p>
   garbage_collection = <span class='fl'>FALSE</span>,
   workers = <span class='fl'>1L</span>,
   template = <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(),
+  log_worker = <span class='fl'>FALSE</span>,
   callr_function = <span class='kw'>callr</span>::<span class='kw'><a href='https://rdrr.io/pkg/callr/man/r.html'>r</a></span>,
   callr_arguments = <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>()
 )</pre>
@@ -192,6 +193,12 @@ between targets. The pipeline will run slower but consume less memory.</p></td>
       <th>template</th>
       <td><p>Named list of values to insert as fields
 in the <code>clustermq</code> template file, such as computing resource requirements.</p></td>
+    </tr>
+    <tr>
+      <th>log_worker</th>
+      <td><p>Logical, whether to write a log file for each worker.
+Same as the <code>log_worker</code> argument of <code><a href='https://rdrr.io/pkg/clustermq/man/Q.html'>clustermq::Q()</a></code>
+and <code><a href='https://rdrr.io/pkg/clustermq/man/workers.html'>clustermq::workers()</a></code>.</p></td>
     </tr>
     <tr>
       <th>callr_function</th>
