@@ -133,7 +133,7 @@ inside with withr::with_dir()" />
 
     <div class="ref-description">
     <p>Creates a new directory at <code><a href='https://rdrr.io/r/base/tempfile.html'>tempfile()</a></code> and runs code
-inside with <code><a href='https://rdrr.io/pkg/withr/man/with_dir.html'>withr::with_dir()</a></code></p>
+inside with <code><a href='https://withr.r-lib.org/reference/with_dir.html'>withr::with_dir()</a></code></p>
     </div>
 
     <pre class="usage"><span class='fu'>tar_dir</span>(<span class='kw'>code</span>)</pre>
@@ -152,7 +152,9 @@ inside with <code><a href='https://rdrr.io/pkg/withr/man/with_dir.html'>withr::w
     <p>Return value of the user-defined code.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>tar_dir</span>(<span class='fu'><a href='https://rdrr.io/r/base/files.html'>file.create</a></span>(<span class='st'>"x"</span>))</div><div class='output co'>#&gt; [1] TRUE</div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/files.html'>file.exists</a></span>(<span class='st'>"x"</span>) <span class='co'># Should be false.</span></div><div class='output co'>#&gt; [1] FALSE</div></pre>
+    <pre class="examples"><div class='input'><span class='fu'>tar_dir</span>(<span class='fu'><a href='https://rdrr.io/r/base/files.html'>file.create</a></span>(<span class='st'>"x"</span>))
+</div><div class='output co'>#&gt; [1] TRUE</div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/files.html'>file.exists</a></span>(<span class='st'>"x"</span>) <span class='co'># Should be false.</span>
+</div><div class='output co'>#&gt; [1] FALSE</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

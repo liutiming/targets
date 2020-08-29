@@ -156,7 +156,8 @@ cannot interrupt a target from another process.</p>
     <pre class="examples"><div class='input'><span class='kw'>refresh_data_on_mondays</span> <span class='op'>&lt;-</span> <span class='fu'>function</span>() {
   <span class='fu'>tar_cancel</span>(<span class='op'>!</span><span class='fu'>is_monday</span>())
 }
-<span class='kw'>x</span> <span class='op'>&lt;-</span> <span class='fu'><a href='tar_target.html'>tar_target</a></span>(<span class='kw'>x</span>, <span class='fu'>refresh_data_on_mondays</span>())</div></pre>
+<span class='kw'>x</span> <span class='op'>&lt;-</span> <span class='fu'><a href='tar_target.html'>tar_target</a></span>(<span class='kw'>x</span>, <span class='fu'>refresh_data_on_mondays</span>())
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

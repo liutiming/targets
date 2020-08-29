@@ -327,7 +327,9 @@ just feed them to <code><a href='tar_pipeline.html'>tar_pipeline()</a></code> in
 <span class='co'># Tidy evaluation</span>
 <span class='fu'><a href='tar_option_set.html'>tar_option_set</a></span>()
 <span class='kw'>n_rows</span> <span class='op'>&lt;-</span> <span class='fl'>30L</span>
-<span class='kw'>data</span> <span class='op'>&lt;-</span> <span class='fu'>tar_target</span>(<span class='kw'>target_name</span>, <span class='fu'>get_data</span>(<span class='op'>!</span><span class='op'>!</span><span class='kw'>n_rows</span>))</div><div class='output co'>#&gt; <span class='error'>Error in enexpr(expr): object 'n_rows' not found</span></div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='kw'>data</span>)</div><div class='output co'>#&gt; &lt;stem target&gt; 
+<span class='kw'>data</span> <span class='op'>&lt;-</span> <span class='fu'>tar_target</span>(<span class='kw'>target_name</span>, <span class='fu'>get_data</span>(<span class='op'>!</span><span class='op'>!</span><span class='kw'>n_rows</span>))
+</div><div class='output co'>#&gt; <span class='error'>Error in enexpr(expr): object 'n_rows' not found</span></div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='kw'>data</span>)
+</div><div class='output co'>#&gt; &lt;stem target&gt; 
 #&gt;   name: target_name 
 #&gt;   command:
 #&gt;     get_data() 
@@ -354,7 +356,8 @@ just feed them to <code><a href='tar_pipeline.html'>tar_pipeline()</a></code> in
 #&gt;   library:
 #&gt;     NULL</div><div class='input'><span class='co'># Disable tidy evaluation:</span>
 <span class='kw'>data</span> <span class='op'>&lt;-</span> <span class='fu'>tar_target</span>(<span class='kw'>target_name</span>, <span class='fu'>get_data</span>(<span class='op'>!</span><span class='op'>!</span><span class='kw'>n_rows</span>), tidy_eval = <span class='fl'>FALSE</span>)
-<span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='kw'>data</span>)</div><div class='output co'>#&gt; &lt;stem target&gt; 
+<span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='kw'>data</span>)
+</div><div class='output co'>#&gt; &lt;stem target&gt; 
 #&gt;   name: target_name 
 #&gt;   command:
 #&gt;     get_data(!!n_rows) 
