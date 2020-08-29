@@ -152,6 +152,7 @@ To use <code>tar_option_set()</code> effectively, put it in your workflow's
   error = <span class='kw'>NULL</span>,
   memory = <span class='kw'>NULL</span>,
   deployment = <span class='kw'>NULL</span>,
+  priority = <span class='kw'>NULL</span>,
   resources = <span class='kw'>NULL</span>,
   template = <span class='kw'>NULL</span>,
   storage = <span class='kw'>NULL</span>,
@@ -253,6 +254,12 @@ whenever another target needs the value.</p></td>
 <code><a href='tar_make_clustermq.html'>tar_make_clustermq()</a></code> and <code><a href='tar_make_future.html'>tar_make_future()</a></code>. If <code>"remote"</code>,
 the target builds on a remote parallel worker. If <code>"local"</code>,
 the target builds on the host machine / process managing the pipeline.</p></td>
+    </tr>
+    <tr>
+      <th>priority</th>
+      <td><p>Numeric of length 1 between 0 and 1. Controls which
+targets get deployed first when multiple competing targets are ready
+simultaneously. Targets with priorities closer to 1 get built earlier.</p></td>
     </tr>
     <tr>
       <th>resources</th>
