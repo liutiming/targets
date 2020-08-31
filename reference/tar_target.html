@@ -48,7 +48,7 @@
 
 <meta property="og:title" content="Declare a target. — tar_target" />
 <meta property="og:description" content="A target is a single step of computation in a pipeline.
-It runs an R command (expr argument) and returns a value.
+It runs an R command and returns a value.
 This value gets treated as an R object that can be used
 by the commands of targets downstream. Targets that
 are already up to date are skipped. See the user manual
@@ -137,7 +137,7 @@ for more details." />
 
     <div class="ref-description">
     <p>A target is a single step of computation in a pipeline.
-It runs an R command (<code>expr</code> argument) and returns a value.
+It runs an R command and returns a value.
 This value gets treated as an R object that can be used
 by the commands of targets downstream. Targets that
 are already up to date are skipped. See the user manual
@@ -186,7 +186,7 @@ and so on. See the user manual for details.</p></td>
     <tr>
       <th>tidy_eval</th>
       <td><p>Logical, whether to enable tidy evaluation
-when interpreting <code>expr</code>. If <code>TRUE</code>, you can use the
+when interpreting <code>command</code> and <code>pattern</code>. If <code>TRUE</code>, you can use the
 "bang-bang" operator <code>!!</code> to programmatically insert
 the values of global objects.</p></td>
     </tr>
