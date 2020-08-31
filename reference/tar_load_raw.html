@@ -47,7 +47,9 @@
 
 
 <meta property="og:title" content="Load the values of targets (raw version). — tar_load_raw" />
-<meta property="og:description" content="Same as tar_load() except names is a character vector." />
+<meta property="og:description" content="Same as tar_load() except names is a character vector.
+Do not use in knitr or R Markdown reports with tarchetypes::tar_knit()
+or tarchetypes::tar_render()." />
 <meta property="og:image" content="/logo.svg" />
 
 
@@ -131,7 +133,9 @@
     </div>
 
     <div class="ref-description">
-    <p>Same as <code><a href='tar_load.html'>tar_load()</a></code> except <code>names</code> is a character vector.</p>
+    <p>Same as <code><a href='tar_load.html'>tar_load()</a></code> except <code>names</code> is a character vector.
+Do not use in <code>knitr</code> or R Markdown reports with <code>tarchetypes::tar_knit()</code>
+or <code>tarchetypes::tar_render()</code>.</p>
     </div>
 
     <pre class="usage"><span class='fu'>tar_load_raw</span>(<span class='kw'>names</span>, branches = <span class='kw'>NULL</span>, meta = <span class='fu'><a href='tar_meta.html'>tar_meta</a></span>(), envir = <span class='fu'><a href='https://rdrr.io/r/base/sys.parent.html'>parent.frame</a></span>())</pre>
