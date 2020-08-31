@@ -209,7 +209,7 @@ tracked for changes using a custom hashing procedure. When a function's
 hash changes, the function is considered invalidated, and so are any
 downstream targets with the <code>depend</code> cue turned on. The
 <code>targets</code> package computes the hash of a function in the following way.</p><ol>
-<li><p>Deparse the function with <code>targets:::safe_deparse()</code>. This
+<li><p>Deparse the function with <code>targets:::deparse_safe()</code>. This
 function computes a string representation of the function
 that removes comments and standardizes whitespace so that
 trivial changes to formatting do not cue targets to rerun.</p></li>
