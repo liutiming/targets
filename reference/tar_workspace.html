@@ -48,7 +48,8 @@
 
 <meta property="og:title" content="Load a saved workspace and seed for debugging. — tar_workspace" />
 <meta property="og:description" content="Load the workspace and random number generator seed
-of an errored target attempted with error = &quot;save&quot;." />
+of an errored target attempted with error = &quot;save&quot;.
+Remove workspace files with tar_undebug() when you are done debugging." />
 <meta property="og:image" content="/logo.svg" />
 
 
@@ -133,7 +134,8 @@ of an errored target attempted with error = &quot;save&quot;." />
 
     <div class="ref-description">
     <p>Load the workspace and random number generator seed
-of an errored target attempted with <code>error = "save"</code>.</p>
+of an errored target attempted with <code>error = "save"</code>.
+Remove workspace files with <code><a href='tar_undebug.html'>tar_undebug()</a></code> when you are done debugging.</p>
     </div>
 
     <pre class="usage"><span class='fu'>tar_workspace</span>(<span class='kw'>name</span>, envir = <span class='fu'><a href='https://rdrr.io/r/base/sys.parent.html'>parent.frame</a></span>())</pre>
@@ -169,7 +171,8 @@ in <code>_targets/workspaces/</code>. The workspace includes the
 global objects at the time <code><a href='tar_make.html'>tar_make()</a></code> was called, the
 dependency targets, the random number generator seed
 (assigned to <code>.tar_seed</code> and set with <code><a href='https://rdrr.io/r/base/Random.html'>set.seed()</a></code>)
-and the traceback of the error (assigned to <code>.tar_traceback</code>).</p>
+and the traceback of the error (assigned to <code>.tar_traceback</code>).
+Remove workspace files with <code><a href='tar_undebug.html'>tar_undebug()</a></code> when you are done debugging.</p>
 <p>Although useful, this behavior does not perfectly replicate
 what <code><a href='tar_make.html'>tar_make()</a></code> does to set up the runtime environment
 for a target. <code><a href='tar_make.html'>tar_make()</a></code> creates a formal hierarchy of
