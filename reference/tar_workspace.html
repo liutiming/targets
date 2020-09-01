@@ -6,8 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Destroy a section or all of the _targets/ data store in the
-current working directory — tar_destroy • targets</title>
+<title>Load a saved workspace and seed for debugging. — tar_workspace • targets</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -47,10 +46,9 @@ current working directory — tar_destroy • targets</title>
 
 
 
-<meta property="og:title" content="Destroy a section or all of the _targets/ data store in the
-current working directory — tar_destroy" />
-<meta property="og:description" content="Destroy _targets/ data store in the current working
-directory. Optionally, just destroy part of the data store." />
+<meta property="og:title" content="Load a saved workspace and seed for debugging. — tar_workspace" />
+<meta property="og:description" content="Load the workspace and random number generator seed
+of an errored target attempted with error = &quot;save&quot;." />
 <meta property="og:image" content="/logo.svg" />
 
 
@@ -128,56 +126,74 @@ directory. Optionally, just destroy part of the data store." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Destroy a section or all of the <code>_targets/</code> data store in the
-current working directory</h1>
-    <small class="dont-index">Source: <a href='https://github.com/wlandau/targets/blob/master/R/tar_destroy.R'><code>R/tar_destroy.R</code></a></small>
-    <div class="hidden name"><code>tar_destroy.Rd</code></div>
+    <h1>Load a saved workspace and seed for debugging.</h1>
+    <small class="dont-index">Source: <a href='https://github.com/wlandau/targets/blob/master/R/tar_workspace.R'><code>R/tar_workspace.R</code></a></small>
+    <div class="hidden name"><code>tar_workspace.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Destroy <code>_targets/</code> data store in the current working
-directory. Optionally, just destroy part of the data store.</p>
+    <p>Load the workspace and random number generator seed
+of an errored target attempted with <code>error = "save"</code>.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>tar_destroy</span>(
-  what = <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"all"</span>, <span class='st'>"meta"</span>, <span class='st'>"progress"</span>, <span class='st'>"objects"</span>, <span class='st'>"scratch"</span>, <span class='st'>"workspaces"</span>)
-)</pre>
+    <pre class="usage"><span class='fu'>tar_workspace</span>(<span class='kw'>name</span>, envir = <span class='fu'><a href='https://rdrr.io/r/base/sys.parent.html'>parent.frame</a></span>())</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>what</th>
-      <td><p>Character of length 1, what to destroy. Choices:</p><ul>
-<li><p><code>"all"</code>: destroy the entire data store.</p></li>
-<li><p><code>"meta"</code>: just delete the metadata file at <code>_targets/meta/meta</code>,
-which invalidates all the targets but keeps the data.</p></li>
-<li><p><code>"progress"</code>: just delete the progress data file at
-<code>_targets/meta/progress</code>, which resets the progress tracking info.</p></li>
-<li><p><code>"objects"</code>: delete all the target return values in <code>_targets/objects/</code>
-but keep progress and metadata. Dynamic files are not deleted this way.</p></li>
-<li><p><code>"scratch"</code>: temporary files saved during <code><a href='tar_make.html'>tar_make()</a></code> that should
-automatically get deleted except if R crashed.</p></li>
-<li><p><code>"workspaces"</code>: compressed files in <code>_targets/workspaces/</code> with
-the saved workspaces of targets that errored. Only saved
-if <code>error = "save"</code> in <code><a href='tar_option_set.html'>tar_option_set()</a></code> or <code><a href='tar_target.html'>tar_target()</a></code>.
-Load a workspace with <code><a href='tar_workspace.html'>tar_workspace()</a></code>.</p></li>
-</ul></td>
+      <th>name</th>
+      <td><p>Symbol, name of the target whose workspace to read.</p></td>
+    </tr>
+    <tr>
+      <th>envir</th>
+      <td><p>Environment in which to put the objects.</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>Nothing.</p>
+    <p>the function returns no value, but it does load multiple objects
+into the environment (<code>envir</code> argument) in order to replicate the
+workspace where the error happened. These objects include
+the global objects at the time <code><a href='tar_make.html'>tar_make()</a></code> was called, the
+dependency targets, the random number generator seed
+(assigned to <code>.tar_seed</code> and set with <code><a href='https://rdrr.io/r/base/Random.html'>set.seed()</a></code>)
+and the traceback of the error (assigned to <code>.tar_traceback</code>).</p>
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+
+    <p>If you set <code>error = "save"</code> in <code><a href='tar_option_set.html'>tar_option_set()</a></code>
+or <code><a href='tar_target.html'>tar_target()</a></code>, then if that target throws an error
+in <code><a href='tar_make.html'>tar_make()</a></code>, it will save its workspace to a compressed file
+in <code>_targets/workspaces/</code>. The workspace includes the
+global objects at the time <code><a href='tar_make.html'>tar_make()</a></code> was called, the
+dependency targets, the random number generator seed
+(assigned to <code>.tar_seed</code> and set with <code><a href='https://rdrr.io/r/base/Random.html'>set.seed()</a></code>)
+and the traceback of the error (assigned to <code>.tar_traceback</code>).
+Although useful, this behavior does not perfectly replicate
+what <code><a href='tar_make.html'>tar_make()</a></code> does to set up the runtime environment
+for a target. <code><a href='tar_make.html'>tar_make()</a></code> creates a formal hierarchy of
+environments that inherit from one another in order to
+organize data and contain side effects.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'>if</span> (<span class='fl'>FALSE</span>) {
-<span class='fu'><a href='tar_dir.html'>tar_dir</a></span>({
-<span class='fu'><a href='tar_script.html'>tar_script</a></span>(<span class='fu'><a href='tar_pipeline.html'>tar_pipeline</a></span>(<span class='fu'><a href='tar_target.html'>tar_target</a></span>(<span class='kw'>x</span>, <span class='fl'>1</span> <span class='op'>+</span> <span class='fl'>1</span>)))
-<span class='fu'><a href='tar_make.html'>tar_make</a></span>() <span class='co'># Creates the _targets/ data store.</span>
-<span class='fu'>tar_destroy</span>()
-<span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/files.html'>file.exists</a></span>(<span class='st'>"_targets"</span>)) <span class='co'># Should be FALSE.</span>
+<span class='kw'>tmp</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/sample.html'>sample</a></span>(<span class='fl'>1</span>)
+<span class='fu'><a href='tar_script.html'>tar_script</a></span>({
+  <span class='fu'><a href='tar_option_set.html'>tar_option_set</a></span>(error = <span class='st'>"save"</span>) <span class='co'># Required for saving workspaces.</span>
+  <span class='fu'><a href='tar_pipeline.html'>tar_pipeline</a></span>(
+    <span class='fu'><a href='tar_target.html'>tar_target</a></span>(<span class='kw'>x</span>, <span class='st'>"loaded"</span>),
+    <span class='fu'><a href='tar_target.html'>tar_target</a></span>(<span class='kw'>y</span>, <span class='fu'><a href='https://rdrr.io/r/base/stop.html'>stop</a></span>(<span class='kw'>x</span>))
+  )
 })
+<span class='fu'><a href='https://rdrr.io/r/base/try.html'>try</a></span>(<span class='fu'><a href='tar_make.html'>tar_make</a></span>())
+<span class='fu'><a href='https://rdrr.io/r/base/exists.html'>exists</a></span>(<span class='st'>"x"</span>) <span class='co'># Should be FALSE.</span>
+<span class='fu'><a href='https://rdrr.io/r/utils/head.html'>tail</a></span>(<span class='kw'>.Random.seed</span>)
+<span class='fu'>tar_workspace</span>(<span class='kw'>y</span>)
+<span class='fu'><a href='https://rdrr.io/r/base/exists.html'>exists</a></span>(<span class='st'>"x"</span>) <span class='co'># Should be TRUE.</span>
+<span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='kw'>x</span>) <span class='co'># "loaded"</span>
+<span class='fu'><a href='https://rdrr.io/r/utils/head.html'>tail</a></span>(<span class='kw'>.Random.seed</span>) <span class='co'># Should be different.</span>
+<span class='fu'><a href='https://rdrr.io/r/utils/head.html'>tail</a></span>(<span class='kw'>.tar_traceback</span>, <span class='fl'>1</span>)
 }
 </div></pre>
   </div>
