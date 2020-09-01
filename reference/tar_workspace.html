@@ -169,12 +169,19 @@ in <code>_targets/workspaces/</code>. The workspace includes the
 global objects at the time <code><a href='tar_make.html'>tar_make()</a></code> was called, the
 dependency targets, the random number generator seed
 (assigned to <code>.tar_seed</code> and set with <code><a href='https://rdrr.io/r/base/Random.html'>set.seed()</a></code>)
-and the traceback of the error (assigned to <code>.tar_traceback</code>).
-Although useful, this behavior does not perfectly replicate
+and the traceback of the error (assigned to <code>.tar_traceback</code>).</p>
+<p>Although useful, this behavior does not perfectly replicate
 what <code><a href='tar_make.html'>tar_make()</a></code> does to set up the runtime environment
 for a target. <code><a href='tar_make.html'>tar_make()</a></code> creates a formal hierarchy of
 environments that inherit from one another in order to
 organize data and contain side effects.</p>
+<p>In addition, sometimes, you may not be able to debug with
+<code>error = "save"</code>. Workspace files are saved with <code><a href='https://rdrr.io/pkg/qs/man/qsave.html'>qs::qsave()</a></code>,
+so if one of your dependencies cannot be properly serialized this way
+(e.g. Keras models you store with <code>format = "keras"</code>)
+then the workspace cannot be saved properly. If this happens to you,
+either avoid non-exportable objects or use interactive debugging.
+(See the <code>debug</code> argument of <code><a href='tar_option_set.html'>tar_option_set()</a></code>.)</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'>if</span> (<span class='fl'>FALSE</span>) {
