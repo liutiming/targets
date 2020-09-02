@@ -138,7 +138,7 @@ of an errored target attempted with <code>error = "save"</code>.
 Remove workspace files with <code><a href='tar_undebug.html'>tar_undebug()</a></code> when you are done debugging.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>tar_workspace</span>(<span class='kw'>name</span>, envir = <span class='fu'><a href='https://rdrr.io/r/base/sys.parent.html'>parent.frame</a></span>())</pre>
+    <pre class="usage"><span class='fu'>tar_workspace</span>(<span class='kw'>name</span>, envir = <span class='fu'><a href='https://rdrr.io/r/base/sys.parent.html'>parent.frame</a></span>(), packages = <span class='fl'>TRUE</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -150,6 +150,14 @@ Remove workspace files with <code><a href='tar_undebug.html'>tar_undebug()</a></
     <tr>
       <th>envir</th>
       <td><p>Environment in which to put the objects.</p></td>
+    </tr>
+    <tr>
+      <th>packages</th>
+      <td><p>Logical, whether to load the required packages
+of the target. Uses <code>require()</code> with <code>lib.loc</code> equal to
+the <code>library</code> setting of the target
+(from <code><a href='tar_target.html'>tar_target(library = "PATH_TO_LIB")</a></code> or
+<code><a href='tar_option_set.html'>tar_option_set(library = "PATH_TO_LIB")</a></code>).</p></td>
     </tr>
     </table>
 
