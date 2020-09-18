@@ -210,12 +210,18 @@ Possible formats:</p><ul>
 <li><p><code>"rds"</code>: Default, uses <code><a href='https://rdrr.io/r/base/readRDS.html'>saveRDS()</a></code> and <code><a href='https://rdrr.io/r/base/readRDS.html'>readRDS()</a></code>. Should work for
 most objects, but slow.</p></li>
 <li><p><code>"qs"</code>: Uses <code><a href='https://rdrr.io/pkg/qs/man/qsave.html'>qs::qsave()</a></code> and <code><a href='https://rdrr.io/pkg/qs/man/qread.html'>qs::qread()</a></code>. Should work for
-most objects, much faster than <code>"rds"</code>.</p></li>
+most objects, much faster than <code>"rds"</code>. Optionally set the
+preset for <code>qsave()</code> through the <code>resources</code> argument, e.g.
+<code>tar_target(..., resources = list(preset = "archive"))</code>.</p></li>
 <li><p><code>"fst"</code>: Uses <code><a href='http://www.fstpackage.org/reference/write_fst.html'>fst::write_fst()</a></code> and <code><a href='http://www.fstpackage.org/reference/write_fst.html'>fst::read_fst()</a></code>.
 Much faster than <code>"rds"</code>, but the value must be
-a data frame.</p></li>
-<li><p><code>"fst_dt"</code>: Same as <code>"fst"</code>, but the value is a <code>data.table</code>.</p></li>
-<li><p><code>"fst_tbl"</code>: Same as <code>"fst"</code>, but the value is a <code>tibble</code>.</p></li>
+a data frame. Optionally set the compression level for
+<code><a href='http://www.fstpackage.org/reference/write_fst.html'>fst::write_fst()</a></code> through the <code>resources</code> argument, e.g.
+<code>tar_target(..., resources = list(compress = 100))</code>.</p></li>
+<li><p><code>"fst_dt"</code>: Same as <code>"fst"</code>, but the value is a <code>data.table</code>.
+Optionally set the compression level the same way as for <code>"fst"</code>.</p></li>
+<li><p><code>"fst_tbl"</code>: Same as <code>"fst"</code>, but the value is a <code>tibble</code>.
+Optionally set the compression level the same way as for <code>"fst"</code>.</p></li>
 <li><p><code>"keras"</code>: Uses <code><a href='https://rdrr.io/pkg/keras/man/save_model_hdf5.html'>keras::save_model_hdf5()</a></code> and
 <code><a href='https://rdrr.io/pkg/keras/man/save_model_hdf5.html'>keras::load_model_hdf5()</a></code>. The value must be a Keras model.</p></li>
 <li><p><code>"file"</code>: A dynamic file. To use this format,
@@ -292,7 +298,12 @@ simultaneously. Targets with priorities closer to 1 get built earlier.</p></td>
 <li><p>Template file wildcards for <code><a href='https://rdrr.io/pkg/future/man/future.html'>future::future()</a></code> in <code><a href='tar_make_future.html'>tar_make_future()</a></code>.</p></li>
 <li><p>Template file wildcards <code><a href='https://rdrr.io/pkg/clustermq/man/workers.html'>clustermq::workers()</a></code> in <code><a href='tar_make_clustermq.html'>tar_make_clustermq()</a></code>.</p></li>
 <li><p>Custom <code>curl</code> handle if <code>format = "url"</code>,
-e.g. <code>resources = list(handle = curl::new_handle()</code>.</p></li>
+e.g. <code>resources = list(handle = curl::new_handle())</code>.</p></li>
+<li><p>Custom preset for <code><a href='https://rdrr.io/pkg/qs/man/qsave.html'>qs::qsave()</a></code> if <code>format = "qs"</code>, e.g.
+<code>resources = list(handle = "archive")</code>.</p></li>
+<li><p>Custom compression level for <code><a href='http://www.fstpackage.org/reference/write_fst.html'>fst::write_fst()</a></code> if
+<code>format</code> is <code>"fst"</code>, <code>"fst_dt"</code>, or <code>"fst_tbl"</code>, e.g.
+<code>resources = list(compress = 100)</code>.</p></li>
 </ul></td>
     </tr>
     <tr>
