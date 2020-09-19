@@ -257,6 +257,7 @@
 <li>Decrement the ranks of downstream targets in the priority queue.</li>
 <li>Insert new targets dynamically.</li>
 </ol>
+<p>For patterns, <code>conclude()</code> is called twice: once to spawn branches, and then again when all the branches are done.</p>
 <div id="decrement-the-ranks-of-downstream-targets-in-the-priority-queue-" class="section level2">
 <h2 class="hasAnchor">
 <a href="#decrement-the-ranks-of-downstream-targets-in-the-priority-queue-" class="anchor"></a>Decrement the ranks of downstream targets in the priority queue.</h2>
@@ -266,13 +267,26 @@
 <h2 class="hasAnchor">
 <a href="#insert-new-targets-dynamically-" class="anchor"></a>Insert new targets dynamically.</h2>
 <p><code>targets</code> creates new targets dynamically when stems and patterns conclude. To illustrate, let us use the following example pipeline.</p>
-<p><img src="orchestration/orchestration-start.png"></p>
+<div class="sourceCode" id="cb1"><pre class="downlit">
+<span class="co"># _targets.R</span>
+<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="kw"><a href="https://wlandau.github.io/targets/">targets</a></span>)
+<span class="fu"><a href="https://rdrr.io/r/base/source.html">source</a></span>(<span class="st">"functions.R"</span>) <span class="co"># Defines all the functions below prefixed with "user_".</span>
+<span class="fu"><a href="../reference/tar_pipeline.html">tar_pipeline</a></span>(
+  <span class="fu"><a href="../reference/tar_target.html">tar_target</a></span>(<span class="kw">data1</span>, <span class="fu">user_data1</span>()),
+  <span class="fu"><a href="../reference/tar_target.html">tar_target</a></span>(<span class="kw">data2</span>, <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span>(<span class="fu">user_data2_slice1</span>(), <span class="fu">user_data2_slice2</span>())),
+  <span class="fu"><a href="../reference/tar_target.html">tar_target</a></span>(<span class="kw">analysis</span>, <span class="fu">user_analyze</span>(<span class="kw">data2</span>), pattern = <span class="fu">map</span>(<span class="kw">data2</span>)),
+  <span class="fu"><a href="../reference/tar_target.html">tar_target</a></span>(<span class="kw">validation</span>, <span class="fu">user_validate</span>(<span class="kw">analysis</span>), pattern = <span class="fu">map</span>(<span class="kw">analysis</span>)),
+  <span class="fu"><a href="../reference/tar_target.html">tar_target</a></span>(<span class="kw">summary</span>, <span class="fu">user_summarize</span>(<span class="kw">validation</span>)) <span class="co"># Does not map over validation.</span>
+)</pre></div>
+<p>In prose:</p>
 <ul>
 <li>The <code>data</code> and <code>data2</code> targets are starting datasets.</li>
 <li>The <code>analysis</code> target maps over the rows of <code>data2</code> and performs a statistical analysis on each row. All analyses use the entirety of <code>data1</code>.</li>
 <li>The <code>validation</code> target maps over the analyses to check each one for correctness.</li>
 <li>The <code>summary</code> target aggregates and summarizes all the analyses and validations together.</li>
 </ul>
+<p>Graphical representation:</p>
+<p><img src="orchestration/orchestration-start.png"></p>
 <div id="insert-buds" class="section level3">
 <h3 class="hasAnchor">
 <a href="#insert-buds" class="anchor"></a>Insert buds</h3>
@@ -284,14 +298,15 @@
 <li>Create new bud objects, each containing a slice of <code>data2</code>’s return value.</li>
 <li>Insert the buds into the pipeline object.</li>
 </ol>
-<p>We do not need to update the scheduler because the parent stem of the buds already completed. In other words, buds are born built.</p>
+<p>We do not need to update the scheduler because the parent stem of the buds already completed. In other words, buds are born built. They exist as separate data objects in memory, but they have no dedicated storage.</p>
 </div>
 <div id="insert-branches" class="section level3">
 <h3 class="hasAnchor">
 <a href="#insert-branches" class="anchor"></a>Insert branches</h3>
-<p>With the buds in place, the <code>analysis</code> pattern can now create branches.</p>
+<p>With the buds in place, the <code>analysis</code> pattern can now create branches that depend on each of the respective buds of <code>data2</code>. After they run, the branches exist as separate data objects in memory and storage. The full aggregated <code>analysis</code> pattern is not needed, so it is never created.</p>
 <p><img src="orchestration/orchestration-analysis.png"></p>
 <p>As soon as these first branches are created, we can create the branches for <code>validation</code>. It does not matter if <code>analysis_5c77a278</code> and <code>analysis_3439bce3</code> are both still queued. In addition, as soon as <code>analysis_5c77a278</code> is built, <code>validation_0f7f2822</code> can start building regardless of whether <code>analysis_3439bce3</code> is complete. This is a major source of parallel efficiency.</p>
+<p>Notice that we never draw edges from the <code>validation_*</code> branches to <code>summary</code>. This is because <code>summary</code> does not map over <code>validation</code>, so it automatically takes in all of <code>validation</code> as an entire aggregated pattern. In the <code>prepare()</code> method of <code>summary</code>, <code>validation</code> is constructed from its individual branches kept in memory while it is needed. Unlike the <code>validation_*</code> branches, the aggregated <code>validation</code> pattern does not persist in storage.</p>
 <p><img src="orchestration/orchestration-validation.png"></p>
 <p>The fine details of the branching algorithm are as follows.</p>
 <ol style="list-style-type: decimal">
