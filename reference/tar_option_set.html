@@ -142,23 +142,23 @@ To use <code>tar_option_set()</code> effectively, put it in your workflow's
 <code>_targets.R</code> script before calls to <code><a href='tar_target.html'>tar_target()</a></code> or <code><a href='tar_target_raw.html'>tar_target_raw()</a></code>.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>tar_option_set</span>(
-  tidy_eval = <span class='kw'>NULL</span>,
-  packages = <span class='kw'>NULL</span>,
-  library = <span class='kw'>NULL</span>,
-  envir = <span class='kw'>NULL</span>,
-  format = <span class='kw'>NULL</span>,
-  iteration = <span class='kw'>NULL</span>,
-  error = <span class='kw'>NULL</span>,
-  memory = <span class='kw'>NULL</span>,
-  deployment = <span class='kw'>NULL</span>,
-  priority = <span class='kw'>NULL</span>,
-  resources = <span class='kw'>NULL</span>,
-  storage = <span class='kw'>NULL</span>,
-  retrieval = <span class='kw'>NULL</span>,
-  cue = <span class='kw'>NULL</span>,
-  debug = <span class='kw'>NULL</span>
-)</pre>
+    <pre class="usage"><span class='fu'>tar_option_set</span><span class='op'>(</span>
+  tidy_eval <span class='op'>=</span> <span class='cn'>NULL</span>,
+  packages <span class='op'>=</span> <span class='cn'>NULL</span>,
+  library <span class='op'>=</span> <span class='cn'>NULL</span>,
+  envir <span class='op'>=</span> <span class='cn'>NULL</span>,
+  format <span class='op'>=</span> <span class='cn'>NULL</span>,
+  iteration <span class='op'>=</span> <span class='cn'>NULL</span>,
+  error <span class='op'>=</span> <span class='cn'>NULL</span>,
+  memory <span class='op'>=</span> <span class='cn'>NULL</span>,
+  deployment <span class='op'>=</span> <span class='cn'>NULL</span>,
+  priority <span class='op'>=</span> <span class='cn'>NULL</span>,
+  resources <span class='op'>=</span> <span class='cn'>NULL</span>,
+  storage <span class='op'>=</span> <span class='cn'>NULL</span>,
+  retrieval <span class='op'>=</span> <span class='cn'>NULL</span>,
+  cue <span class='op'>=</span> <span class='cn'>NULL</span>,
+  debug <span class='op'>=</span> <span class='cn'>NULL</span>
+<span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -333,13 +333,13 @@ targets.</p></td>
     <p>Nothing.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'><a href='tar_option_get.html'>tar_option_get</a></span>(<span class='st'>"format"</span>) <span class='co'># default format before we set anything</span>
-</div><div class='output co'>#&gt; [1] "rds"</div><div class='input'><span class='fu'><a href='tar_target.html'>tar_target</a></span>(<span class='kw'>x</span>, <span class='fl'>1</span>)<span class='op'>$</span><span class='kw'>settings</span><span class='op'>$</span><span class='kw'>format</span>
-</div><div class='output co'>#&gt; [1] "rds"</div><div class='input'><span class='fu'>tar_option_set</span>(format = <span class='st'>"fst_tbl"</span>) <span class='co'># new default format</span>
-<span class='fu'><a href='tar_option_get.html'>tar_option_get</a></span>(<span class='st'>"format"</span>)
-</div><div class='output co'>#&gt; [1] "fst_tbl"</div><div class='input'><span class='fu'><a href='tar_target.html'>tar_target</a></span>(<span class='kw'>x</span>, <span class='fl'>1</span>)<span class='op'>$</span><span class='kw'>settings</span><span class='op'>$</span><span class='kw'>format</span>
-</div><div class='output co'>#&gt; [1] "fst_tbl"</div><div class='input'><span class='fu'><a href='tar_option_reset.html'>tar_option_reset</a></span>() <span class='co'># reset the format</span>
-<span class='fu'><a href='tar_target.html'>tar_target</a></span>(<span class='kw'>x</span>, <span class='fl'>1</span>)<span class='op'>$</span><span class='kw'>settings</span><span class='op'>$</span><span class='kw'>format</span>
+    <pre class="examples"><div class='input'><span class='fu'><a href='tar_option_get.html'>tar_option_get</a></span><span class='op'>(</span><span class='st'>"format"</span><span class='op'>)</span> <span class='co'># default format before we set anything</span>
+</div><div class='output co'>#&gt; [1] "rds"</div><div class='input'><span class='fu'><a href='tar_target.html'>tar_target</a></span><span class='op'>(</span><span class='va'>x</span>, <span class='fl'>1</span><span class='op'>)</span><span class='op'>$</span><span class='va'>settings</span><span class='op'>$</span><span class='va'>format</span>
+</div><div class='output co'>#&gt; [1] "rds"</div><div class='input'><span class='fu'>tar_option_set</span><span class='op'>(</span>format <span class='op'>=</span> <span class='st'>"fst_tbl"</span><span class='op'>)</span> <span class='co'># new default format</span>
+<span class='fu'><a href='tar_option_get.html'>tar_option_get</a></span><span class='op'>(</span><span class='st'>"format"</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; [1] "fst_tbl"</div><div class='input'><span class='fu'><a href='tar_target.html'>tar_target</a></span><span class='op'>(</span><span class='va'>x</span>, <span class='fl'>1</span><span class='op'>)</span><span class='op'>$</span><span class='va'>settings</span><span class='op'>$</span><span class='va'>format</span>
+</div><div class='output co'>#&gt; [1] "fst_tbl"</div><div class='input'><span class='fu'><a href='tar_option_reset.html'>tar_option_reset</a></span><span class='op'>(</span><span class='op'>)</span> <span class='co'># reset the format</span>
+<span class='fu'><a href='tar_target.html'>tar_target</a></span><span class='op'>(</span><span class='va'>x</span>, <span class='fl'>1</span><span class='op'>)</span><span class='op'>$</span><span class='va'>settings</span><span class='op'>$</span><span class='va'>format</span>
 </div><div class='output co'>#&gt; [1] "rds"</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

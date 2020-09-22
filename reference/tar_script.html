@@ -146,7 +146,7 @@ where you intend to write the file, so be careful.
 See the "Target script" section for details.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>tar_script</span>(code = <span class='kw'>NULL</span>, library_targets = <span class='fl'>TRUE</span>, ask = <span class='kw'>NULL</span>)</pre>
+    <pre class="usage"><span class='fu'>tar_script</span><span class='op'>(</span>code <span class='op'>=</span> <span class='cn'>NULL</span>, library_targets <span class='op'>=</span> <span class='cn'>TRUE</span>, ask <span class='op'>=</span> <span class='cn'>NULL</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -205,17 +205,17 @@ a pipeline object, which usually means ending with a call to
 in the same function call.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'>if</span> (<span class='fl'>FALSE</span>) {
-<span class='fu'><a href='tar_dir.html'>tar_dir</a></span>({
-<span class='fu'>tar_script</span>() <span class='co'># Writes an example target script.</span>
+    <pre class="examples"><div class='input'><span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span>
+<span class='fu'><a href='tar_dir.html'>tar_dir</a></span><span class='op'>(</span><span class='op'>{</span>
+<span class='fu'>tar_script</span><span class='op'>(</span><span class='op'>)</span> <span class='co'># Writes an example target script.</span>
 <span class='co'># Writes a user-defined target script:</span>
-<span class='fu'>tar_script</span>({
-  <span class='kw'>x</span> <span class='op'>&lt;-</span> <span class='fu'><a href='tar_target.html'>tar_target</a></span>(<span class='kw'>x</span>, <span class='fl'>1</span> <span class='op'>+</span> <span class='fl'>1</span>)
-  <span class='fu'><a href='tar_option_set.html'>tar_option_set</a></span>()
-  <span class='fu'><a href='tar_pipeline.html'>tar_pipeline</a></span>(<span class='kw'>x</span>)
-})
-})
-}
+<span class='fu'>tar_script</span><span class='op'>(</span><span class='op'>{</span>
+  <span class='va'>x</span> <span class='op'>&lt;-</span> <span class='fu'><a href='tar_target.html'>tar_target</a></span><span class='op'>(</span><span class='va'>x</span>, <span class='fl'>1</span> <span class='op'>+</span> <span class='fl'>1</span><span class='op'>)</span>
+  <span class='fu'><a href='tar_option_set.html'>tar_option_set</a></span><span class='op'>(</span><span class='op'>)</span>
+  <span class='fu'><a href='tar_pipeline.html'>tar_pipeline</a></span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span>
+<span class='op'>}</span><span class='op'>)</span>
+<span class='op'>}</span><span class='op'>)</span>
+<span class='op'>}</span>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

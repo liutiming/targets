@@ -140,7 +140,7 @@ Dynamic files outside the data store are unaffected.
 The <code>_targets/</code> data store must be in the current working directory.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>tar_delete</span>(<span class='kw'>names</span>)</pre>
+    <pre class="usage"><span class='fu'>tar_delete</span><span class='op'>(</span><span class='va'>names</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -160,20 +160,20 @@ will be deleted. For patterns no longer in the metadata,
 branches are left alone.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'>if</span> (<span class='fl'>FALSE</span>) {
-<span class='fu'><a href='tar_dir.html'>tar_dir</a></span>({
-<span class='fu'><a href='tar_script.html'>tar_script</a></span>(
-  <span class='fu'><a href='tar_pipeline.html'>tar_pipeline</a></span>(
-    <span class='fu'><a href='tar_target.html'>tar_target</a></span>(<span class='kw'>y1</span>, <span class='fl'>1</span> <span class='op'>+</span> <span class='fl'>1</span>),
-    <span class='fu'><a href='tar_target.html'>tar_target</a></span>(<span class='kw'>y2</span>, <span class='fl'>1</span> <span class='op'>+</span> <span class='fl'>1</span>),
-    <span class='fu'><a href='tar_target.html'>tar_target</a></span>(<span class='kw'>z</span>, <span class='kw'>y1</span> <span class='op'>+</span> <span class='kw'>y2</span>)
-  )
-)
-<span class='fu'><a href='tar_make.html'>tar_make</a></span>()
-<span class='fu'>tar_delete</span>(<span class='fu'><a href='https://tidyselect.r-lib.org/reference/starts_with.html'>starts_with</a></span>(<span class='st'>"y"</span>)) <span class='co'># Only deletes y1 and y2.</span>
-<span class='fu'><a href='tar_make.html'>tar_make</a></span>() <span class='co'># y1 and y2 rebuild but return same values, so z is up to date.</span>
-})
-}
+    <pre class="examples"><div class='input'><span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span>
+<span class='fu'><a href='tar_dir.html'>tar_dir</a></span><span class='op'>(</span><span class='op'>{</span>
+<span class='fu'><a href='tar_script.html'>tar_script</a></span><span class='op'>(</span>
+  <span class='fu'><a href='tar_pipeline.html'>tar_pipeline</a></span><span class='op'>(</span>
+    <span class='fu'><a href='tar_target.html'>tar_target</a></span><span class='op'>(</span><span class='va'>y1</span>, <span class='fl'>1</span> <span class='op'>+</span> <span class='fl'>1</span><span class='op'>)</span>,
+    <span class='fu'><a href='tar_target.html'>tar_target</a></span><span class='op'>(</span><span class='va'>y2</span>, <span class='fl'>1</span> <span class='op'>+</span> <span class='fl'>1</span><span class='op'>)</span>,
+    <span class='fu'><a href='tar_target.html'>tar_target</a></span><span class='op'>(</span><span class='va'>z</span>, <span class='va'>y1</span> <span class='op'>+</span> <span class='va'>y2</span><span class='op'>)</span>
+  <span class='op'>)</span>
+<span class='op'>)</span>
+<span class='fu'><a href='tar_make.html'>tar_make</a></span><span class='op'>(</span><span class='op'>)</span>
+<span class='fu'>tar_delete</span><span class='op'>(</span><span class='fu'><a href='https://tidyselect.r-lib.org/reference/starts_with.html'>starts_with</a></span><span class='op'>(</span><span class='st'>"y"</span><span class='op'>)</span><span class='op'>)</span> <span class='co'># Only deletes y1 and y2.</span>
+<span class='fu'><a href='tar_make.html'>tar_make</a></span><span class='op'>(</span><span class='op'>)</span> <span class='co'># y1 and y2 rebuild but return same values, so z is up to date.</span>
+<span class='op'>}</span><span class='op'>)</span>
+<span class='op'>}</span>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

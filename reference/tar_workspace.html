@@ -138,7 +138,7 @@ of an errored target attempted with <code>error = "save"</code>.
 Remove workspace files with <code><a href='tar_undebug.html'>tar_undebug()</a></code> when you are done debugging.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>tar_workspace</span>(<span class='kw'>name</span>, envir = <span class='fu'><a href='https://rdrr.io/r/base/sys.parent.html'>parent.frame</a></span>(), packages = <span class='fl'>TRUE</span>)</pre>
+    <pre class="usage"><span class='fu'>tar_workspace</span><span class='op'>(</span><span class='va'>name</span>, envir <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/sys.parent.html'>parent.frame</a></span><span class='op'>(</span><span class='op'>)</span>, packages <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -200,24 +200,24 @@ either avoid non-exportable objects or use interactive debugging.
 (See the <code>debug</code> argument of <code><a href='tar_option_set.html'>tar_option_set()</a></code>.)</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'>if</span> (<span class='fl'>FALSE</span>) {
-<span class='kw'>tmp</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/sample.html'>sample</a></span>(<span class='fl'>1</span>)
-<span class='fu'><a href='tar_script.html'>tar_script</a></span>({
-  <span class='fu'><a href='tar_option_set.html'>tar_option_set</a></span>(error = <span class='st'>"save"</span>) <span class='co'># Required for saving workspaces.</span>
-  <span class='fu'><a href='tar_pipeline.html'>tar_pipeline</a></span>(
-    <span class='fu'><a href='tar_target.html'>tar_target</a></span>(<span class='kw'>x</span>, <span class='st'>"loaded"</span>),
-    <span class='fu'><a href='tar_target.html'>tar_target</a></span>(<span class='kw'>y</span>, <span class='fu'><a href='https://rdrr.io/r/base/stop.html'>stop</a></span>(<span class='kw'>x</span>))
-  )
-})
-<span class='fu'><a href='https://rdrr.io/r/base/try.html'>try</a></span>(<span class='fu'><a href='tar_make.html'>tar_make</a></span>())
-<span class='fu'><a href='https://rdrr.io/r/base/exists.html'>exists</a></span>(<span class='st'>"x"</span>) <span class='co'># Should be FALSE.</span>
-<span class='fu'><a href='https://rdrr.io/r/utils/head.html'>tail</a></span>(<span class='kw'>.Random.seed</span>)
-<span class='fu'>tar_workspace</span>(<span class='kw'>y</span>)
-<span class='fu'><a href='https://rdrr.io/r/base/exists.html'>exists</a></span>(<span class='st'>"x"</span>) <span class='co'># Should be TRUE.</span>
-<span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='kw'>x</span>) <span class='co'># "loaded"</span>
-<span class='fu'><a href='https://rdrr.io/r/utils/head.html'>tail</a></span>(<span class='kw'>.Random.seed</span>) <span class='co'># Should be different.</span>
-<span class='fu'><a href='https://rdrr.io/r/utils/head.html'>tail</a></span>(<span class='kw'>.targets</span><span class='op'>$</span><span class='kw'>traceback</span>, <span class='fl'>1</span>)
-}
+    <pre class="examples"><div class='input'><span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span>
+<span class='va'>tmp</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/sample.html'>sample</a></span><span class='op'>(</span><span class='fl'>1</span><span class='op'>)</span>
+<span class='fu'><a href='tar_script.html'>tar_script</a></span><span class='op'>(</span><span class='op'>{</span>
+  <span class='fu'><a href='tar_option_set.html'>tar_option_set</a></span><span class='op'>(</span>error <span class='op'>=</span> <span class='st'>"save"</span><span class='op'>)</span> <span class='co'># Required for saving workspaces.</span>
+  <span class='fu'><a href='tar_pipeline.html'>tar_pipeline</a></span><span class='op'>(</span>
+    <span class='fu'><a href='tar_target.html'>tar_target</a></span><span class='op'>(</span><span class='va'>x</span>, <span class='st'>"loaded"</span><span class='op'>)</span>,
+    <span class='fu'><a href='tar_target.html'>tar_target</a></span><span class='op'>(</span><span class='va'>y</span>, <span class='kw'><a href='https://rdrr.io/r/base/stop.html'>stop</a></span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span><span class='op'>)</span>
+  <span class='op'>)</span>
+<span class='op'>}</span><span class='op'>)</span>
+<span class='kw'><a href='https://rdrr.io/r/base/try.html'>try</a></span><span class='op'>(</span><span class='fu'><a href='tar_make.html'>tar_make</a></span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span>
+<span class='fu'><a href='https://rdrr.io/r/base/exists.html'>exists</a></span><span class='op'>(</span><span class='st'>"x"</span><span class='op'>)</span> <span class='co'># Should be FALSE.</span>
+<span class='fu'><a href='https://rdrr.io/r/utils/head.html'>tail</a></span><span class='op'>(</span><span class='va'>.Random.seed</span><span class='op'>)</span>
+<span class='fu'>tar_workspace</span><span class='op'>(</span><span class='va'>y</span><span class='op'>)</span>
+<span class='fu'><a href='https://rdrr.io/r/base/exists.html'>exists</a></span><span class='op'>(</span><span class='st'>"x"</span><span class='op'>)</span> <span class='co'># Should be TRUE.</span>
+<span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span> <span class='co'># "loaded"</span>
+<span class='fu'><a href='https://rdrr.io/r/utils/head.html'>tail</a></span><span class='op'>(</span><span class='va'>.Random.seed</span><span class='op'>)</span> <span class='co'># Should be different.</span>
+<span class='fu'><a href='https://rdrr.io/r/utils/head.html'>tail</a></span><span class='op'>(</span><span class='va'>.targets</span><span class='op'>$</span><span class='va'>traceback</span>, <span class='fl'>1</span><span class='op'>)</span>
+<span class='op'>}</span>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
