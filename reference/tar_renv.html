@@ -47,12 +47,13 @@
 
 
 <meta property="og:title" content="Set up package dependencies for compatibility with renv — tar_renv" />
-<meta property="og:description" content="Write package dependencies to a file named _packages.R in
-the root project directory. Each package is written to a separate line in
-_packages.R as a standard library call (e.g. library(package))
-so that they may be identified by {renv} for caching. This is only
+<meta property="og:description" content="Write package dependencies to a script file
+(named _packages.R by default in
+the root project directory). Each package is written to a separate line in
+as a standard library() call (e.g. library(package))
+renv identifies them automatically. This is only
 necessary if the user invokes tar_option_set() or tar_target() to
-declare packages rather than library/require or namespacing
+declare packages rather than the usual library() or namespaced call.
 (i.e. package::function()). See Details for more information." />
 <meta property="og:image" content="/logo.svg" />
 
@@ -137,16 +138,21 @@ declare packages rather than library/require or namespacing
     </div>
 
     <div class="ref-description">
-    <p>Write package dependencies to a file named <code>_packages.R</code> in
-the root project directory. Each package is written to a separate line in
-<code>_packages.R</code> as a standard <code><a href='https://rdrr.io/r/base/library.html'>library</a></code> call (e.g. <code>library(package)</code>)
-so that they may be identified by <code>{renv}</code> for caching. This is only
+    <p>Write package dependencies to a script file
+(named <code>_packages.R</code> by default in
+the root project directory). Each package is written to a separate line in
+as a standard <code><a href='https://rdrr.io/r/base/library.html'>library()</a></code> call (e.g. <code>library(package)</code>)
+<code>renv</code> identifies them automatically. This is only
 necessary if the user invokes <code><a href='tar_option_set.html'>tar_option_set()</a></code> or <code><a href='tar_target.html'>tar_target()</a></code> to
-declare packages rather than <code><a href='https://rdrr.io/r/base/library.html'>library</a></code>/<code><a href='https://rdrr.io/r/base/library.html'>require</a></code> or namespacing
+declare packages rather than the usual <code><a href='https://rdrr.io/r/base/library.html'>library()</a></code> or namespaced call.
 (i.e. <code>package::function()</code>). See <code>Details</code> for more information.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>tar_renv</span><span class='op'>(</span>packages <span class='op'>=</span> <span class='fu'>targets</span><span class='fu'>::</span><span class='fu'><a href='tar_option_get.html'>tar_option_get</a></span><span class='op'>(</span><span class='st'>"packages"</span><span class='op'>)</span>, ask <span class='op'>=</span> <span class='cn'>NULL</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>tar_renv</span><span class='op'>(</span>
+  packages <span class='op'>=</span> <span class='fu'>targets</span><span class='fu'>::</span><span class='fu'><a href='tar_option_get.html'>tar_option_get</a></span><span class='op'>(</span><span class='st'>"packages"</span><span class='op'>)</span>,
+  path <span class='op'>=</span> <span class='st'>"_packages.R"</span>,
+  ask <span class='op'>=</span> <span class='cn'>NULL</span>
+<span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -156,6 +162,11 @@ declare packages rather than <code><a href='https://rdrr.io/r/base/library.html'
       <td><p>Character vector of packages to load right before
 the target builds. Use <code><a href='tar_option_set.html'>tar_option_set()</a></code> to set packages
 globally for all subsequent targets you define.</p></td>
+    </tr>
+    <tr>
+      <th>path</th>
+      <td><p>Character of length 1, path to the script file to
+populate with <code><a href='https://rdrr.io/r/base/library.html'>library()</a></code> calls.</p></td>
     </tr>
     <tr>
       <th>ask</th>
@@ -174,35 +185,31 @@ indeterminate, defaults to <code><a href='https://rdrr.io/r/base/interactive.htm
 
     <p>This function gets called for its side-effect, which writes
 package dependencies provided to the <code>packages</code> argument to
-<code>_packages.R</code>. <code>tar_renv()</code> is unable to detect packages declared after it
-has been called in the script (e.g. target-specific packages declared
-within <code><a href='tar_pipeline.html'>tar_pipeline</a></code>); these packages need to be
-passed to <code>tar_renv()</code> manually. The generated file should <strong>not</strong> be
-edited by hand and will be overwritten each time <code>tar_renv()</code> runs.</p>
-<p>By explicitly writing packages to a file, <code>{renv}</code> is able to crawl the
-file to identify package dependencies with <code>renv::dependencies()</code>.
+a script. If you do not explicitly set the <code>packages</code> argument,
+<code>tar_renv()</code> will detect only the packages at <code><a href='tar_option_get.html'>tar_option_get("packages")</a></code>
+at that point in the code. The generated file should <strong>not</strong> be
+edited by hand and will be overwritten each time <code>tar_renv()</code> runs
+non-interactively.</p>
+<p>With the script written by <code>tar_env()</code>, <code>renv</code> is able to crawl the
+file to identify package dependencies (with <code>renv::dependencies()</code>).
 Calling <code>renv::init()</code> after <code>tar_renv()</code> has ran will set up a
 project-local <code>R</code> library. This allows your <code>targets</code> pipeline to have
 its own self-contained <code>R</code> library separate from your standard <code>R</code>
-library. See <a href='https://rstudio.github.io/renv/index.html'><code>{renv}</code></a> for
+library. See <a href='https://rstudio.github.io/renv/index.html'>https://rstudio.github.io/renv/index.html</a> for
 more information.</p>
-<p>During interactive project development, you may find it useful to run
-<code><a href='https://rdrr.io/r/base/source.html'>source("_packages.R")</a></code> to quickly load packages. However, this file
-primarily exists to provide native compatibility with <code>{renv}</code>.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p><a href='https://rstudio.github.io/renv/articles/renv.html'>https://rstudio.github.io/renv/articles/renv.html</a></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='fu'><a href='tar_dir.html'>tar_dir</a></span><span class='op'>(</span><span class='op'>{</span>
-  <span class='va'>pkgs</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"tidyverse"</span>, <span class='st'>"qs"</span><span class='op'>)</span>
-  <span class='fu'><a href='tar_option_set.html'>tar_option_set</a></span><span class='op'>(</span>packages <span class='op'>=</span> <span class='va'>pkgs</span><span class='op'>)</span>
+  <span class='fu'><a href='tar_option_set.html'>tar_option_set</a></span><span class='op'>(</span>packages <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"tibble"</span>, <span class='st'>"qs"</span><span class='op'>)</span><span class='op'>)</span>
   <span class='fu'>tar_renv</span><span class='op'>(</span><span class='op'>)</span>
   <span class='fu'><a href='https://rdrr.io/r/base/readLines.html'>readLines</a></span><span class='op'>(</span><span class='st'>"_packages.R"</span><span class='op'>)</span>
 <span class='op'>}</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; [1] "# Generated by targets::tar_env: do not edit by hand"
-#&gt; [2] "library(tidyverse)"                                  
-#&gt; [3] "library(qs)"                                         </div></pre>
+</div><div class='output co'>#&gt; [1] "# Generated by targets::tar_env(). Do not edit by hand."
+#&gt; [2] "library(tibble)"                                        
+#&gt; [3] "library(qs)"                                            </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
