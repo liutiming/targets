@@ -48,12 +48,12 @@
 
 <meta property="og:title" content="Set up package dependencies for compatibility with renv — tar_renv" />
 <meta property="og:description" content="Write package dependencies to a script file
-(named _packages.R by default in
-the root project directory). Each package is written to a separate line in
-as a standard library() call (e.g. library(package))
-renv identifies them automatically. This is only
+(by default, named _packages.R in the root project directory).
+Each package is written to a separate line
+as a standard library() call (e.g. library(package)) so
+renv can identify them automatically. This is only
 necessary if the user invokes tar_option_set() or tar_target() to
-declare packages rather than the usual library() or namespaced call.
+declare packages rather than the usual library() or namespaced call
 (i.e. package::function()). See Details for more information." />
 <meta property="og:image" content="/logo.svg" />
 
@@ -139,12 +139,12 @@ declare packages rather than the usual library() or namespaced call.
 
     <div class="ref-description">
     <p>Write package dependencies to a script file
-(named <code>_packages.R</code> by default in
-the root project directory). Each package is written to a separate line in
-as a standard <code><a href='https://rdrr.io/r/base/library.html'>library()</a></code> call (e.g. <code>library(package)</code>)
-<code>renv</code> identifies them automatically. This is only
+(by default, named <code>_packages.R</code> in the root project directory).
+Each package is written to a separate line
+as a standard <code><a href='https://rdrr.io/r/base/library.html'>library()</a></code> call (e.g. <code>library(package)</code>) so
+<code>renv</code> can identify them automatically. This is only
 necessary if the user invokes <code><a href='tar_option_set.html'>tar_option_set()</a></code> or <code><a href='tar_target.html'>tar_target()</a></code> to
-declare packages rather than the usual <code><a href='https://rdrr.io/r/base/library.html'>library()</a></code> or namespaced call.
+declare packages rather than the usual <code><a href='https://rdrr.io/r/base/library.html'>library()</a></code> or namespaced call
 (i.e. <code>package::function()</code>). See <code>Details</code> for more information.</p>
     </div>
 
@@ -186,11 +186,11 @@ indeterminate, defaults to <code><a href='https://rdrr.io/r/base/interactive.htm
     <p>This function gets called for its side-effect, which writes
 package dependencies provided to the <code>packages</code> argument to
 a script. If you do not explicitly set the <code>packages</code> argument,
-<code>tar_renv()</code> will detect only the packages at <code><a href='tar_option_get.html'>tar_option_get("packages")</a></code>
-at that point in the code. The generated file should <strong>not</strong> be
-edited by hand and will be overwritten each time <code>tar_renv()</code> runs
-non-interactively.</p>
-<p>With the script written by <code>tar_env()</code>, <code>renv</code> is able to crawl the
+<code>tar_renv()</code> will only detect the packages that
+<code><a href='tar_option_get.html'>tar_option_get("packages")</a></code> returns at that point in the code.
+The generated file should <strong>not</strong> be edited by hand and will be
+overwritten each time <code>tar_renv()</code> runs non-interactively.</p>
+<p>With the script written by <code>tar_renv()</code>, <code>renv</code> is able to crawl the
 file to identify package dependencies (with <code>renv::dependencies()</code>).
 Calling <code>renv::init()</code> after <code>tar_renv()</code> has ran will set up a
 project-local <code>R</code> library. This allows your <code>targets</code> pipeline to have
