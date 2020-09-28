@@ -243,7 +243,7 @@
 <div id="cloud-storage" class="section level2">
 <h2 class="hasAnchor">
 <a href="#cloud-storage" class="anchor"></a>Cloud storage</h2>
-<p>Thanks to the simplified data store and simplified internals, <code>targets</code> can automatically upload data to the Amazon S3 bucket of your choice. Simply configure <code>aws.s3</code>, create a bucket, and select one of the AWS-powered storage formats.</p>
+<p>Thanks to the simplified data store and simplified internals, <code>targets</code> can automatically upload data to the Amazon S3 bucket of your choice. Simply configure <code>aws.s3</code>, create a bucket, and select one of the AWS-powered storage formats. Then, <code>targets</code> will automatically upload the return values to the cloud.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit">
 <span class="co"># _targets.R</span>
 <span class="fu"><a href="../reference/tar_option_set.html">tar_option_set</a></span><span class="op">(</span>resources <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>bucket <span class="op">=</span> <span class="st">"my-bucket-name"</span><span class="op">)</span><span class="op">)</span>
@@ -251,6 +251,9 @@
   <span class="fu"><a href="../reference/tar_target.html">tar_target</a></span><span class="op">(</span><span class="va">dataset</span>, <span class="fu">get_large_dataset</span><span class="op">(</span><span class="op">)</span>, format <span class="op">=</span> <span class="st">"aws_fst_tbl"</span><span class="op">)</span>,
   <span class="fu"><a href="../reference/tar_target.html">tar_target</a></span><span class="op">(</span><span class="va">analysis</span>, <span class="fu">analyze_dataset</span><span class="op">(</span><span class="va">dataset</span><span class="op">)</span>, format <span class="op">=</span> <span class="st">"aws_qs"</span><span class="op">)</span>
 <span class="op">)</span></pre></div>
+<p>Data retrieval is still super easy.</p>
+<div class="sourceCode" id="cb4"><pre class="downlit">
+<span class="fu"><a href="../reference/tar_read.html">tar_read</a></span><span class="op">(</span><span class="va">dataset</span><span class="op">)</span></pre></div>
 </div>
 <div id="show-status-of-functions-and-global-objects" class="section level2">
 <h2 class="hasAnchor">
@@ -265,7 +268,7 @@
 </h2>
 <p><a href="https://books.ropensci.org/drake/dynamic.html">Dynamic branching</a> was an architecturally difficult fit in <a href="https://github.com/ropensci/drake"><code>drake</code></a>, and it can only support one single (<a href="https://r-lib.github.io/vctrs"><code>vctrs</code></a>-based) method of slicing and aggregation for processing sub-targets. This limitation has frustrated members of the community, as discussed <a href="https://github.com/ropensci/drake/issues/1087">here</a> and <a href="https://github.com/ropensci/drake/issues/1170">here</a>.</p>
 <p><code>targets</code>, on the other hand, is more flexible regarding slicing and aggregation. When it branches over an object, it can iterate over vectors, lists, and even data frames grouped with <code><a href="https://dplyr.tidyverse.org/reference/group_by.html">dplyr::group_by()</a></code>. To branch over chunks of a data frame, our data frame target needs to have a special <code>tar_group</code> column. We can create this column in our target’s return value with the <code><a href="../reference/tar_group.html">tar_group()</a></code> function.</p>
-<div class="sourceCode" id="cb4"><pre class="downlit">
+<div class="sourceCode" id="cb5"><pre class="downlit">
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org">dplyr</a></span><span class="op">)</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://wlandau.github.io/targets/">targets</a></span><span class="op">)</span>
 <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span>
@@ -285,7 +288,7 @@
 ## 5     5 c             3
 ## 6     6 c             3</code></pre>
 <p>Our actual target has the command above and <code>iteration = "group"</code>.</p>
-<div class="sourceCode" id="cb6"><pre class="downlit">
+<div class="sourceCode" id="cb7"><pre class="downlit">
 <span class="fu"><a href="../reference/tar_target.html">tar_target</a></span><span class="op">(</span>
   <span class="va">data</span>,
   <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span>
@@ -297,7 +300,7 @@
   iteration <span class="op">=</span> <span class="st">"group"</span>
 <span class="op">)</span></pre></div>
 <p>Now, any target that maps over <code>data</code> is going to define one branch for each group in the data frame. The following target creates three branches when run in a pipeline: one returning 3, one returning 7, and one returning 11.</p>
-<div class="sourceCode" id="cb7"><pre class="downlit">
+<div class="sourceCode" id="cb8"><pre class="downlit">
 <span class="fu"><a href="../reference/tar_target.html">tar_target</a></span><span class="op">(</span>
   <span class="va">sums</span>,
   <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">data</span><span class="op">$</span><span class="va">x</span><span class="op">)</span>,
