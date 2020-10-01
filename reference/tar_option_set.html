@@ -210,7 +210,7 @@ Optionally set the compression level the same way as for <code>"fst"</code>.</p>
 Optionally set the compression level the same way as for <code>"fst"</code>.</p></li>
 <li><p><code>"keras"</code>: Uses <code><a href='https://rdrr.io/pkg/keras/man/save_model_hdf5.html'>keras::save_model_hdf5()</a></code> and
 <code><a href='https://rdrr.io/pkg/keras/man/save_model_hdf5.html'>keras::load_model_hdf5()</a></code>. The value must be a Keras model.</p></li>
-<li><p><code>"torch"</code>: Uses <code><a href='https://rdrr.io/pkg/torch/man/torch_save.html'>torch::torch_save()</a></code> and <code><a href='https://rdrr.io/pkg/torch/man/torch_load.html'>torch::torch_load()</a></code>.
+<li><p><code>"torch"</code>: Uses <code><a href='https://torch.mlverse.org/docs/reference/torch_save.html'>torch::torch_save()</a></code> and <code><a href='https://torch.mlverse.org/docs/reference/torch_load.html'>torch::torch_load()</a></code>.
 The value must be an object from the <code>torch</code> package
 such as a tensor or neural network module.</p></li>
 <li><p><code>"file"</code>: A dynamic file. To use this format,
@@ -303,7 +303,7 @@ simultaneously. Targets with priorities closer to 1 get built earlier.</p></td>
       <th>resources</th>
       <td><p>A named list of computing resources. Uses:</p><ul>
 <li><p>Template file wildcards for <code><a href='https://rdrr.io/pkg/future/man/future.html'>future::future()</a></code> in <code><a href='tar_make_future.html'>tar_make_future()</a></code>.</p></li>
-<li><p>Template file wildcards <code><a href='https://rdrr.io/pkg/clustermq/man/workers.html'>clustermq::workers()</a></code> in <code><a href='tar_make_clustermq.html'>tar_make_clustermq()</a></code>.</p></li>
+<li><p>Template file wildcards <code><a href='https://mschubert.github.io/clustermq/reference/workers.html'>clustermq::workers()</a></code> in <code><a href='tar_make_clustermq.html'>tar_make_clustermq()</a></code>.</p></li>
 <li><p>Custom <code>curl</code> handle if <code>format = "url"</code>,
 e.g. <code>resources = list(handle = curl::new_handle())</code>.</p></li>
 <li><p>Custom preset for <code><a href='https://rdrr.io/pkg/qs/man/qsave.html'>qs::qsave()</a></code> if <code>format = "qs"</code>, e.g.
