@@ -80,7 +80,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">targets</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.0.9001</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.0.9002</span>
       </span>
     </div>
 
@@ -164,8 +164,10 @@ for imported global objects, and <code>"stem"</code>, <code>"branch"</code>,
 <li><p><code>path</code>: A list column of paths to target data. Usually, each element
 is a single path, but there could be multiple paths per target
 for dynamic files (i.e. <code><a href='tar_target.html'>tar_target(format = "file")</a></code>).</p></li>
+<li><p><code>time</code>: hash of the maximum modification time stamp
+over all the files in <code>path</code>.</p></li>
+<li><p><code>size</code>: hash of the sum of all the bytes of the files at <code>path</code>.</p></li>
 <li><p><code>bytes</code>: total file size in bytes of all files in <code>path</code>.</p></li>
-<li><p><code>time</code>: maximum modification time stamp over all the files in <code>path</code>.</p></li>
 <li><p><code>format</code>: character, one of the admissible data storage formats.
 See the <code>format</code> argument in the <code><a href='tar_target.html'>tar_target()</a></code> help file for details.</p></li>
 <li><p><code>iteration</code>: character, either <code>"list"</code> or <code>"vector"</code>
