@@ -146,7 +146,7 @@ and imported global functions and objects.</p>
   label <span class='op'>=</span> <span class='cn'>NULL</span>,
   reporter <span class='op'>=</span> <span class='st'>"silent"</span>,
   callr_function <span class='op'>=</span> <span class='fu'>callr</span><span class='fu'>::</span><span class='va'><a href='https://rdrr.io/pkg/callr/man/r.html'>r</a></span>,
-  callr_arguments <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span>spinner <span class='op'>=</span> <span class='va'>reporter</span> <span class='op'>==</span> <span class='st'>"silent"</span><span class='op'>)</span>
+  callr_arguments <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span>spinner <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/identical.html'>identical</a></span><span class='op'>(</span><span class='va'>reporter</span>, <span class='st'>"silent"</span><span class='op'>)</span><span class='op'>)</span>
 <span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
