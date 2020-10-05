@@ -298,7 +298,10 @@ but the pipeline keeps going.</p></td>
       <th>memory</th>
       <td><p>Character of length 1, memory strategy.
 If <code>"persistent"</code>, the target stays in memory
-until the end of the pipeline.
+until the end of the pipeline (unless <code>storage</code> is <code>"remote"</code>,
+in which case <code>targets</code> unloads the value from memory
+right after storing it in order to avoid sending
+copious data over a network).
 If <code>"transient"</code>, the target gets unloaded
 after every new target completes.
 Either way, the target gets automatically loaded into memory
