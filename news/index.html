@@ -137,6 +137,7 @@
 <ul>
 <li>Add a new <code>size</code> field to the metadata to allow <code>targets</code> to make better judgments about when to rehash files (<a href='https://github.com/wlandau/targets/issues/180'>#180</a>). We now compare hashes to check file size differences instead of doing messy floating point comparisons with ad hoc tolerances. It breaks back compatibility with old projects, but the error message is informative, and this is all still before the first official release.</li>
 <li>Change “local” to “master” and “remote” to “worker” in the <code>storage</code>, <code>retrieval</code>, and <code>deployment</code> settings (<a href='https://github.com/wlandau/targets/issues/183'>#183</a>, <a href='https://github.com/mattwarkentin'>@mattwarkentin</a>).</li>
+<li>Ensure function dependencies are sorted before computing the function hash (GitHub commit f15face7d72c15c2d1098da959492bdbfcddb425).</li>
 </ul>
 </div>
 </div>
