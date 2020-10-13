@@ -297,7 +297,7 @@ whenever another target needs the value.</p></td>
       <th>deployment</th>
       <td><p>Character of length 1, only relevant to
 <code><a href='tar_make_clustermq.html'>tar_make_clustermq()</a></code> and <code><a href='tar_make_future.html'>tar_make_future()</a></code>. If <code>"worker"</code>,
-the target builds on a parallel worker. If <code>"master"</code>,
+the target builds on a parallel worker. If <code>"main"</code>,
 the target builds on the host machine / process managing the pipeline.</p></td>
     </tr>
     <tr>
@@ -331,7 +331,7 @@ of the manual for details.</p></li>
       <th>storage</th>
       <td><p>Character of length 1, only relevant to
 <code><a href='tar_make_clustermq.html'>tar_make_clustermq()</a></code> and <code><a href='tar_make_future.html'>tar_make_future()</a></code>.
-If <code>"master"</code>, the target's return value is sent back to the
+If <code>"main"</code>, the target's return value is sent back to the
 host machine and saved locally. If <code>"worker"</code>, the worker
 saves the value.</p></td>
     </tr>
@@ -339,7 +339,7 @@ saves the value.</p></td>
       <th>retrieval</th>
       <td><p>Character of length 1, only relevant to
 <code><a href='tar_make_clustermq.html'>tar_make_clustermq()</a></code> and <code><a href='tar_make_future.html'>tar_make_future()</a></code>.
-If <code>"master"</code>, the target's dependencies are loaded on the host machine
+If <code>"main"</code>, the target's dependencies are loaded on the host machine
 and sent to the worker before the target builds.
 If <code>"worker"</code>, the worker loads the targets dependencies.</p></td>
     </tr>
@@ -355,7 +355,7 @@ To use effectively, you must set <code>callr_function = NULL</code> and
 restart your R session just before running. You should also
 <code><a href='tar_make.html'>tar_make()</a></code>, <code><a href='tar_make_clustermq.html'>tar_make_clustermq()</a></code>, or <code><a href='tar_make_future.html'>tar_make_future()</a></code>.
 For any target mentioned in <code>debug</code>, <code>targets</code> will force the target to
-build locally (with <code><a href='tar_cue.html'>tar_cue(mode = "always")</a></code> and <code>deployment = "master"</code>
+build locally (with <code><a href='tar_cue.html'>tar_cue(mode = "always")</a></code> and <code>deployment = "main"</code>
 in the settings) and pause in an interactive debugger to help you diagnose
 problems. This is like inserting a <code><a href='https://rdrr.io/r/base/browser.html'>browser()</a></code> statement at the
 beginning of the target's expression, but without invalidating any

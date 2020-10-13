@@ -322,7 +322,7 @@ whenever another target needs the value.</p></td>
       <th>deployment</th>
       <td><p>Character of length 1, only relevant to
 <code><a href='tar_make_clustermq.html'>tar_make_clustermq()</a></code> and <code><a href='tar_make_future.html'>tar_make_future()</a></code>. If <code>"worker"</code>,
-the target builds on a parallel worker. If <code>"master"</code>,
+the target builds on a parallel worker. If <code>"main"</code>,
 the target builds on the host machine / process managing the pipeline.</p></td>
     </tr>
     <tr>
@@ -356,7 +356,7 @@ of the manual for details.</p></li>
       <th>storage</th>
       <td><p>Character of length 1, only relevant to
 <code><a href='tar_make_clustermq.html'>tar_make_clustermq()</a></code> and <code><a href='tar_make_future.html'>tar_make_future()</a></code>.
-If <code>"master"</code>, the target's return value is sent back to the
+If <code>"main"</code>, the target's return value is sent back to the
 host machine and saved locally. If <code>"worker"</code>, the worker
 saves the value.</p></td>
     </tr>
@@ -364,7 +364,7 @@ saves the value.</p></td>
       <th>retrieval</th>
       <td><p>Character of length 1, only relevant to
 <code><a href='tar_make_clustermq.html'>tar_make_clustermq()</a></code> and <code><a href='tar_make_future.html'>tar_make_future()</a></code>.
-If <code>"master"</code>, the target's dependencies are loaded on the host machine
+If <code>"main"</code>, the target's dependencies are loaded on the host machine
 and sent to the worker before the target builds.
 If <code>"worker"</code>, the worker loads the targets dependencies.</p></td>
     </tr>
@@ -400,8 +400,8 @@ just feed them to <code><a href='tar_pipeline.html'>tar_pipeline()</a></code> in
 #&gt;   iteration method: vector 
 #&gt;   error mode: stop 
 #&gt;   memory mode: persistent 
-#&gt;   storage mode: master 
-#&gt;   retrieval mode: master 
+#&gt;   storage mode: main 
+#&gt;   retrieval mode: main 
 #&gt;   deploy to: worker 
 #&gt;   resources:
 #&gt;     list() 
@@ -431,8 +431,8 @@ just feed them to <code><a href='tar_pipeline.html'>tar_pipeline()</a></code> in
 #&gt;   iteration method: vector 
 #&gt;   error mode: stop 
 #&gt;   memory mode: persistent 
-#&gt;   storage mode: master 
-#&gt;   retrieval mode: master 
+#&gt;   storage mode: main 
+#&gt;   retrieval mode: main 
 #&gt;   deploy to: worker 
 #&gt;   resources:
 #&gt;     list() 
