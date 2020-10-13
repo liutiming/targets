@@ -304,7 +304,10 @@ the target builds on the host machine / process managing the pipeline.</p></td>
       <th>priority</th>
       <td><p>Numeric of length 1 between 0 and 1. Controls which
 targets get deployed first when multiple competing targets are ready
-simultaneously. Targets with priorities closer to 1 get built earlier.</p></td>
+simultaneously. Targets with priorities closer to 1 get built earlier.
+Only applies to <code><a href='tar_make_future.html'>tar_make_future()</a></code> and <code><a href='tar_make_clustermq.html'>tar_make_clustermq()</a></code>
+(not <code><a href='tar_make.html'>tar_make()</a></code>). <code><a href='tar_make_future.html'>tar_make_future()</a></code> with no extra settings is
+a drop-in replacement for <code><a href='tar_make.html'>tar_make()</a></code> in this case.</p></td>
     </tr>
     <tr>
       <th>resources</th>
