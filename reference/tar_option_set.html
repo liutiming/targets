@@ -151,6 +151,7 @@ To use <code>tar_option_set()</code> effectively, put it in your workflow's
   iteration <span class='op'>=</span> <span class='cn'>NULL</span>,
   error <span class='op'>=</span> <span class='cn'>NULL</span>,
   memory <span class='op'>=</span> <span class='cn'>NULL</span>,
+  garbage_collection <span class='op'>=</span> <span class='cn'>NULL</span>,
   deployment <span class='op'>=</span> <span class='cn'>NULL</span>,
   priority <span class='op'>=</span> <span class='cn'>NULL</span>,
   resources <span class='op'>=</span> <span class='cn'>NULL</span>,
@@ -299,6 +300,11 @@ temporary local copies of the file in <code>_targets/scratch/"</code>:
 and <code>"transient"</code> means they get deleted from the file system
 as soon as possible. The former conserves bandwidth,
 and the latter conserves local storage.</p></td>
+    </tr>
+    <tr>
+      <th>garbage_collection</th>
+      <td><p>Logical, whether to run <code><a href='https://rdrr.io/r/base/gc.html'>base::gc()</a></code>
+just before the target runs.</p></td>
     </tr>
     <tr>
       <th>deployment</th>

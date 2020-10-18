@@ -148,7 +148,6 @@ so you must install <code>future</code> yourself.</p>
     <pre class="usage"><span class='fu'>tar_make_future</span><span class='op'>(</span>
   names <span class='op'>=</span> <span class='cn'>NULL</span>,
   reporter <span class='op'>=</span> <span class='st'>"verbose"</span>,
-  garbage_collection <span class='op'>=</span> <span class='cn'>FALSE</span>,
   workers <span class='op'>=</span> <span class='fl'>1L</span>,
   callr_function <span class='op'>=</span> <span class='fu'>callr</span><span class='fu'>::</span><span class='va'><a href='https://rdrr.io/pkg/callr/man/r.html'>r</a></span>,
   callr_arguments <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span><span class='op'>)</span>
@@ -174,11 +173,6 @@ Controls how messages are printed as targets run in the pipeline. Choices:</p><u
 each status category (queued, running, skipped, build, cancelled,
 or errored).</p></li>
 </ul></td>
-    </tr>
-    <tr>
-      <th>garbage_collection</th>
-      <td><p>Logical, whether to run <code><a href='https://rdrr.io/r/base/gc.html'>base::gc()</a></code>
-between targets. The pipeline will run slower but consume less memory.</p></td>
     </tr>
     <tr>
       <th>workers</th>
