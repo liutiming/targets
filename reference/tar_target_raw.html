@@ -353,7 +353,7 @@ a drop-in replacement for <code><a href='tar_make.html'>tar_make()</a></code> in
 <li><p>Template file wildcards for <code><a href='https://rdrr.io/pkg/future/man/future.html'>future::future()</a></code> in <code><a href='tar_make_future.html'>tar_make_future()</a></code>.</p></li>
 <li><p>Template file wildcards <code><a href='https://mschubert.github.io/clustermq/reference/workers.html'>clustermq::workers()</a></code> in <code><a href='tar_make_clustermq.html'>tar_make_clustermq()</a></code>.</p></li>
 <li><p>Custom target-level <code><a href='https://rdrr.io/pkg/future/man/plan.html'>future::plan()</a></code>, e.g.
-<code>resources = list(plan = future::plan(future::multicore))</code>.</p></li>
+<code>resources = list(plan = future.callr::callr)</code>.</p></li>
 <li><p>Custom <code>curl</code> handle if <code>format = "url"</code>,
 e.g. <code>resources = list(handle = curl::new_handle())</code>.</p></li>
 <li><p>Custom preset for <code><a href='https://rdrr.io/pkg/qs/man/qsave.html'>qs::qsave()</a></code> if <code>format = "qs"</code>, e.g.
