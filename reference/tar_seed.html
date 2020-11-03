@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Changelog • targets</title>
+<title>Get the random number generator seed of the target currently running. — tar_seed • targets</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -46,7 +46,9 @@
 
 
 
-<meta property="og:title" content="Changelog" />
+<meta property="og:title" content="Get the random number generator seed of the target currently running. — tar_seed" />
+<meta property="og:description" content="Get the random number generator seed
+of the target currently running." />
 <meta property="og:image" content="/logo.svg" />
 
 
@@ -66,7 +68,7 @@
   </head>
 
   <body data-spy="scroll" data-target="#toc">
-    <div class="container template-news">
+    <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -124,65 +126,72 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-      <h1 data-toc-skip>Changelog <small></small></h1>
-      <small>Source: <a href='https://github.com/wlandau/targets/blob/master/NEWS.md'><code>NEWS.md</code></a></small>
+    <h1>Get the random number generator seed of the target currently running.</h1>
+    <small class="dont-index">Source: <a href='https://github.com/wlandau/targets/blob/master/R/tar_seed.R'><code>R/tar_seed.R</code></a></small>
+    <div class="hidden name"><code>tar_seed.Rd</code></div>
     </div>
 
-    <div id="targets-0009002" class="section level1">
-<h1 class="page-header" data-toc-text="0.0.0.9002">
-<a href="#targets-0009002" class="anchor"></a>targets 0.0.0.9002</h1>
-<div id="breaking-changes" class="section level2">
-<h2 class="hasAnchor">
-<a href="#breaking-changes" class="anchor"></a>Breaking changes</h2>
-<ul>
-<li>Add a new <code>size</code> field to the metadata to allow <code>targets</code> to make better judgments about when to rehash files (<a href='https://github.com/wlandau/targets/issues/180'>#180</a>). We now compare hashes to check file size differences instead of doing messy floating point comparisons with ad hoc tolerances. It breaks back compatibility with old projects, but the error message is informative, and this is all still before the first official release.</li>
-<li>Change “local” to “main” and “remote” to “worker” in the <code>storage</code>, <code>retrieval</code>, and <code>deployment</code> settings (<a href='https://github.com/wlandau/targets/issues/183'>#183</a>, <a href='https://github.com/mattwarkentin'>@mattwarkentin</a>).</li>
-<li>Ensure function dependencies are sorted before computing the function hash (GitHub commit f15face7d72c15c2d1098da959492bdbfcddb425).</li>
-<li>Move <code>garbage_collection</code> to a target-level setting, i.e. argument to <code><a href="../reference/tar_target.html">tar_target()</a></code> and <code><a href="../reference/tar_option_set.html">tar_option_set()</a></code> (<a href='https://github.com/wlandau/targets/issues/194'>#194</a>). Previously was an argument to the <code>tar_make*()</code> functions.</li>
-<li>Allow <code><a href="../reference/tar_name.html">tar_name()</a></code> and <code><a href="../reference/tar_path.html">tar_path()</a></code> to run outside the pipeline with debugging-friendly default return values.</li>
-</ul>
-</div>
-<div id="bug-fixes" class="section level2">
-<h2 class="hasAnchor">
-<a href="#bug-fixes" class="anchor"></a>Bug fixes</h2>
-<ul>
-<li>Stop sending target return values over the network when <code>storage</code> is <code>"remote"</code> (<a href='https://github.com/wlandau/targets/issues/182'>#182</a>, <a href='https://github.com/mattwarkentin'>@mattwarkentin</a>).</li>
-<li>Shorten lengths of warnings and error messages to 128 characters (<a href='https://github.com/wlandau/targets/issues/186'>#186</a>, <a href='https://github.com/gorkang'>@gorkang</a>).</li>
-<li>Restrict in-memory metadata to avoid incorrectly recycling deleted targets (<a href='https://github.com/wlandau/targets/issues/191'>#191</a>).</li>
-</ul>
-</div>
-<div id="new-features" class="section level2">
-<h2 class="hasAnchor">
-<a href="#new-features" class="anchor"></a>New features</h2>
-<ul>
-<li>Add a new function <code><a href="../reference/tar_bind.html">tar_bind()</a></code> to combine pipeline objects.</li>
-<li>Add <code><a href="../reference/tar_seed.html">tar_seed()</a></code> to get the random number generator seed of the target currently running.</li>
-</ul>
-</div>
-<div id="enhancements" class="section level2">
-<h2 class="hasAnchor">
-<a href="#enhancements" class="anchor"></a>Enhancements</h2>
-<ul>
-<li>Allow target-specific <code><a href="https://rdrr.io/pkg/future/man/plan.html">future::plan()</a></code>s through the <code>resources</code> argument of <code><a href="../reference/tar_target.html">tar_target()</a></code> (<a href='https://github.com/wlandau/targets/issues/198'>#198</a>, <a href='https://github.com/mattwarkentin'>@mattwarkentin</a>).</li>
-<li>Use <code><a href="https://rdrr.io/r/base/library.html">library()</a></code> instead of <code><a href="https://rdrr.io/r/base/library.html">require()</a></code> in <code>command_load_packages()</code>.</li>
-</ul>
-</div>
-</div>
-    <div id="targets-0009000" class="section level1">
-<h1 class="page-header" data-toc-text="0.0.0.9000">
-<a href="#targets-0009000" class="anchor"></a>targets 0.0.0.9000</h1>
-<ul>
-<li>First version.</li>
-</ul>
-</div>
-  </div>
+    <div class="ref-description">
+    <p>Get the random number generator seed
+of the target currently running.</p>
+    </div>
 
+    <pre class="usage"><span class='fu'>tar_seed</span><span class='op'>(</span>default <span class='op'>=</span> <span class='fl'>1L</span><span class='op'>)</span></pre>
+
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>default</th>
+      <td><p>Integer, value to return if <code>tar_seed()</code>
+is called on its own outside a <code>targets</code> pipeline.
+Having a default lets users run things without <code><a href='tar_make.html'>tar_make()</a></code>,
+which helps peel back layers of code and troubleshoot bugs.</p></td>
+    </tr>
+    </table>
+
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    <p>Integer of length 1. If invoked inside a <code>targets</code> pipeline,
+the return value is the seed of the target currently running,
+which is a deterministic function of the target name. Otherwise,
+the return value is <code>default</code>.</p>
+
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='fu'>tar_seed</span><span class='op'>(</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; [1] 1</div><div class='input'><span class='fu'>tar_seed</span><span class='op'>(</span>default <span class='op'>=</span> <span class='fl'>123L</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; [1] 123</div><div class='input'><span class='fu'><a href='tar_target.html'>tar_target</a></span><span class='op'>(</span><span class='va'>returns_seed</span>, <span class='fu'>tar_seed</span><span class='op'>(</span>default <span class='op'>=</span> <span class='fl'>123</span><span class='op'>)</span><span class='op'>)</span> <span class='co'># Does not return 123.</span>
+</div><div class='output co'>#&gt; &lt;stem target&gt; 
+#&gt;   name: returns_seed 
+#&gt;   command:
+#&gt;     tar_seed(default = 123) 
+#&gt;   format: rds 
+#&gt;   iteration method: vector 
+#&gt;   error mode: stop 
+#&gt;   memory mode: persistent 
+#&gt;   storage mode: main 
+#&gt;   retrieval mode: main 
+#&gt;   deploy to: worker 
+#&gt;   resources:
+#&gt;     list() 
+#&gt;   cue:
+#&gt;     mode: thorough
+#&gt;     command: TRUE
+#&gt;     depend: TRUE
+#&gt;     format: TRUE
+#&gt;     iteration: TRUE
+#&gt;     file: TRUE 
+#&gt;   packages:
+#&gt;     tibble
+#&gt;     qs 
+#&gt;   library:
+#&gt;     NULL</div></pre>
+  </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
       <h2 data-toc-skip>Contents</h2>
     </nav>
   </div>
-
 </div>
 
 
