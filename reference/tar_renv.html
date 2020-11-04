@@ -141,7 +141,7 @@ declare packages rather than the usual library() or namespaced call
     <p>Write package dependencies to a script file
 (by default, named <code>_packages.R</code> in the root project directory).
 Each package is written to a separate line
-as a standard <code><a href='https://rdrr.io/r/base/library.html'>library()</a></code> call (e.g. <code>library(package)</code>) so
+as a standard <code><a href='https://rdrr.io/r/base/library.html'>library()</a></code> call (e.g. <code><a href='https://rdrr.io/r/base/library.html'>library(package)</a></code>) so
 <code>renv</code> can identify them automatically. This is only
 necessary if the user invokes <code><a href='tar_option_set.html'>tar_option_set()</a></code> or <code><a href='tar_target.html'>tar_target()</a></code> to
 declare packages rather than the usual <code><a href='https://rdrr.io/r/base/library.html'>library()</a></code> or namespaced call

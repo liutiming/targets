@@ -267,8 +267,8 @@
 <h2 class="hasAnchor">
 <a href="#insert-new-targets-dynamically-" class="anchor"></a>Insert new targets dynamically.</h2>
 <p><code>targets</code> creates new targets dynamically when stems and patterns conclude. To illustrate, let us use the following example pipeline.</p>
-<div class="sourceCode" id="cb1"><pre class="downlit">
-<span class="co"># _targets.R</span>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># _targets.R</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://wlandau.github.io/targets/">targets</a></span><span class="op">)</span>
 <span class="kw"><a href="https://rdrr.io/r/base/source.html">source</a></span><span class="op">(</span><span class="st">"functions.R"</span><span class="op">)</span> <span class="co"># Defines all the functions below prefixed with "user_".</span>
 <span class="fu"><a href="../reference/tar_pipeline.html">tar_pipeline</a></span><span class="op">(</span>
@@ -277,7 +277,7 @@
   <span class="fu"><a href="../reference/tar_target.html">tar_target</a></span><span class="op">(</span><span class="va">analysis</span>, <span class="fu">user_analyze</span><span class="op">(</span><span class="va">data2</span><span class="op">)</span>, pattern <span class="op">=</span> <span class="fu">map</span><span class="op">(</span><span class="va">data2</span><span class="op">)</span><span class="op">)</span>,
   <span class="fu"><a href="../reference/tar_target.html">tar_target</a></span><span class="op">(</span><span class="va">validation</span>, <span class="fu">user_validate</span><span class="op">(</span><span class="va">analysis</span><span class="op">)</span>, pattern <span class="op">=</span> <span class="fu">map</span><span class="op">(</span><span class="va">analysis</span><span class="op">)</span><span class="op">)</span>,
   <span class="fu"><a href="../reference/tar_target.html">tar_target</a></span><span class="op">(</span><span class="va">summary</span>, <span class="fu">user_summarize</span><span class="op">(</span><span class="va">validation</span><span class="op">)</span><span class="op">)</span> <span class="co"># Does not map over validation.</span>
-<span class="op">)</span></pre></div>
+<span class="op">)</span></code></pre></div>
 <p>In prose:</p>
 <ul>
 <li>The <code>data</code> and <code>data2</code> targets are starting datasets.</li>

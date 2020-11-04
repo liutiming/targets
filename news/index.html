@@ -149,6 +149,7 @@
 <li>Stop sending target return values over the network when <code>storage</code> is <code>"remote"</code> (<a href='https://github.com/wlandau/targets/issues/182'>#182</a>, <a href='https://github.com/mattwarkentin'>@mattwarkentin</a>).</li>
 <li>Shorten lengths of warnings and error messages to 128 characters (<a href='https://github.com/wlandau/targets/issues/186'>#186</a>, <a href='https://github.com/gorkang'>@gorkang</a>).</li>
 <li>Restrict in-memory metadata to avoid incorrectly recycling deleted targets (<a href='https://github.com/wlandau/targets/issues/191'>#191</a>).</li>
+<li>Serialize unexportable dependencies before sending them to workers. Transport data through <code>target$subpipeline</code> rather than <code>target$cache</code> to make that happen (<a href='https://github.com/wlandau/targets/issues/209'>#209</a>, <a href='https://github.com/mattwarkentin'>@mattwarkentin</a>).</li>
 </ul>
 </div>
 <div id="new-features" class="section level2">
