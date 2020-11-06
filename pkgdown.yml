@@ -1,10 +1,10 @@
 pandoc: 2.7.3
 pkgdown: 1.6.1.9000
-pkgdown_sha: aaf1509f3c9f4f3677ee01e11299dff4a0d696fb
+pkgdown_sha: 6094ac3dd80a1f3f1d4e2f47d0ed4716d51362b0
 articles:
   composition: composition.html
   data: data.html
   need: need.html
   orchestration: orchestration.html
-last_built: 2020-11-05T21:43Z
+last_built: 2020-11-06T13:21Z
 
