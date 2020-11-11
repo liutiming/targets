@@ -38,7 +38,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">targets</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.0.9002</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.0.9003</span>
       </span>
     </div>
 
@@ -128,14 +128,10 @@
 <th>Branch</th>
 <th>Bud</th>
 <th>Pattern</th>
-<th>Map</th>
-<th>Cross</th>
 </tr></thead>
 <tbody>
 <tr class="odd">
 <td>Command</td>
-<td>✓</td>
-<td>✓</td>
 <td>✓</td>
 <td>✓</td>
 <td>✓</td>
@@ -149,13 +145,9 @@
 <td>✓</td>
 <td>✓</td>
 <td>✓</td>
-<td>✓</td>
-<td>✓</td>
 </tr>
 <tr class="odd">
 <td>Cache</td>
-<td>✓</td>
-<td>✓</td>
 <td>✓</td>
 <td>✓</td>
 <td>✓</td>
@@ -169,16 +161,12 @@
 <td>✓</td>
 <td>✓</td>
 <td>✓</td>
-<td>✓</td>
-<td>✓</td>
 </tr>
 <tr class="odd">
 <td>Metrics</td>
 <td>✓</td>
 <td>✓</td>
 <td>✓</td>
-<td></td>
-<td></td>
 <td></td>
 <td></td>
 </tr>
@@ -189,16 +177,12 @@
 <td>✓</td>
 <td></td>
 <td></td>
-<td></td>
-<td></td>
 </tr>
 <tr class="odd">
 <td>Subpipeline</td>
 <td>✓</td>
 <td>✓</td>
 <td>✓</td>
-<td></td>
-<td></td>
 <td></td>
 <td></td>
 </tr>
@@ -209,8 +193,6 @@
 <td></td>
 <td></td>
 <td>✓</td>
-<td>✓</td>
-<td>✓</td>
 </tr>
 <tr class="odd">
 <td>Pedigree</td>
@@ -218,8 +200,6 @@
 <td></td>
 <td>✓</td>
 <td>✓</td>
-<td></td>
-<td></td>
 <td></td>
 </tr>
 <tr class="even">
@@ -229,8 +209,6 @@
 <td>✓</td>
 <td></td>
 <td></td>
-<td></td>
-<td></td>
 </tr>
 <tr class="odd">
 <td>Patternview</td>
@@ -238,8 +216,6 @@
 <td></td>
 <td></td>
 <td></td>
-<td>✓</td>
-<td>✓</td>
 <td>✓</td>
 </tr>
 </tbody>
@@ -255,12 +231,7 @@
 <li>Branch</li>
 </ul>
 </li>
-<li>Pattern
-<ul>
-<li>Map</li>
-<li>Cross</li>
-</ul>
-</li>
+<li>Pattern</li>
 </ul>
 </li>
 </ul>
@@ -322,7 +293,7 @@
 <div id="junction-class" class="section level2">
 <h2 class="hasAnchor">
 <a href="#junction-class" class="anchor"></a>Junction class</h2>
-<p>A <code>junction</code> serves as a branching specification for patterns and a budding specification for <code>stems</code>. It contains the name of the parent pattern or stem, the names of the children (buds or branches), and the names of the dependencies of each bud or branch. Different classes of patterns create junctions in different ways. In fact, junction creation is the only way in which the map and cross classes differ.</p>
+<p>A <code>junction</code> serves as a branching specification for patterns and a budding specification for <code>stems</code>. It contains the name of the parent pattern or stem, the names of the children (buds or branches), and the names of the dependencies of each bud or branch. The junction is the explicit representation of the user-defined <code>pattern</code> argument of <code><a href="../reference/tar_target.html">tar_target()</a></code> combined with the hashes of the available dependencies.</p>
 </div>
 <div id="pedigree-class" class="section level2">
 <h2 class="hasAnchor">

@@ -38,7 +38,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">targets</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.0.9002</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.0.9003</span>
       </span>
     </div>
 
@@ -160,12 +160,7 @@
 <li>Branch</li>
 </ul>
 </li>
-<li>Pattern
-<ul>
-<li>Map</li>
-<li>Cross</li>
-</ul>
-</li>
+<li>Pattern</li>
 </ul>
 </li>
 </ul>
@@ -183,22 +178,12 @@
 <div id="pattern-class" class="section level2">
 <h2 class="hasAnchor">
 <a href="#pattern-class" class="anchor"></a>Pattern class</h2>
-<p>A pattern is an abstract class responsible for creating new branches and dynamically updating the scheduler. Maps and crosses are types of patterns representing different forms of branch creation. Stems and patterns are the only targets the user manually defines in the pipeline.</p>
+<p>A pattern is an abstract class responsible for creating new branches and dynamically updating the scheduler. Stems and patterns are the only targets the user manually defines in the pipeline.</p>
 </div>
 <div id="branch-class" class="section level2">
 <h2 class="hasAnchor">
 <a href="#branch-class" class="anchor"></a>Branch class</h2>
 <p>A branch is a target that a pattern creates dynamically at runtime.</p>
-</div>
-<div id="map-class" class="section level2">
-<h2 class="hasAnchor">
-<a href="#map-class" class="anchor"></a>Map class</h2>
-<p>A map is a pattern that creates branches along a single dimension. If <code>z</code> maps over <code>x</code> (<code>n</code> slices) and <code>y</code> (<code>n</code> slices) ten <code>n</code> branches of <code>z</code> are created, one for each corresponding slice of <code>x</code> and <code>y</code>. The behavior is similar to <code><a href="https://purrr.tidyverse.org/reference/map2.html">purrr::pmap()</a></code>.</p>
-</div>
-<div id="cross-class" class="section level2">
-<h2 class="hasAnchor">
-<a href="#cross-class" class="anchor"></a>Cross class</h2>
-<p>A cross is a pattern that creates branches in multiple dimensions. If <code>z</code> crosses over <code>x</code> (<code>m</code> slices) and <code>y</code> (<code>n</code> slices) then <code>m * n</code> branches of <code>z</code> are created, one for every unique pair of (<code>x</code>, <code>y</code>) slices.</p>
 </div>
 <div id="builder-class" class="section level2">
 <h2 class="hasAnchor">
@@ -208,7 +193,7 @@
 <div id="junction-class" class="section level2">
 <h2 class="hasAnchor">
 <a href="#junction-class" class="anchor"></a>Junction class</h2>
-<p>A junction is a manifest of the buds or branches (children) that a stem or pattern dynamically creates. Different kinds of patterns (e.g. map and cross) create junctions differently, and this helps <code>targets</code> figure out how to create the right branches with the right dependencies.</p>
+<p>A junction is a manifest of the buds or branches (children) that a stem or pattern dynamically creates, and it depends on the user-specified <code>pattern</code> argument to <code><a href="../reference/tar_target.html">tar_target()</a></code>, e.g. <code><a href="../reference/tar_target.html">tar_target(..., pattern = cross(x, map(y, z)))</a></code>.</p>
 </div>
 </div>
 <div id="orchestration" class="section level1">
@@ -310,13 +295,13 @@
 <p><img src="orchestration/orchestration-validation.png"></p>
 <p>The fine details of the branching algorithm are as follows.</p>
 <ol style="list-style-type: decimal">
-<li>First we create a junction to describe the branches we will create. This branching specification depends on the type of pattern we have (map or cross) and the upstream dependencies of the pattern.</li>
+<li>First we create a junction to describe the branches we will create based on the user-supplied <code>pattern</code> argument to <code><a href="../reference/tar_target.html">tar_target()</a></code>.</li>
 <li>Create and insert those new branches into the pipeline.</li>
 <li>Draw graph edges to connect the branches to their individual upstream dependencies (buds or branches).</li>
 <li>Insert graph edges from the new branches to their parent pattern. Some targets may use the entire pattern in aggregate instead of iterating over individual branches, and this step makes sure all the branches are available for aggregation before a downstream target needs to use the aggregate.</li>
 <li>Push the branches onto the priority queue. The rank for each branch is the number of upstream dependencies that still need to be checked or built. 1. Increment the priority queue ranks of all downstream non-branching targets by the number of new branches just created minus 1. This ensures all the branches complete before any target calls upon the entire aggregate of the pattern.</li>
 <li>Register the branches as queued in the scheduler.</li>
-<li>Push the pattern itself back onto the queue, where the priority queue rank now equals the number of branches minus a constant between 0 and 1. (The subtracted constant just ensures the pattern gets cleaned up as soon as possible.) This step ensures we revisit the pattern after all the branches are done. At that moment, we decrement the priority queue rank of every downstream target that depends on the entire aggregated pattern (as opposed to just a single branch). This behavior drives implicit aggregation, and it ensures we do not need a special <code><a href="https://dplyr.tidyverse.org/reference/combine.html">combine()</a></code> pattern to accompany <code>map()</code> and <code>cross()</code>.</li>
+<li>Push the pattern itself back onto the queue, where the priority queue rank now equals the number of branches minus a constant between 0 and 1. (The subtracted constant just ensures the pattern gets cleaned up as soon as possible.) This step ensures we revisit the pattern after all the branches are done. At that moment, we decrement the priority queue rank of every downstream target that depends on the entire aggregated pattern (as opposed to just a single branch). This behavior drives implicit aggregation, and it ensures we do not need a special <code><a href="https://dplyr.tidyverse.org/reference/combine.html">combine()</a></code> pattern directive to accompany <code>map()</code> and <code>cross()</code>.</li>
 </ol>
 </div>
 </div>
