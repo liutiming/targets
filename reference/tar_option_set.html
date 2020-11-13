@@ -158,7 +158,8 @@ To use <code>tar_option_set()</code> effectively, put it in your workflow's
   storage <span class='op'>=</span> <span class='cn'>NULL</span>,
   retrieval <span class='op'>=</span> <span class='cn'>NULL</span>,
   cue <span class='op'>=</span> <span class='cn'>NULL</span>,
-  debug <span class='op'>=</span> <span class='cn'>NULL</span>
+  debug <span class='op'>=</span> <span class='cn'>NULL</span>,
+  workspace <span class='op'>=</span> <span class='cn'>NULL</span>
 <span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
@@ -375,6 +376,15 @@ in the settings) and pause in an interactive debugger to help you diagnose
 problems. This is like inserting a <code><a href='https://rdrr.io/r/base/browser.html'>browser()</a></code> statement at the
 beginning of the target's expression, but without invalidating any
 targets.</p></td>
+    </tr>
+    <tr>
+      <th>workspace</th>
+      <td><p>Character vector of names of targets to save workspace
+files. Workspace files let you re-create a target's runtime environment
+in an interactive R session using <code><a href='tar_workspace.html'>tar_workspace()</a></code>. <code><a href='tar_workspace.html'>tar_workspace()</a></code>
+loads a target's random number generator seed and dependency objects
+as long as those target objects are still in the data store
+(usually <code>_targets/objects/</code>).</p></td>
     </tr>
     </table>
 

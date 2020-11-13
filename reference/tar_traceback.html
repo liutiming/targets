@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Get the traceback of the last errored target. — tar_traceback • targets</title>
+<title>Get a target's traceback — tar_traceback • targets</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -46,10 +46,10 @@
 
 
 
-<meta property="og:title" content="Get the traceback of the last errored target. — tar_traceback" />
-<meta property="og:description" content="Get the traceback of the last errored target.
-Useful for debugging purposes. Requires
-callr_function = NULL in tar_make()." />
+<meta property="og:title" content="Get a target's traceback — tar_traceback" />
+<meta property="og:description" content="If a target ran with error = &quot;workspace&quot; and errored out,
+tar_traceback() returns its traceback. The workspace file must
+exist. For more information, see tar_workspace()." />
 <meta property="og:image" content="/logo.svg" />
 
 
@@ -82,7 +82,7 @@ callr_function = NULL in tar_make()." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">targets</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.0.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.0.9003</span>
       </span>
     </div>
 
@@ -101,7 +101,7 @@ callr_function = NULL in tar_make()." />
   <a href="https://wlandau.github.io/targets-manual">Manual</a>
 </li>
 <li>
-  <a href="../articles/index.html">Design</a>
+  <a href="../articles/index.html">Vignettes</a>
 </li>
 <li>
   <a href="../news/index.html">News</a>
@@ -127,31 +127,62 @@ callr_function = NULL in tar_make()." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Get the traceback of the last errored target.</h1>
+    <h1>Get a target's traceback</h1>
     <small class="dont-index">Source: <a href='https://github.com/wlandau/targets/blob/master/R/tar_traceback.R'><code>R/tar_traceback.R</code></a></small>
     <div class="hidden name"><code>tar_traceback.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Get the traceback of the last errored target.
-Useful for debugging purposes. Requires
-<code>callr_function = NULL</code> in <code><a href='tar_make.html'>tar_make()</a></code>.</p>
+    <p>If a target ran with <code>error = "workspace"</code> and errored out,
+<code>tar_traceback()</code> returns its traceback. The workspace file must
+exist. For more information, see <code><a href='tar_workspace.html'>tar_workspace()</a></code>.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>tar_traceback</span>()</pre>
+    <pre class="usage"><span class='fu'>tar_traceback</span><span class='op'>(</span><span class='va'>name</span>, envir <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/sys.parent.html'>parent.frame</a></span><span class='op'>(</span><span class='op'>)</span>, packages <span class='op'>=</span> <span class='cn'>TRUE</span>, source <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span></pre>
 
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>name</th>
+      <td><p>Symbol, name of the target whose workspace to read.</p></td>
+    </tr>
+    <tr>
+      <th>envir</th>
+      <td><p>Environment in which to put the objects.</p></td>
+    </tr>
+    <tr>
+      <th>packages</th>
+      <td><p>Logical, whether to load the required packages
+of the target.</p></td>
+    </tr>
+    <tr>
+      <th>source</th>
+      <td><p>Logical, whether to run <code>_targets.R</code> to load user-defined
+global object dependencies into <code>envir</code>. If <code>TRUE</code>, then <code>envir</code>
+should either be the global environment or inherit from the
+global environment.</p></td>
+    </tr>
+    </table>
 
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    <p>Character vector, the traceback of a failed target
+if it exists</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'>if</span> (<span class='fl'>FALSE</span>) {
-<span class='fu'><a href='tar_dir.html'>tar_dir</a></span>({
-<span class='fu'><a href='tar_script.html'>tar_script</a></span>(
-   <span class='fu'>tar_pipelinetar_target</span>(<span class='kw'>x</span>, <span class='fu'><a href='https://rdrr.io/r/base/MathFun.html'>sqrt</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/MathFun.html'>sqrt</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/stop.html'>stop</a></span>(<span class='st'>"error message"</span>))))
-)
-<span class='co'># tar_make(callr_function = NULL)</span>
-<span class='co'># tar_traceback()</span>
-})
-}
+    <pre class="examples"><div class='input'><span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span>
+<span class='va'>tmp</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/sample.html'>sample</a></span><span class='op'>(</span><span class='fl'>1</span><span class='op'>)</span>
+<span class='fu'><a href='tar_script.html'>tar_script</a></span><span class='op'>(</span><span class='op'>{</span>
+  <span class='fu'><a href='tar_option_set.html'>tar_option_set</a></span><span class='op'>(</span>error <span class='op'>=</span> <span class='st'>"workspace"</span><span class='op'>)</span>
+  <span class='fu'><a href='tar_pipeline.html'>tar_pipeline</a></span><span class='op'>(</span>
+    <span class='fu'><a href='tar_target.html'>tar_target</a></span><span class='op'>(</span><span class='va'>x</span>, <span class='st'>"loaded"</span><span class='op'>)</span>,
+    <span class='fu'><a href='tar_target.html'>tar_target</a></span><span class='op'>(</span><span class='va'>y</span>, <span class='kw'><a href='https://rdrr.io/r/base/stop.html'>stop</a></span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span><span class='op'>)</span>
+  <span class='op'>)</span>
+<span class='op'>}</span><span class='op'>)</span>
+<span class='kw'><a href='https://rdrr.io/r/base/try.html'>try</a></span><span class='op'>(</span><span class='fu'><a href='tar_make.html'>tar_make</a></span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span>
+<span class='fu'>tar_traceback</span><span class='op'>(</span><span class='va'>y</span><span class='op'>)</span>
+<span class='op'>}</span>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
@@ -168,7 +199,7 @@ Useful for debugging purposes. Requires
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.9000.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.9000.</p>
 </div>
 
       </footer>

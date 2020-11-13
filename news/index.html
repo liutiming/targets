@@ -136,6 +136,11 @@
 <a href="#breaking-changes" class="anchor"></a>Breaking changes</h2>
 <ul>
 <li>Make patterns composable (<a href='https://github.com/wlandau/targets/issues/212'>#212</a>, <a href='https://github.com/glep'>@glep</a>, <a href='https://github.com/djbirke'>@djbirke</a>).</li>
+<li>Allow workspaces to load unexportable objects (<a href='https://github.com/wlandau/targets/issues/214'>#214</a>).</li>
+<li>Make workspace files super light by saving only a reference to the required dependencies (<a href='https://github.com/wlandau/targets/issues/214'>#214</a>).</li>
+<li>Add a new <code>workspace</code> argument to <code><a href="../reference/tar_option_set.html">tar_option_set()</a></code> to specify which targets will save their workspace files during <code><a href="../reference/tar_make.html">tar_make()</a></code> (<a href='https://github.com/wlandau/targets/issues/214'>#214</a>).</li>
+<li>Change <code>error = "save"</code> to <code>error = "workspace"</code> to so it is clearer that saving workspaces no longer duplicates data (<a href='https://github.com/wlandau/targets/issues/214'>#214</a>).</li>
+<li>Rename <code>tar_undebug()</code> to <code><a href="../reference/tar_workspaces_destroy.html">tar_workspaces_destroy()</a></code>.</li>
 </ul>
 </div>
 </div>
