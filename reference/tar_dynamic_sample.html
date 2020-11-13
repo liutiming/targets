@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Get the file path of a target's stored value. — tar_path • targets</title>
+<title>Dynamic sample — tar_dynamic_sample • targets</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -46,9 +46,8 @@
 
 
 
-<meta property="og:title" content="Get the file path of a target's stored value. — tar_path" />
-<meta property="og:description" content="Get the file path of a target's stored value. Could be the
-target currently running in a pipeline or a target of your choice." />
+<meta property="og:title" content="Dynamic sample — tar_dynamic_sample" />
+<meta property="og:description" content="Branch over the first few elements of a pattern." />
 <meta property="og:image" content="/logo.svg" />
 
 
@@ -126,84 +125,78 @@ target currently running in a pipeline or a target of your choice." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Get the file path of a target's stored value.</h1>
-    <small class="dont-index">Source: <a href='https://github.com/wlandau/targets/blob/master/R/tar_path.R'><code>R/tar_path.R</code></a></small>
-    <div class="hidden name"><code>tar_path.Rd</code></div>
+    <h1>Dynamic sample</h1>
+    <small class="dont-index">Source: <a href='https://github.com/wlandau/targets/blob/master/R/tar_dynamic_sample.R'><code>R/tar_dynamic_sample.R</code></a></small>
+    <div class="hidden name"><code>tar_dynamic_sample.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Get the file path of a target's stored value. Could be the
-target currently running in a pipeline or a target of your choice.</p>
+    <p>Branch over the first few elements of a pattern.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>tar_path</span><span class='op'>(</span>name <span class='op'>=</span> <span class='cn'>NULL</span>, default <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/tempfile.html'>tempfile</a></span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>tar_dynamic_sample</span><span class='op'>(</span><span class='va'>x</span>, n <span class='op'>=</span> <span class='fl'>1L</span>, seed <span class='op'>=</span> <span class='fl'>0L</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>name</th>
-      <td><p>Symbol, name of the target.
-If <code>NULL</code>, <code>tar_path()</code> returns the path of the target currently running
-in a pipeline.</p></td>
+      <th>x</th>
+      <td><p>Data frame with columns to represent targets and
+elements to represent branches or buds. Column names must
+be unique.</p></td>
     </tr>
     <tr>
-      <th>default</th>
-      <td><p>Character, value to return if <code>tar_path()</code>
-is called on its own outside a <code>targets</code> pipeline.
-Having a default lets users run things without <code><a href='tar_make.html'>tar_make()</a></code>,
-which helps peel back layers of code and troubleshoot bugs.</p></td>
+      <th>n</th>
+      <td><p>Number of branches to create. Cannot exceed <code><a href='https://rdrr.io/r/base/nrow.html'>nrow(x)</a></code>.</p></td>
+    </tr>
+    <tr>
+      <th>seed</th>
+      <td><p>Integer of length 1, random number generator seed.
+Within a target's pattern, e.g. <code>pattern = sample(x, n = 5)</code>
+in <code><a href='tar_target.html'>tar_target()</a></code>, there is not an option to supply a seed.
+Instead, the seed is generated from the target name in
+a deterministic manner for the sake of reproducibility.</p></td>
     </tr>
     </table>
 
-    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
-
-    <p>Character, file path to the target.</p>
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p>Call <code>tar_path(name = "your_target")</code> to get the file path
-of a selected target. Inside the command of a target, call
-<code>tar_path()</code> with no arguments to get the path to the target
-currently running. (Does not apply to dynamic files
-(<code>format = "file"</code>) because those paths are not known in advance.)
-If you call <code>tar_path()</code> outside a pipeline without specifying <code>name</code>,
-the return value is <code>default</code>.</p>
+    <p>In <code><a href='tar_target.html'>tar_target()</a></code>, <code>pattern = sample(x, n = 5)</code> branches over
+a random 5 elements of <code>x</code>. The number random seed is set to the seed
+of the target so branch selection is reproducible.
+<code>sample()</code> can be composed with other kinds of patterns: for example,
+<code>pattern = sample(map(x, y), n = 5)</code>.
+To test and experiment with this behavior outside
+the pipeline, use the <code>tar_dynamic_sample()</code> function.</p>
+    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
+
+    <div class='dont-index'><p>Other Dynamic branching: 
+<code><a href='tar_dynamic_cross.html'>tar_dynamic_cross</a>()</code>,
+<code><a href='tar_dynamic_head.html'>tar_dynamic_head</a>()</code>,
+<code><a href='tar_dynamic_map.html'>tar_dynamic_map</a>()</code>,
+<code><a href='tar_dynamic_tail.html'>tar_dynamic_tail</a>()</code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>tar_path</span><span class='op'>(</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; [1] "/var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T//RtmpWdXuOp/file83d4a4182e4"</div><div class='input'><span class='fu'>tar_path</span><span class='op'>(</span><span class='va'>your_target</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; [1] "_targets/objects/your_target"</div><div class='input'><span class='fu'><a href='tar_target.html'>tar_target</a></span><span class='op'>(</span><span class='va'>returns_path</span>, <span class='fu'>tar_path</span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; &lt;stem target&gt; 
-#&gt;   name: returns_path 
-#&gt;   command:
-#&gt;     tar_path() 
-#&gt;   format: rds 
-#&gt;   iteration method: vector 
-#&gt;   error mode: stop 
-#&gt;   memory mode: persistent 
-#&gt;   storage mode: main 
-#&gt;   retrieval mode: main 
-#&gt;   deploy to: worker 
-#&gt;   resources:
-#&gt;     list() 
-#&gt;   cue:
-#&gt;     mode: thorough
-#&gt;     command: TRUE
-#&gt;     depend: TRUE
-#&gt;     format: TRUE
-#&gt;     iteration: TRUE
-#&gt;     file: TRUE 
-#&gt;   packages:
-#&gt;     targets
-#&gt;     stats
-#&gt;     graphics
-#&gt;     grDevices
-#&gt;     utils
-#&gt;     datasets
-#&gt;     methods
-#&gt;     base 
-#&gt;   library:
-#&gt;     NULL</div></pre>
+    <pre class="examples"><div class='input'><span class='co'># To use dynamic sample for real in a pipeline,</span>
+<span class='co'># call sample() in a target's pattern.</span>
+<span class='co'># The following code goes at the bottom of _targets.R.</span>
+<span class='fu'><a href='tar_pipeline.html'>tar_pipeline</a></span><span class='op'>(</span>
+  <span class='fu'><a href='tar_target.html'>tar_target</a></span><span class='op'>(</span><span class='va'>x</span>, <span class='fu'><a href='https://rdrr.io/r/base/seq.html'>seq_len</a></span><span class='op'>(</span><span class='fl'>26</span><span class='op'>)</span><span class='op'>)</span>,
+  <span class='fu'><a href='tar_target.html'>tar_target</a></span><span class='op'>(</span><span class='va'>dynamic</span>, <span class='va'>x</span>, pattern <span class='op'>=</span> <span class='fu'>sample</span><span class='op'>(</span><span class='va'>x</span>, n <span class='op'>=</span> <span class='fl'>2</span><span class='op'>)</span><span class='op'>)</span> <span class='co'># 2 branches</span>
+<span class='op'>)</span>
+</div><div class='output co'>#&gt; &lt;pipeline with 2 targets&gt;</div><div class='input'><span class='co'># To explore dynamic sample() outside a pipeline,</span>
+<span class='co'># use the tar_dynamic_sample() helper function.</span>
+<span class='va'>x</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/seq.html'>seq_len</a></span><span class='op'>(</span><span class='fl'>26</span><span class='op'>)</span><span class='op'>)</span>
+<span class='fu'>tar_dynamic_sample</span><span class='op'>(</span><span class='va'>x</span>, n <span class='op'>=</span> <span class='fl'>2</span><span class='op'>)</span>
+</div><div class='output co'>#&gt;    x
+#&gt; 1 14
+#&gt; 2 25</div><div class='input'><span class='co'># You can experiment with more complicated patterns.</span>
+<span class='co'># The following is a representation of pattern = sample(map(x, y), n = 2).</span>
+<span class='va'>y</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span><span class='op'>(</span>y <span class='op'>=</span> <span class='va'>letters</span><span class='op'>)</span>
+<span class='fu'>tar_dynamic_sample</span><span class='op'>(</span><span class='fu'><a href='tar_dynamic_map.html'>tar_dynamic_map</a></span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>y</span><span class='op'>)</span>, n <span class='op'>=</span> <span class='fl'>2</span><span class='op'>)</span>
+</div><div class='output co'>#&gt;    x y
+#&gt; 1 14 n
+#&gt; 2 25 y</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

@@ -141,7 +141,7 @@
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>...</th>
-      <td><p>data frames with columns to represent targets and
+      <td><p>Data frames with columns to represent targets and
 elements to represent branches or buds. Column names must
 be unique across all the data frames.</p></td>
     </tr>
@@ -157,7 +157,10 @@ the pipeline, use the <code>tar_dynamic_map()</code> function.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p>Other Dynamic branching: 
-<code><a href='tar_dynamic_cross.html'>tar_dynamic_cross</a>()</code></p></div>
+<code><a href='tar_dynamic_cross.html'>tar_dynamic_cross</a>()</code>,
+<code><a href='tar_dynamic_head.html'>tar_dynamic_head</a>()</code>,
+<code><a href='tar_dynamic_sample.html'>tar_dynamic_sample</a>()</code>,
+<code><a href='tar_dynamic_tail.html'>tar_dynamic_tail</a>()</code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'># To use dynamic map for real in a pipeline,</span>
@@ -165,19 +168,19 @@ the pipeline, use the <code>tar_dynamic_map()</code> function.</p>
 <span class='co'># The following code goes at the bottom of _targets.R.</span>
 <span class='fu'><a href='tar_pipeline.html'>tar_pipeline</a></span><span class='op'>(</span>
   <span class='fu'><a href='tar_target.html'>tar_target</a></span><span class='op'>(</span><span class='va'>x</span>, <span class='fu'><a href='https://rdrr.io/r/base/seq.html'>seq_len</a></span><span class='op'>(</span><span class='fl'>2</span><span class='op'>)</span><span class='op'>)</span>,
-  <span class='fu'><a href='tar_target.html'>tar_target</a></span><span class='op'>(</span><span class='va'>y</span>, <span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span><span class='op'>(</span><span class='va'>letters</span>, <span class='fl'>2</span><span class='op'>)</span><span class='op'>)</span>,
+  <span class='fu'><a href='tar_target.html'>tar_target</a></span><span class='op'>(</span><span class='va'>y</span>, <span class='fu'><a href='tar_dynamic_head.html'>head</a></span><span class='op'>(</span><span class='va'>letters</span>, <span class='fl'>2</span><span class='op'>)</span><span class='op'>)</span>,
   <span class='fu'><a href='tar_target.html'>tar_target</a></span><span class='op'>(</span><span class='va'>dynamic</span>, <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>y</span><span class='op'>)</span>, pattern <span class='op'>=</span> <span class='fu'>map</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>y</span><span class='op'>)</span><span class='op'>)</span> <span class='co'># 2 branches</span>
 <span class='op'>)</span>
 </div><div class='output co'>#&gt; &lt;pipeline with 3 targets&gt;</div><div class='input'><span class='co'># To explore dynamic map() outside a pipeline,</span>
 <span class='co'># use the tar_dynamic_map() helper function.</span>
 <span class='va'>x</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/seq.html'>seq_len</a></span><span class='op'>(</span><span class='fl'>2</span><span class='op'>)</span><span class='op'>)</span>
-<span class='va'>y</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span><span class='op'>(</span>y <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span><span class='op'>(</span><span class='va'>letters</span>, <span class='fl'>2</span><span class='op'>)</span><span class='op'>)</span>
+<span class='va'>y</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span><span class='op'>(</span>y <span class='op'>=</span> <span class='fu'><a href='tar_dynamic_head.html'>head</a></span><span class='op'>(</span><span class='va'>letters</span>, <span class='fl'>2</span><span class='op'>)</span><span class='op'>)</span>
 <span class='fu'>tar_dynamic_map</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>y</span><span class='op'>)</span>
 </div><div class='output co'>#&gt;   x y
 #&gt; 1 1 a
 #&gt; 2 2 b</div><div class='input'><span class='co'># You can experiment with more complicated patterns.</span>
 <span class='co'># The following is a representation of pattern = cross(z, map(x, y)).</span>
-<span class='va'>z</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span><span class='op'>(</span>z <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/utils/head.html'>tail</a></span><span class='op'>(</span><span class='va'>LETTERS</span>, <span class='fl'>2</span><span class='op'>)</span><span class='op'>)</span>
+<span class='va'>z</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span><span class='op'>(</span>z <span class='op'>=</span> <span class='fu'><a href='tar_dynamic_tail.html'>tail</a></span><span class='op'>(</span><span class='va'>LETTERS</span>, <span class='fl'>2</span><span class='op'>)</span><span class='op'>)</span>
 <span class='fu'><a href='tar_dynamic_cross.html'>tar_dynamic_cross</a></span><span class='op'>(</span><span class='va'>z</span>, <span class='fu'>tar_dynamic_map</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>y</span><span class='op'>)</span><span class='op'>)</span>
 </div><div class='output co'>#&gt;   z x y
 #&gt; 1 Y 1 a
