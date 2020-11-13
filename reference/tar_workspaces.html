@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Load a saved workspace and seed for debugging. — tar_workspace • targets</title>
+<title>List saved target workspaces. — tar_workspaces • targets</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -46,9 +46,9 @@
 
 
 
-<meta property="og:title" content="Load a saved workspace and seed for debugging. — tar_workspace" />
-<meta property="og:description" content="Load the packages, workspace, and random number generator seed
-of target attempted with a workspace file." />
+<meta property="og:title" content="List saved target workspaces. — tar_workspaces" />
+<meta property="og:description" content="List target workspaces currently saved to
+_targets/workspaces/. See tar_workspace() for more information." />
 <meta property="og:image" content="/logo.svg" />
 
 
@@ -126,83 +126,33 @@ of target attempted with a workspace file." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Load a saved workspace and seed for debugging.</h1>
-    <small class="dont-index">Source: <a href='https://github.com/wlandau/targets/blob/master/R/tar_workspace.R'><code>R/tar_workspace.R</code></a></small>
-    <div class="hidden name"><code>tar_workspace.Rd</code></div>
+    <h1>List saved target workspaces.</h1>
+    <small class="dont-index">Source: <a href='https://github.com/wlandau/targets/blob/master/R/tar_workspaces.R'><code>R/tar_workspaces.R</code></a></small>
+    <div class="hidden name"><code>tar_workspaces.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Load the packages, workspace, and random number generator seed
-of target attempted with a workspace file.</p>
+    <p>List target workspaces currently saved to
+<code>_targets/workspaces/</code>. See <code><a href='tar_workspace.html'>tar_workspace()</a></code> for more information.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>tar_workspace</span><span class='op'>(</span><span class='va'>name</span>, envir <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/sys.parent.html'>parent.frame</a></span><span class='op'>(</span><span class='op'>)</span>, packages <span class='op'>=</span> <span class='cn'>TRUE</span>, source <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>tar_workspaces</span><span class='op'>(</span><span class='op'>)</span></pre>
 
-    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
-    <table class="ref-arguments">
-    <colgroup><col class="name" /><col class="desc" /></colgroup>
-    <tr>
-      <th>name</th>
-      <td><p>Symbol, name of the target whose workspace to read.</p></td>
-    </tr>
-    <tr>
-      <th>envir</th>
-      <td><p>Environment in which to put the objects.</p></td>
-    </tr>
-    <tr>
-      <th>packages</th>
-      <td><p>Logical, whether to load the required packages
-of the target.</p></td>
-    </tr>
-    <tr>
-      <th>source</th>
-      <td><p>Logical, whether to run <code>_targets.R</code> to load user-defined
-global object dependencies into <code>envir</code>. If <code>TRUE</code>, then <code>envir</code>
-should either be the global environment or inherit from the
-global environment.</p></td>
-    </tr>
-    </table>
 
-    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
-
-    <p>This function returns <code>NULL</code>, but it does load
-the target's required packages, as well as multiple objects
-into the environment (<code>envir</code> argument) in order to replicate the
-workspace where the error happened. These objects include
-the global objects at the time <code><a href='tar_make.html'>tar_make()</a></code> was called and the
-dependency targets. The random number generator seed for the
-target is also assigned with <code><a href='https://rdrr.io/r/base/Random.html'>set.seed()</a></code></p>
-    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
-
-    <p>If you set <code>error = "workspace"</code> in <code><a href='tar_option_set.html'>tar_option_set()</a></code>
-or <code><a href='tar_target.html'>tar_target()</a></code>, then if that target throws an error
-in <code><a href='tar_make.html'>tar_make()</a></code>, it will save its workspace to an RDS file
-in <code>_targets/workspaces/</code>. Workspaces also get saved for targets
-supplied to the <code>workspace</code> argument of <code><a href='tar_option_set.html'>tar_option_set()</a></code>,
-even individual branches. The workspace is a compact reference
-that allows <code>tar_workspace()</code> to load the target's dependencies
-and random number generator seed as long as the data objects
-are still in the data store (usually files in <code>_targets/objects/</code>).
-When you are done debugging, you can remove the workspace files
-using <code><a href='tar_destroy.html'>tar_destroy(destroy = "workspaces")</a></code>.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span>
-<span class='va'>tmp</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/sample.html'>sample</a></span><span class='op'>(</span><span class='fl'>1</span><span class='op'>)</span>
+<span class='fu'><a href='tar_dir.html'>tar_dir</a></span><span class='op'>(</span><span class='op'>{</span>
 <span class='fu'><a href='tar_script.html'>tar_script</a></span><span class='op'>(</span><span class='op'>{</span>
-  <span class='fu'><a href='tar_option_set.html'>tar_option_set</a></span><span class='op'>(</span>error <span class='op'>=</span> <span class='st'>"workspace"</span><span class='op'>)</span>
+  <span class='fu'><a href='tar_option_set.html'>tar_option_set</a></span><span class='op'>(</span>error <span class='op'>=</span> <span class='st'>"save"</span><span class='op'>)</span> <span class='co'># Required for saving workspaces.</span>
   <span class='fu'><a href='tar_pipeline.html'>tar_pipeline</a></span><span class='op'>(</span>
-    <span class='fu'><a href='tar_target.html'>tar_target</a></span><span class='op'>(</span><span class='va'>x</span>, <span class='st'>"loaded"</span><span class='op'>)</span>,
-    <span class='fu'><a href='tar_target.html'>tar_target</a></span><span class='op'>(</span><span class='va'>y</span>, <span class='kw'><a href='https://rdrr.io/r/base/stop.html'>stop</a></span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span><span class='op'>)</span>
+    <span class='fu'><a href='tar_target.html'>tar_target</a></span><span class='op'>(</span><span class='va'>x</span>, <span class='st'>"value"</span><span class='op'>)</span>,
+    <span class='fu'><a href='tar_target.html'>tar_target</a></span><span class='op'>(</span><span class='va'>y</span>, <span class='va'>x</span><span class='op'>)</span>
   <span class='op'>)</span>
 <span class='op'>}</span><span class='op'>)</span>
-<span class='kw'><a href='https://rdrr.io/r/base/try.html'>try</a></span><span class='op'>(</span><span class='fu'><a href='tar_make.html'>tar_make</a></span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span>
-<span class='fu'><a href='https://rdrr.io/r/base/exists.html'>exists</a></span><span class='op'>(</span><span class='st'>"x"</span><span class='op'>)</span> <span class='co'># Should be FALSE.</span>
-<span class='fu'><a href='https://rdrr.io/r/utils/head.html'>tail</a></span><span class='op'>(</span><span class='va'>.Random.seed</span><span class='op'>)</span>
-<span class='fu'>tar_workspace</span><span class='op'>(</span><span class='va'>y</span><span class='op'>)</span>
-<span class='fu'><a href='https://rdrr.io/r/base/exists.html'>exists</a></span><span class='op'>(</span><span class='st'>"x"</span><span class='op'>)</span> <span class='co'># Should be TRUE.</span>
-<span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span> <span class='co'># "loaded"</span>
-<span class='fu'><a href='https://rdrr.io/r/utils/head.html'>tail</a></span><span class='op'>(</span><span class='va'>.Random.seed</span><span class='op'>)</span> <span class='co'># Should be different.</span>
+<span class='fu'><a href='tar_make.html'>tar_make</a></span><span class='op'>(</span><span class='op'>)</span>
+<span class='fu'>tar_workspaces</span><span class='op'>(</span><span class='op'>)</span>
+<span class='op'>}</span><span class='op'>)</span>
 <span class='op'>}</span>
 </div></pre>
   </div>

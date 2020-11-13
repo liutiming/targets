@@ -140,14 +140,14 @@ directory. Optionally, just destroy part of the data store.</p>
     </div>
 
     <pre class="usage"><span class='fu'>tar_destroy</span><span class='op'>(</span>
-  what <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"all"</span>, <span class='st'>"meta"</span>, <span class='st'>"progress"</span>, <span class='st'>"objects"</span>, <span class='st'>"scratch"</span>, <span class='st'>"workspaces"</span><span class='op'>)</span>
+  destroy <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"all"</span>, <span class='st'>"meta"</span>, <span class='st'>"progress"</span>, <span class='st'>"objects"</span>, <span class='st'>"scratch"</span>, <span class='st'>"workspaces"</span><span class='op'>)</span>
 <span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>what</th>
+      <th>destroy</th>
       <td><p>Character of length 1, what to destroy. Choices:</p><ul>
 <li><p><code>"all"</code>: destroy the entire data store.</p></li>
 <li><p><code>"meta"</code>: just delete the metadata file at <code>_targets/meta/meta</code>,
