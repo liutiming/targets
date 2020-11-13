@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Read the target progress of the latest run of the pipeline. — tar_progress • targets</title>
+<title>Dynamic cross — tar_dynamic_cross • targets</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -46,9 +46,8 @@
 
 
 
-<meta property="og:title" content="Read the target progress of the latest run of the pipeline. — tar_progress" />
-<meta property="og:description" content="Read a project's target progress data for the most recent
-run of tar_make() or similar. Only the most recent record is shown." />
+<meta property="og:title" content="Dynamic cross — tar_dynamic_cross" />
+<meta property="og:description" content="Iterate over one or more targets in sequence." />
 <meta property="og:image" content="/logo.svg" />
 
 
@@ -126,54 +125,66 @@ run of tar_make() or similar. Only the most recent record is shown." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Read the target progress of the latest run of the pipeline.</h1>
-    <small class="dont-index">Source: <a href='https://github.com/wlandau/targets/blob/master/R/tar_progress.R'><code>R/tar_progress.R</code></a></small>
-    <div class="hidden name"><code>tar_progress.Rd</code></div>
+    <h1>Dynamic cross</h1>
+    <small class="dont-index">Source: <a href='https://github.com/wlandau/targets/blob/master/R/tar_dynamic_cross.R'><code>R/tar_dynamic_cross.R</code></a></small>
+    <div class="hidden name"><code>tar_dynamic_cross.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Read a project's target progress data for the most recent
-run of <code><a href='tar_make.html'>tar_make()</a></code> or similar. Only the most recent record is shown.</p>
+    <p>Iterate over one or more targets in sequence.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>tar_progress</span><span class='op'>(</span>names <span class='op'>=</span> <span class='cn'>NULL</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>tar_dynamic_cross</span><span class='op'>(</span><span class='va'>...</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>names</th>
-      <td><p>Optional, names of the targets. If supplied, <code>tar_progress()</code>
-only returns progress information on these targets.
-You can supply symbols, a character vector,
-or <code>tidyselect</code> helpers like <code><a href='https://tidyselect.r-lib.org/reference/starts_with.html'>starts_with()</a></code>.</p></td>
+      <th>...</th>
+      <td><p>data frames with columns to represent targets and
+elements to represent branches or buds. Column names must
+be unique across all the data frames.</p></td>
     </tr>
     </table>
 
-    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p>A data frame with one row per target and the following columns:</p><ul>
-<li><p><code>name</code>: name of the target or global object.</p></li>
-<li><p><code>progress</code>: the most recent progress update of that target.
-Could be <code>"running"</code>, <code>"built"</code>, <code>"cancelled"</code>, or <code>"failed"</code>.</p></li>
-</ul>
+    <p>In <code><a href='tar_target.html'>tar_target()</a></code>, <code>pattern = cross(x, y)</code> creates one dynamic branch
+for each combination of elements of <code>x</code> and <code>y</code>.
+To test and experiment with this behavior outside
+the pipeline, use the <code>tar_dynamic_cross()</code> function.</p>
+    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
+    <div class='dont-index'><p>Other Dynamic branching: 
+<code><a href='tar_dynamic_map.html'>tar_dynamic_map</a>()</code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='kw'>if</span> <span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/identical.html'>identical</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/Sys.getenv.html'>Sys.getenv</a></span><span class='op'>(</span><span class='st'>"TARGETS_LONG_EXAMPLES"</span><span class='op'>)</span>, <span class='st'>"true"</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>{</span>
-<span class='fu'><a href='tar_dir.html'>tar_dir</a></span><span class='op'>(</span><span class='op'>{</span>
-<span class='fu'><a href='tar_script.html'>tar_script</a></span><span class='op'>(</span>
-  <span class='fu'><a href='tar_pipeline.html'>tar_pipeline</a></span><span class='op'>(</span>
-    <span class='fu'><a href='tar_target.html'>tar_target</a></span><span class='op'>(</span><span class='va'>x</span>, <span class='fu'><a href='https://rdrr.io/r/base/seq.html'>seq_len</a></span><span class='op'>(</span><span class='fl'>2</span><span class='op'>)</span><span class='op'>)</span>,
-    <span class='fu'><a href='tar_target.html'>tar_target</a></span><span class='op'>(</span><span class='va'>y</span>, <span class='fl'>2</span> <span class='op'>*</span> <span class='va'>x</span>, pattern <span class='op'>=</span> <span class='fu'>map</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span><span class='op'>)</span>
-  <span class='op'>)</span>
+    <pre class="examples"><div class='input'><span class='co'># To use dynamic cross for real in a pipeline,</span>
+<span class='co'># call cross() in a target's pattern.</span>
+<span class='co'># The following code goes at the bottom of _targets.R.</span>
+<span class='fu'><a href='tar_pipeline.html'>tar_pipeline</a></span><span class='op'>(</span>
+  <span class='fu'><a href='tar_target.html'>tar_target</a></span><span class='op'>(</span><span class='va'>x</span>, <span class='fu'><a href='https://rdrr.io/r/base/seq.html'>seq_len</a></span><span class='op'>(</span><span class='fl'>2</span><span class='op'>)</span><span class='op'>)</span>,
+  <span class='fu'><a href='tar_target.html'>tar_target</a></span><span class='op'>(</span><span class='va'>y</span>, <span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span><span class='op'>(</span><span class='va'>letters</span>, <span class='fl'>2</span><span class='op'>)</span><span class='op'>)</span>,
+  <span class='fu'><a href='tar_target.html'>tar_target</a></span><span class='op'>(</span><span class='va'>dynamic</span>, <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>y</span><span class='op'>)</span>, pattern <span class='op'>=</span> <span class='fu'>cross</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>y</span><span class='op'>)</span><span class='op'>)</span> <span class='co'># 4 branches</span>
 <span class='op'>)</span>
-<span class='fu'><a href='tar_make.html'>tar_make</a></span><span class='op'>(</span><span class='op'>)</span>
-<span class='fu'>tar_progress</span><span class='op'>(</span><span class='op'>)</span>
-<span class='fu'>tar_progress</span><span class='op'>(</span><span class='fu'><a href='https://tidyselect.r-lib.org/reference/starts_with.html'>starts_with</a></span><span class='op'>(</span><span class='st'>"y_"</span><span class='op'>)</span><span class='op'>)</span>
-<span class='op'>}</span><span class='op'>)</span>
-<span class='op'>}</span>
-</div></pre>
+</div><div class='output co'>#&gt; &lt;pipeline with 3 targets&gt;</div><div class='input'><span class='co'># To explore dynamic cross() outside a pipeline,</span>
+<span class='co'># use the tar_dynamic_cross() helper function.</span>
+<span class='va'>x</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/seq.html'>seq_len</a></span><span class='op'>(</span><span class='fl'>2</span><span class='op'>)</span><span class='op'>)</span>
+<span class='va'>y</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span><span class='op'>(</span>y <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span><span class='op'>(</span><span class='va'>letters</span>, <span class='fl'>2</span><span class='op'>)</span><span class='op'>)</span>
+<span class='fu'>tar_dynamic_cross</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>y</span><span class='op'>)</span>
+</div><div class='output co'>#&gt;   x y
+#&gt; 1 1 a
+#&gt; 2 1 b
+#&gt; 3 2 a
+#&gt; 4 2 b</div><div class='input'><span class='co'># You can experiment with more complicated patterns.</span>
+<span class='co'># The following is a representation of pattern = cross(z, map(x, y)).</span>
+<span class='va'>z</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span><span class='op'>(</span>z <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/utils/head.html'>tail</a></span><span class='op'>(</span><span class='va'>LETTERS</span>, <span class='fl'>2</span><span class='op'>)</span><span class='op'>)</span>
+<span class='fu'>tar_dynamic_cross</span><span class='op'>(</span><span class='va'>z</span>, <span class='fu'><a href='tar_dynamic_map.html'>tar_dynamic_map</a></span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>y</span><span class='op'>)</span><span class='op'>)</span>
+</div><div class='output co'>#&gt;   z x y
+#&gt; 1 Y 1 a
+#&gt; 2 Y 2 b
+#&gt; 3 Z 1 a
+#&gt; 4 Z 2 b</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
