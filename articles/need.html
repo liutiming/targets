@@ -304,13 +304,13 @@
 <code class="sourceCode R"><span class="fu"><a href="../reference/tar_target.html">tar_target</a></span><span class="op">(</span>
   <span class="va">sums</span>,
   <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">data</span><span class="op">$</span><span class="va">x</span><span class="op">)</span>,
-  pattern <span class="op">=</span> <span class="fu">map</span><span class="op">(</span><span class="va">data</span><span class="op">)</span>
+  pattern <span class="op">=</span> <span class="fu"><a href="../reference/tar_dynamic_map.html">map</a></span><span class="op">(</span><span class="va">data</span><span class="op">)</span>
 <span class="op">)</span></code></pre></div>
 </div>
 <div id="composable-dynamic-branching" class="section level2">
 <h2 class="hasAnchor">
 <a href="#composable-dynamic-branching" class="anchor"></a>Composable dynamic branching</h2>
-<p>Because the design of <code>targets</code> is fundamentally dynamic, users can create complicated dynamic branching patterns that are never going to be possible in <code>drake</code>. Below, target <code>z</code> creates six branches, one for each combination of <code>w</code> and tuple (<code>x</code>, <code>y</code>). The pattern <code>cross(w, map(x, y))</code> is equivalent to <code>tidyr::crossing(w, tidyr::nesting(x, y))</code>.</p>
+<p>Because the design of <code>targets</code> is fundamentally dynamic, users can create complicated dynamic branching patterns that are never going to be possible in <code>drake</code>. Below, target <code>z</code> creates six branches, one for each combination of <code>w</code> and tuple (<code>x</code>, <code>y</code>). The pattern <code><a href="../reference/tar_dynamic_cross.html">cross(w, map(x, y))</a></code> is equivalent to <code>tidyr::crossing(w, tidyr::nesting(x, y))</code>.</p>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># _targets.R</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://wlandau.github.io/targets/">targets</a></span><span class="op">)</span>
@@ -321,7 +321,7 @@
   <span class="fu"><a href="../reference/tar_target.html">tar_target</a></span><span class="op">(</span>
     <span class="va">z</span>,
     <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span>w <span class="op">=</span> <span class="va">w</span>, x <span class="op">=</span> <span class="va">x</span>, y <span class="op">=</span> <span class="va">y</span><span class="op">)</span>,
-    pattern <span class="op">=</span> <span class="fu">cross</span><span class="op">(</span><span class="va">w</span>, <span class="fu">map</span><span class="op">(</span><span class="va">x</span>, <span class="va">y</span><span class="op">)</span><span class="op">)</span>
+    pattern <span class="op">=</span> <span class="fu"><a href="../reference/tar_dynamic_cross.html">cross</a></span><span class="op">(</span><span class="va">w</span>, <span class="fu"><a href="../reference/tar_dynamic_map.html">map</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">y</span><span class="op">)</span><span class="op">)</span>
   <span class="op">)</span>
 <span class="op">)</span></code></pre></div>
 <p>Thanks to <a href="https://github.com/glep"><code>glep</code></a> and <a href="https://github.com/djbirke"><code>djbirke</code></a> on GitHub for the idea.</p>
