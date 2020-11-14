@@ -148,8 +148,9 @@
 <h2 class="hasAnchor">
 <a href="#new-features" class="anchor"></a>New features</h2>
 <ul>
-<li>Add interactive helpers for dynamic branching like <code><a href="../reference/tar_dynamic_map.html">tar_dynamic_map()</a></code> and <code><a href="../reference/tar_dynamic_cross.html">tar_dynamic_cross()</a></code> to help users understand how dynamic branching works outside a pipeline.</li>
-<li>Add new dynamic branching patterns <code><a href="../reference/tar_dynamic_head.html">head()</a></code>, <code><a href="../reference/tar_dynamic_tail.html">tail()</a></code>, and <code><a href="../reference/tar_dynamic_sample.html">sample()</a></code> to replace <code>max_expand</code> from <code>drake</code> (<a href='https://github.com/wlandau/targets/issues/56'>#56</a>).</li>
+<li>Make patterns composable (<a href='https://github.com/wlandau/targets/issues/212'>#212</a>).</li>
+<li>Add new dynamic branching patterns <code><a href="../reference/tar_pattern.html">head()</a></code>, <code><a href="../reference/tar_pattern.html">tail()</a></code>, and <code><a href="../reference/tar_pattern.html">sample()</a></code> to provide functionality equivalent to <code>drake</code>’s <code>max_expand</code> (<a href='https://github.com/wlandau/targets/issues/56'>#56</a>).</li>
+<li>Add a new <code><a href="../reference/tar_pattern.html">tar_pattern()</a></code> function to emulate dynamic branching outside a pipeline.</li>
 </ul>
 </div>
 </div>
