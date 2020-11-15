@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Get the name of the target currently running. — tar_name • targets</title>
+<title>For developers only: get the environment of the current target. — tar_envir • targets</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -46,8 +46,9 @@
 
 
 
-<meta property="og:title" content="Get the name of the target currently running. — tar_name" />
-<meta property="og:description" content="Get the name of the target currently running." />
+<meta property="og:title" content="For developers only: get the environment of the current target. — tar_envir" />
+<meta property="og:description" content="For developers only: get the environment where a
+target runs its command. Inherits from tar_option_get(&quot;envir&quot;)." />
 <meta property="og:image" content="/logo.svg" />
 
 
@@ -125,23 +126,24 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Get the name of the target currently running.</h1>
-    <small class="dont-index">Source: <a href='https://github.com/wlandau/targets/blob/master/R/tar_name.R'><code>R/tar_name.R</code></a></small>
-    <div class="hidden name"><code>tar_name.Rd</code></div>
+    <h1>For developers only: get the environment of the current target.</h1>
+    <small class="dont-index">Source: <a href='https://github.com/wlandau/targets/blob/master/R/tar_envir.R'><code>R/tar_envir.R</code></a></small>
+    <div class="hidden name"><code>tar_envir.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Get the name of the target currently running.</p>
+    <p>For developers only: get the environment where a
+target runs its command. Inherits from <code><a href='tar_option_get.html'>tar_option_get("envir")</a></code>.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>tar_name</span><span class='op'>(</span>default <span class='op'>=</span> <span class='st'>"target"</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>tar_envir</span><span class='op'>(</span>default <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/sys.parent.html'>parent.frame</a></span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>default</th>
-      <td><p>Character, value to return if <code>tar_name()</code>
+      <td><p>Environment, value to return if <code>tar_envir()</code>
 is called on its own outside a <code>targets</code> pipeline.
 Having a default lets users run things without <code><a href='tar_make.html'>tar_make()</a></code>,
 which helps peel back layers of code and troubleshoot bugs.</p></td>
@@ -150,18 +152,26 @@ which helps peel back layers of code and troubleshoot bugs.</p></td>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>Character of length 1. If called inside a pipeline,
-<code>tar_name()</code> returns name of the target currently running.
-Otherwise, the return value is <code>default</code>.</p>
+    <p>If called from a running target, <code>tar_envir()</code> returns
+the environment where the target runs its command.
+If called outside a pipeline, the return value is
+whatever the user supplies to <code>default</code>
+(which defaults to <code><a href='https://rdrr.io/r/base/sys.parent.html'>parent.frame()</a></code>).</p>
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+
+    <p>Users should not call <code>tar_envir()</code> directly because accidental
+modifications to <code><a href='https://rdrr.io/r/base/environment.html'>parent.env(tar_envir())</a></code> could break the pipeline.
+<code>tar_envir()</code> only exists in order to support third-party interface
+packages such as <code>tarchetypes</code>.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>tar_name</span><span class='op'>(</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; [1] "target"</div><div class='input'><span class='fu'>tar_name</span><span class='op'>(</span>default <span class='op'>=</span> <span class='st'>"custom_target_name"</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; [1] "custom_target_name"</div><div class='input'><span class='fu'><a href='tar_target.html'>tar_target</a></span><span class='op'>(</span><span class='va'>name</span>, <span class='fu'>tar_name</span><span class='op'>(</span>default <span class='op'>=</span> <span class='st'>"custom"</span><span class='op'>)</span><span class='op'>)</span> <span class='co'># Returns "name".</span>
+    <pre class="examples"><div class='input'><span class='fu'>tar_envir</span><span class='op'>(</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; &lt;environment: 0x7fcc56a00e30&gt;</div><div class='input'><span class='fu'>tar_envir</span><span class='op'>(</span>default <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/sys.parent.html'>parent.frame</a></span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; &lt;environment: 0x7fcc5687cf80&gt;</div><div class='input'><span class='fu'><a href='tar_target.html'>tar_target</a></span><span class='op'>(</span><span class='va'>name</span>, <span class='fu'>tar_envir</span><span class='op'>(</span>default <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/sys.parent.html'>parent.frame</a></span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; &lt;stem target&gt; 
 #&gt;   name: name 
 #&gt;   command:
-#&gt;     tar_name(default = "custom") 
+#&gt;     tar_envir(default = parent.frame()) 
 #&gt;   format: rds 
 #&gt;   iteration method: vector 
 #&gt;   error mode: stop 

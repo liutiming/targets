@@ -262,6 +262,37 @@
     </tbody><tbody>
       <tr>
         <th colspan="2">
+          <h2 id="section-visualize" class="hasAnchor"><a href="#section-visualize" class="anchor"></a>Visualize</h2>
+          <p class="section-desc"></p>
+        </th>
+      </tr>
+      
+      
+    </tbody><tbody>
+      
+      
+      <tr>
+        
+        <td>
+          <p><code><a href="tar_glimpse.html">tar_glimpse()</a></code> </p>
+        </td>
+        <td><p>Visualize an abridged fast dependency graph.</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="tar_network.html">tar_network()</a></code> </p>
+        </td>
+        <td><p>Return the vertices and edges of a pipeline dependency graph.</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="tar_visnetwork.html">tar_visnetwork()</a></code> </p>
+        </td>
+        <td><p>Visualize an abridged fast dependency graph.</p></td>
+      </tr>
+    </tbody><tbody>
+      <tr>
+        <th colspan="2">
           <h2 id="section-inspect" class="hasAnchor"><a href="#section-inspect" class="anchor"></a>Inspect</h2>
           <p class="section-desc"></p>
         </th>
@@ -286,21 +317,34 @@
       </tr><tr>
         
         <td>
-          <p><code><a href="tar_glimpse.html">tar_glimpse()</a></code> </p>
+          <p><code><a href="tar_pattern.html">tar_pattern()</a></code> </p>
         </td>
-        <td><p>Visualize an abridged fast dependency graph.</p></td>
+        <td><p>Emulate dynamic branching.</p></td>
       </tr><tr>
+        
+        <td>
+          <p><code><a href="tar_validate.html">tar_validate()</a></code> </p>
+        </td>
+        <td><p>Validate a pipeline of targets.</p></td>
+      </tr>
+    </tbody><tbody>
+      <tr>
+        <th colspan="2">
+          <h2 id="section-introspect" class="hasAnchor"><a href="#section-introspect" class="anchor"></a>Introspect</h2>
+          <p class="section-desc"></p>
+        </th>
+      </tr>
+      
+      
+    </tbody><tbody>
+      
+      
+      <tr>
         
         <td>
           <p><code><a href="tar_manifest.html">tar_manifest()</a></code> </p>
         </td>
         <td><p>Produce a data frame of information about your targets.</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="tar_network.html">tar_network()</a></code> </p>
-        </td>
-        <td><p>Return the vertices and edges of a pipeline dependency graph.</p></td>
       </tr><tr>
         
         <td>
@@ -325,18 +369,6 @@
           <p><code><a href="tar_sitrep.html">tar_sitrep()</a></code> </p>
         </td>
         <td><p>Show the cue-by-cue status of each target.</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="tar_validate.html">tar_validate()</a></code> </p>
-        </td>
-        <td><p>Validate a pipeline of targets.</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="tar_visnetwork.html">tar_visnetwork()</a></code> </p>
-        </td>
-        <td><p>Visualize an abridged fast dependency graph.</p></td>
       </tr><tr>
         
         <td>
@@ -492,7 +524,7 @@ current working directory</p></td>
     </tbody><tbody>
       <tr>
         <th colspan="2">
-          <h2 id="section-helpers" class="hasAnchor"><a href="#section-helpers" class="anchor"></a>Helpers</h2>
+          <h2 id="section-runtime-accessors" class="hasAnchor"><a href="#section-runtime-accessors" class="anchor"></a>Runtime accessors</h2>
           <p class="section-desc"></p>
         </th>
       </tr>
@@ -504,15 +536,9 @@ current working directory</p></td>
       <tr>
         
         <td>
-          <p><code><a href="tar_cancel.html">tar_cancel()</a></code> </p>
+          <p><code><a href="tar_envir.html">tar_envir()</a></code> </p>
         </td>
-        <td><p>Cancel a target mid-build under a custom condition.</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="tar_group.html">tar_group()</a></code> </p>
-        </td>
-        <td><p>Group a data frame to iterate over subsets of rows.</p></td>
+        <td><p>For developers only: get the environment of the current target.</p></td>
       </tr><tr>
         
         <td>
@@ -535,7 +561,7 @@ current working directory</p></td>
     </tbody><tbody>
       <tr>
         <th colspan="2">
-          <h2 id="section-dynamic-branching" class="hasAnchor"><a href="#section-dynamic-branching" class="anchor"></a>Dynamic branching</h2>
+          <h2 id="section-runtime-helpers" class="hasAnchor"><a href="#section-runtime-helpers" class="anchor"></a>Runtime helpers</h2>
           <p class="section-desc"></p>
         </th>
       </tr>
@@ -547,9 +573,15 @@ current working directory</p></td>
       <tr>
         
         <td>
-          <p><code><a href="tar_pattern.html">tar_pattern()</a></code> </p>
+          <p><code><a href="tar_cancel.html">tar_cancel()</a></code> </p>
         </td>
-        <td><p>Emulate dynamic branching.</p></td>
+        <td><p>Cancel a target mid-build under a custom condition.</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="tar_group.html">tar_group()</a></code> </p>
+        </td>
+        <td><p>Group a data frame to iterate over subsets of rows.</p></td>
       </tr>
     </tbody>
     </table>
