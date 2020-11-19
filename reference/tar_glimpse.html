@@ -148,6 +148,7 @@ objects by default (but you can include them with <code>targets_only = FALSE</co
   targets_only <span class='op'>=</span> <span class='cn'>TRUE</span>,
   allow <span class='op'>=</span> <span class='cn'>NULL</span>,
   exclude <span class='op'>=</span> <span class='cn'>NULL</span>,
+  level_separation <span class='op'>=</span> <span class='cn'>NULL</span>,
   callr_function <span class='op'>=</span> <span class='fu'>callr</span><span class='fu'>::</span><span class='va'><a href='https://rdrr.io/pkg/callr/man/r.html'>r</a></span>,
   callr_arguments <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span><span class='op'>)</span>
 <span class='op'>)</span></pre>
@@ -173,6 +174,16 @@ Set to <code>NULL</code> to allow all vertices in the pipeline and environment
 Set to <code>NULL</code> to exclude no vertices.
 Otherwise, you can supply symbols, a character vector, or <code>tidyselect</code>
 helpers like <code><a href='https://tidyselect.r-lib.org/reference/starts_with.html'>starts_with()</a></code>.</p></td>
+    </tr>
+    <tr>
+      <th>level_separation</th>
+      <td><p>Numeric of length 1,
+<code>levelSeparation</code> argument of <code><a href='https://rdrr.io/pkg/visNetwork/man/visHierarchicalLayout.html'>visNetwork::visHierarchicalLayout()</a></code>.
+Controls the distance between hierarchical levels.
+Consider changing the value if the aspect ratio of the graph
+is far from 1. If <code>level_separation</code> is <code>NULL</code>,
+the <code>levelSeparation</code> argument of <code>visHierarchicalLayout()</code>
+defaults to <code>150</code>.</p></td>
     </tr>
     <tr>
       <th>callr_function</th>
