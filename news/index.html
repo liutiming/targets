@@ -160,6 +160,8 @@
 <ul>
 <li>Return full patterns from <code><a href="../reference/tar_manifest.html">tar_manifest()</a></code>.</li>
 <li>Record package load errors in progress and metadata (<a href='https://github.com/wlandau/targets/issues/228'>#228</a>, <a href='https://github.com/psychelzh'>@psychelzh</a>).</li>
+<li>
+<code><a href="../reference/tar_renv.html">tar_renv()</a></code> now invokes <code>_targets.R</code> through a background process just like <code><a href="../reference/tar_outdated.html">tar_outdated()</a></code> etc. so it can account for more hidden packages (<a href='https://github.com/wlandau/targets/issues/224'>#224</a>, <a href='https://github.com/mattwarkentin'>@mattwarkentin</a>).</li>
 </ul>
 </div>
 </div>
